@@ -1,17 +1,43 @@
 /*-----------------------------------------------------------------Tags--------------------------------------------------------------------------------*/
 
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: 'Titillium Web', sans-serif;
+    font: inherit;
+    vertical-align: baseline;
+    color: #000;
+}
 
+body {
+    background-color: #dae1e7;
+}
 
+a {
+    color: #fff;
+    text-decoration: none;
+
+}
+
+ a:hover {
+   color: #000;
+   text-decoration: underline;
+
+}
 
 /*-----------------------------------------------------------------ID's--------------------------------------------------------------------------------*/
+#header {
+    font-size: 1.2rem;
+    background-color: #364f6b;
+}
+
 
 
 
 /*-----------------------------------------------------------------Classes--------------------------------------------------------------------------------*/
 
-
-
-.drop-right {
-    text-align: right;
-
+.navbar-light .navbar-nav .nav-link  {
+    color: #fff;
 }
