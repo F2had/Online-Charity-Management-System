@@ -42,7 +42,7 @@
                     <!-- Login form -->
                     <div role="tabpanel" class="tab-pane active container-fluid" id="login">
                        
-                        <h1 class="text-center py-3">Welcome Back!</h1>
+                        <h1 class="text-center mb-1 py-3">Welcome Back!</h1>
 
                         <form action="/login.php" method="POST">
                           
@@ -82,7 +82,7 @@
                     <!-- Register form -->
                     <div role="tabpanel" class="tap-pane container-fluid" id="register">
                        
-                        <h1 class="text-center py-3 container-fluid">Join Us Today!</h1>
+                        <h1 class="text-center py-3 mb-1 container-fluid">Join Us Today!</h1>
                         <form action="/register.php" method="POST">
                            
                             <!-- Name -->
@@ -133,7 +133,7 @@
             <!-- Reset password form -->
             <div id="passform" class="container-fluid">
                 <form action="/resetpassword.php" method="POST">
-                    <h1 class="text-center pt-3 container">Reset Password</h1>
+                    <h1 class="text-center pt-3 mb-1 container">Reset Password</h1>
 
                     <!-- Name -->
                     <div class="form-group w-75 py-4 container-fluid">
@@ -164,14 +164,14 @@
             $('.login').click(function(){
 
                 $('#login').slideDown('slow');
-                $('#register').hide('fast');
+                $('#register').hide('slow');
                 $('#passform').slideUp('slow');
             });
 
             $('.register').click(function(){
                $('#login').hide('slow');
                 $('#passform').hide();
-               $('#register').animate({width: 'show'}, '300');
+               $('#register').animate({width: 'show'}, 'slow');
             });
 
 
@@ -188,7 +188,7 @@
 
             $('.btn-custom').mouseleave(function(){
                   $('.btn').stop();
-                $('.btn').animate({width: "30%"},'fast');
+                $('.btn').animate({width: "30%"},'slow');
             });
             
        
