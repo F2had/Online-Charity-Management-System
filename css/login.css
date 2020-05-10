@@ -1,101 +1,87 @@
-
 /*-------------------------------------Elements-------------------------------------*/
 
-
-
 body {
-    font-family: 'Roboto', sans-serif;
-    margin-top: 7%;
-    background-color: #ced0d1;
-}
+  font-family: "Roboto", sans-serif;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 5%;
+  background-color: #ced0d1;
 
+}
 
 h1 {
-    color:#fff;
-    font-weight: 300;
-    margin:0 0 40px;
-    font-family: 'Titillium Web', sans-serif;
+  color: #fff;
+  font-weight: 300;
+  margin: 0 0 40px;
+  font-family: "Titillium Web", sans-serif;
 }
-
-
-
 
 
 /*-------------------------------------IDs-------------------------------------*/
 
-
 /* Hide register and reset password form because when we use nav-tabs it won't complete disapear. used jQuery to change it whenever button is clicked */
 #register {
-    display: none;
+  display: none;
 }
 
-#passform{
-    display: none;
+#passform {
+  display: none;
 }
 
 /*-------------------------------------Classes-------------------------------------*/
 
 .container {
-    background-color: #36424b;
-    margin: 2% auto ;
-    padding-bottom: 2%;   
-}
+  background-color: #36424b;
+  margin-left: auto;
+  margin-right: auto;
 
+}
 
 .login-register {
-    padding-top: 5%;  
- 
+  padding-top: 2%;
 }
-
 
 .login-register .nav-tabs > li > a {
-    color: #fff;
+  color: #fff;
 }
-
 
 .login-register .nav-tabs > li > a.active {
-    background-color: #537780;
-    border-color: #537780;
-    border-bottom: 0.4rem solid #014572;
-    color: white;
-    
+  background-color: #537780;
+  border-color: #537780;
+  border-bottom: 0.4rem solid #014572;
+  color: white;
 }
 
-
-.login-register .nav-tabs > li > a:hover{
-    background-color: #11d3bc;
-    border-bottom: 0.4rem solid #005792;
-    color: white;
-    font-style: italic;
-    font-weight: bold;
-    filter: brightness(50%);
-    
+.login-register .nav-tabs > li > a:hover {
+  background-color: #11d3bc;
+  border-bottom: 0.4rem solid #005792;
+  color: white;
+  font-style: italic;
+  font-weight: bold;
+  filter: brightness(50%);
 }
 
-
-.login-register .nav-tabs > ul > li > a, 
+.login-register .nav-tabs > ul > li > a,
 .login-register .nav-tabs > ul > li > a.active {
-    border-radius: 3%;
-    text-align: center; 
-    width: auto;
+  border-radius: 3%;
+  text-align: center;
+  width: auto;
 }
 
 /* Buttons */
- .btn-custom {
-    background-color: #11d3bc;
-    border-radius: 0;
-    color: #fff;
-    margin-bottom: 0.5rem;
-    width: 30%;
+.btn-custom {
+  background-color: #11d3bc;
+  border-radius: 0;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  width: 30%;
 }
 
- .btn-custom:hover {
-    color: #000;
-    box-shadow: inset 0 0 0 25px #1f4068;
-    box-shadow: 0 6px 18px 0 rgba(#000, 0.1);
-    box-shadow:
-    1px 1px #1f4068,
-    2px 2px #1f4068,
-    3px 3px #1f4068;
+.btn-custom:hover {
+  color: #000;
+  box-shadow: inset 0 0 0 25px #1f4068;
+  box-shadow: 0 6px 18px 0 rgba(#000, 0.1);
+  box-shadow: 1px 1px #1f4068, 2px 2px #1f4068, 3px 3px #1f4068;
 }
+
 

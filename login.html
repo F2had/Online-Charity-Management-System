@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Charity</title>
+        <title>Document</title>
 
        
         <!-- Bootstrap -->
@@ -27,11 +27,11 @@
                 <ul class="nav nav-tabs nav-fill" role="tablist">
 
                     <li class="nav-item">
-                        <a class="nav-link hide active" href="#login" role="tab" data-toggle="tab">LOGIN</a>
+                        <a class="nav-link login active" href="#login" role="tab" data-toggle="tab">LOGIN</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link appear" href="#register" role="tab" data-toggle="tab">REGISTER</a>
+                        <a class="nav-link register" href="#register" role="tab" data-toggle="tab">REGISTER</a>
                     </li>
 
                 </ul>
@@ -40,14 +40,14 @@
                 <div class="tab-content">
                    
                     <!-- Login form -->
-                    <div role="tabpanel" class="tab-pane active" id="login">
+                    <div role="tabpanel" class="tab-pane active container-fluid" id="login">
                        
                         <h1 class="text-center py-3">Welcome Back!</h1>
 
                         <form action="/login.php" method="POST">
                           
                             <!-- Email input -->
-                            <div class="form-group py-3">
+                            <div class="form-group w-75 py-3 container-fluid">
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-at"></i></div>
 
@@ -56,7 +56,7 @@
                             </div>
 
                             <!-- Password input -->
-                            <div class="form-group py-3">
+                            <div class="form-group w-75 py-3 container-fluid">
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-lock"></i></div>
 
@@ -65,7 +65,7 @@
                             </div>
 
                             <!-- Remember me and forget password -->
-                            <div class="form-group py-3">
+                            <div class="form-group w-75 py-3 container-fluid">
                                 <input type="checkbox" id="rememberMe" />
                                 <label class="text-white" for="rememberMe">Remember me</label>
                                 <a href="#" id="resetpass" class="float-right">Forgot password?</a>
@@ -80,13 +80,13 @@
                     <!-- Login form end -->
 
                     <!-- Register form -->
-                    <div role="tabpanel" class="tap-pane" id="register">
+                    <div role="tabpanel" class="tap-pane container-fluid" id="register">
                        
-                        <h1 class="text-center py-3">Join Us Today!</h1>
+                        <h1 class="text-center py-3 container-fluid">Join Us Today!</h1>
                         <form action="/register.php" method="POST">
                            
                             <!-- Name -->
-                            <div class="form-group py-3">
+                            <div class="form-group w-75 py-3 container-fluid">
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-signature"></i></div>
                                     <input type="text" class="form-control" placeholder="Name *" required />
@@ -94,7 +94,7 @@
                             </div>
 
                             <!-- Email -->
-                            <div class="form-group py-3">
+                            <div class="form-group w-75 py-3 container-fluid">
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-at"></i></div>
                                     <input type="email" class="form-control" placeholder="Email *" required />
@@ -102,7 +102,7 @@
                             </div>
 
                             <!-- Password -->
-                            <div class="form-group py-3">
+                            <div class="form-group w-75 py-3 container-fluid">
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-key"></i></div>
                                     <input type="password" class="form-control" placeholder="Password *" required />
@@ -110,7 +110,7 @@
                             </div>
 
                             <!-- Repeat password -->
-                            <div class="form-group py-3">
+                            <div class="form-group w-75 py-3 container-fluid">
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-key"></i></div>
                                     <input type="password" class="form-control" placeholder="Confirm your Password *" required />
@@ -131,18 +131,20 @@
             </div>
 
             <!-- Reset password form -->
-            <div id="passform">
+            <div id="passform" class="container-fluid">
                 <form action="/resetpassword.php" method="POST">
+                    <h1 class="text-center pt-3 container">Reset Password</h1>
+
                     <!-- Name -->
-                    <div class="form-group py-4">
+                    <div class="form-group w-75 py-4 container-fluid">
                         <div class="input-group">
                             <div class="input-group-text"><i class="las la-at"></i></div>
-                            <input type="email" class="form-control" placeholder="Enter you email you reset the password" required />
+                            <input type="email" class="form-control" placeholder="Email" required />
                         </div>
                     </div>
                    
                     <!-- Reset password button -->
-                   <div class="text-center"> <input type="submit" class="btn btn-custom btn-outline-light" value="Reset Password" /></div>
+                   <div class="text-center"> <input type="submit" class="btn btn-custom btn-outline-light" value="Reset" /></div>
                 </form>
             </div>
              <!-- Reset password form end-->
@@ -159,29 +161,33 @@
         <script>
             
             // Aimate hide forms
-            $('#resetpass').click(function(){
-                $('#login').slideUp('slow');
-                $('#passform').slideDown('slow');
-            });
+            $('.login').click(function(){
 
-            $('.appear').click(function(){
-               $('#login').slideUp('slow');
-                $('#passform').fadeOut('slow');
-               $('#register').slideDown('slow');
-            });
-
-            $('.hide').click(function(){
-                $('#register').slideUp('slow');
-                $('#passform').slideUp('slow');
                 $('#login').slideDown('slow');
+                $('#register').hide('fast');
+                $('#passform').slideUp('slow');
+            });
+
+            $('.register').click(function(){
+               $('#login').hide('slow');
+                $('#passform').hide();
+               $('#register').animate({width: 'show'}, '300');
+            });
+
+
+            $('#resetpass').click(function(){
+                $('#login').hide('slow');
+                $('#passform').slideDown('slow');
             });
 
             // Animate buttons
             $('.btn-custom').mouseenter(function(){
+                $('.btn').stop();
                 $('.btn').animate({width: "50%"},'slow');
             });
 
             $('.btn-custom').mouseleave(function(){
+                  $('.btn').stop();
                 $('.btn').animate({width: "30%"},'fast');
             });
             
