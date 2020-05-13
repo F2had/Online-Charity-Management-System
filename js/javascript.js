@@ -12,3 +12,5 @@ document.querySelector("#quoteMain").addEventListener("click", function() {
 	document.querySelector("#quote").innerText = gQuote[x].quote;
 
 });
+
+hihihihi
