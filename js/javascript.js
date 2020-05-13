@@ -13,4 +13,3 @@ document.querySelector("#quoteMain").addEventListener("click", function() {
 
 });
 
-hihihihi
