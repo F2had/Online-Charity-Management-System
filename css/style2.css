@@ -42,6 +42,25 @@ body {
 	color: white;
 }
 
+.btn-circle.btn-xl {
+	width: 70px;
+	height: 70px;
+	padding: 10px 16px;
+	border-radius: 35px;
+	font-size: 24px;
+	line-height: 1.33;
+}
+
+.btn-circle {
+	width: 30px;
+	height: 30px;
+	padding: 6px 0px;
+	border-radius: 15px;
+	text-align: center;
+	font-size: 12px;
+	line-height: 1.42857;
+}
+
 a:active {
 	outline:0;
 }
@@ -2143,14 +2162,75 @@ footer ul.social-network li i {
 
 
 /* scroll to top */
-.scrollup{
+
+
+
+.scrollup2{
+	position:fixed;
+	width:67px;
+	height:50px;
+	bottom:20px;
+	right:30px;
+	/* background: #222; */
+	-webkit-border-radius: 2px 2px 0 0;	
+	-moz-border-radius: 2px 2px 0 0;	
+	border-radius:  2px 2px 0 0;
+	display: inline-block;
+}
+
+.scrollup2 button{
 	position:fixed;
 	width:32px;
 	height:32px;
-	bottom:0px;
+	bottom:20px;
 	right:20px;
-	background: #222;
+	/* background: #222; */
 	-webkit-border-radius: 2px 2px 0 0;	
+	-moz-border-radius: 2px 2px 0 0;	
+	border-radius:  2px 2px 0 0;	
+}
+
+.scrollup2 .scrolluptext {
+	transition: .3s ease;
+	opacity: 0;
+	width: 120px;
+	background-color: black;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+	bottom: 150%;
+	left: 50%;
+	margin-left: -60px;
+}
+
+.scrollup2 .scrolluptext::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 55%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: black transparent transparent transparent;
+}
+
+.scrollup2:hover .scrolluptext {
+	opacity: 0.3;
+	
+}
+
+/* scroll to top */
+.scrollup{
+    position:fixed;
+	width:32px;
+	height:32px;
+    bottom:0px;
+    right:20px;
+	background: #222;
+-webkit-border-radius: 2px 2px 0 0;	
 	-moz-border-radius: 2px 2px 0 0;	
 	border-radius:  2px 2px 0 0;	
 }
