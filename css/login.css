@@ -1,17 +1,10 @@
 /*-------------------------------------Elements-------------------------------------*/
 
-body {
-  font-family: "Roboto", sans-serif;
-  margin-left: 2%;
-  margin-right: 2%;
-  margin-top: 5%;
-  background-color: #fff;
 
-}
 
 h1 {
   color: #fff;
-  font-weight: 300;
+  font-weight: bold;
   margin: 0 0 40px;
   font-family: "Titillium Web", sans-serif;
 }
@@ -28,17 +21,31 @@ h1 {
   display: none;
 }
 
+
 /*-------------------------------------Classes-------------------------------------*/
 
 .container {
   background-color: #36424b;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 4%;
+
 
 }
 
+@media (max-width: 575px){
+
+  .container {
+    background-color: #36424b;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 4%;
+  
+  }
+}
 .login-register {
   padding-top: 2%;
+    font-family: "Roboto", sans-serif;
 }
 
 .login-register .nav-tabs > li > a {
