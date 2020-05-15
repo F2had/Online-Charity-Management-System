@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- css -->
+	<!-- <link href="css/bootstrap.min.css" rel="stylesheet" /> -->
+	
+
+	<link href="plugins/flexslider/flexslider.css" rel="stylesheet" media="screen" />
+	<link href="css/cubeportfolio.min.css" rel="stylesheet" />
+
+	<link href="css/style2.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+	<!-- Theme skin -->
+	<link id="t-colors" href="skins/default.css" rel="stylesheet" />
+
+	<!-- boxed bg -->
+	<link id="bodybg" href="bodybg/bg1.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+	
+	<div id="wrapper">
+		<!-- start header -->
+		<header>
+			
+			<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+				<div class="container-fluid"> <!-- container fluid is make use of 100% of the screen -->
+					<a class="navbar-brand" href="#"><img src="img/logo-filler.png"><lo>Raise reason</lo></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=#navbarResponsive>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+
+					<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto"><!-- push our notification to right hand side -->
+							<li class="nav-item" > <a class="nav-link" href="#">Home</a> </li>
+							<li class="nav-item" > <a class="nav-link" href="#">charity</a></li>
+							<li class="nav-item" > <a class="nav-link" href="#">Volunteer</a></li>
+							<li class="nav-item" > <a class="nav-link" href="#">Reports</a></li>
+
+							<li class="nav-item">
+								<div id="sb-search" class="sb-search">
+									<form>
+										<input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
+										<input class="sb-search-submit" type="submit" value="">
+										<span class="sb-icon-search" title="Click to start searching"></span>
+									</form>
+								</div>
+							</li>
+							<li class="nav-item" > <a class="nav-link" href="#">Contact</a></li>
+							
+							<li class="nav-item" > <a class="nav-link" href="#">User <i class="fa fa-user-circle fa-lg" ></i></a>																
+							</li>							
+						</ul>
+					</div>
+				</div>
+			</nav>
+			
+		</header>
+		<!-- end header -->
+		
+
+		
+		<!-- ////////////////////////////////////////////////////////////////////////	 -->	
+		<!-- continue your code here -->
+
+		<section id="content">
+			<!-- Page Content -->
+			<div class="container">
+				<h2>Add or manage charity project</h2>
+				<p>Click on the buttons below to start:</p>
+
+				<div class="tab">
+					<button class="tablinks" onclick="openCity(event, 'addProject')">Create Charity Project</button>
+					<button class="tablinks" data-toggle="modal" data-target="#checkproject_user">Manage Charity Project</button>
+				</div>
+
+				
+
+				<div id="addProject" class="tabcontent">
+					<form>
+						<div class="form-group">
+							<label data-error="wrong" data-success="right" for="charityName">Charity Name:</label>
+							<input type="name" id="charityName" class="form-control validate" placeholder="Enter charity name here">
+						</div>
+
+						<div class="form-group">
+							<label data-error="wrong" data-success="right" for="charitydescription">Charity Description:</label>
+							<textarea class="form-control" id="charitydescription" rows="4" placeholder="Enter description here"></textarea>
+						</div>
+
+						<div class="form-group">
+							<label data-error="wrong" data-success="right" for="charityRaise">Amount to Raise:</label>
+							<input class="form-control" id="charityRaise" placeholder="Enter amount here" ></input>
+						</div>
+
+						<div class="form-group">
+							<label  for="charityRaise">Choose Image:</label>
+							<div class="input-group ">	
+								<div class="custom-file">
+									<input type="file" class="custom-file-input" id="charityImg">
+									<label class="custom-file-label" for="inputGroupFile01"></label>
+								</div>
+							</div>
+							<small  class="form-text text-muted">Image provide more context to the audience, helping them gain a better understanding of a charity's mission.</small>
+						</div>
+
+						<br>
+					
+						<button class="btn btn-outline-primary">SUBMIT</button>
+						
+					</form>
+				</div>
+
+
+				<div id="manageProject" class="tabcontent">
+					<form>
+						<div class="form-group">
+							<label data-error="wrong" data-success="right" for="charityName">Charity Name:</label>
+							<input type="name" id="charityName" class="form-control validate" placeholder="Enter charity name here">
+						</div>
+
+						<div class="form-group">
+							<label data-error="wrong" data-success="right" for="charitydescription">Charity Description:</label>
+							<textarea class="form-control" id="charitydescription" rows="4" placeholder="Enter description here"></textarea>
+						</div>
+
+						<div class="form-group">
+							<label data-error="wrong" data-success="right" for="charityRaise">Amount to Raise:</label>
+							<input class="form-control" id="charityRaise" placeholder="Enter amount here" ></input>
+						</div>
+
+						<div class="form-group">
+							<label  for="charityRaise">Choose Image:</label>
+							<div class="input-group ">	
+								<div class="custom-file">
+									<input type="file" class="custom-file-input" id="charityImg">
+									<label class="custom-file-label" for="inputGroupFile01"></label>
+								</div>
+							</div>
+							<small  class="form-text text-muted">Image provide more context to the audience, helping them gain a better understanding of a charity's mission.</small>
+						</div>
+
+						<br>
+					
+						<button class="btn btn-outline-primary">UPDATE</button>
+						
+					</form>
+				</div>
+
+				<!-- ////////////////////////////////////////Modal////////////////////////////////////////////////// -->
+				<div class="modal fade" id="checkproject_user" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLongTitle">Charity title</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<a class="btn btn-outline-warning" onclick="openCity(event, 'manageProject')">Project One</a>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<script>
+					function openCity(evt, listen) {
+						var i, tabcontent, tablinks;
+						tabcontent = document.getElementsByClassName("tabcontent");
+						for (i = 0; i < tabcontent.length; i++) {
+							tabcontent[i].style.display = "none";
+						}
+						tablinks = document.getElementsByClassName("tablinks");
+						for (i = 0; i < tablinks.length; i++) {
+							tablinks[i].className = tablinks[i].className.replace(" active", "");
+						}
+						document.getElementById(listen).style.display = "block";
+						evt.currentTarget.className += " active";
+					}
+				</script>
+
+
+
+			</div>
+
+		</section>
+
+		
+
+
+
+
+		
+		<!-- //////////////////////////////////////////////////////////////////////// -->
+
+
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3 col-lg-6">
+						<div class="widget">
+							<h4>Get in touch with us</h4>
+							<address>
+								<strong>TheProcrastinators company Inc</strong><br>
+								TheProcrastinators suite room V124, DB 91<br>
+							Someplace 457648 Earth </address>
+							<p>
+								<i class="icon-phone"></i> (123) 456-7890<br>
+								<i class="icon-envelope-alt"></i> email@domainname.com
+							</p>
+						</div>
+					</div>
+					<div class="col-sm-3 col-lg-6">
+						<div class="widget">
+							<h4>Information</h4>
+							<ul class="link-list">
+								<li><a href="#">Terms and conditions</a></li>
+								<li><a href="#">Contact us</a></li>
+							</ul>
+						</div>
+
+					</div>
+
+					<div class="col-sm-3 col-lg-3">
+					</div>
+				</div>
+			</div>
+			<div id="sub-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="copyright">
+								<p>&copy;All Right Reserved</p>
+								<div class="credits">
+
+									Designed by <a href="">TheProcrastinators</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<ul class="social-network">
+								<li><a href="#" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#" data-placement="top" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+								<li><a href="#" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a></li>
+								<li><a href="#" data-placement="top" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<!-- add poject button -->
+	<div class="scrollup2">
+	<a href="charityProjectPage.html">
+	<button class="btn btn-1 btn-circle btn-xl volunteerIcon"> 	
+		<i class="fa fa-list fa-l"g></i>
+	</button>
+	</a>
+	<span class="scrolluptext">Click to view charity list</span>
+</div>
+
+
+
+
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+
+
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.appear.js"></script>
+	<script src="js/classie.js"></script>
+	<script src="js/uisearch.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/javascript.js"></script>
+</body>
+
+</html>
