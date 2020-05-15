@@ -7,9 +7,13 @@ var gQuote = [
 
 ];
 
-document.querySelector("#quoteMain").addEventListener("click", function() {
+// document.querySelector("#quoteMain").addEventListener("click", function() {
+// 	var x = Math.floor((Math.random() * gQuote.length));
+// 	document.querySelector("#quote").innerText = gQuote[x].quote;
+
+// });
+
+function quote(){
 	var x = Math.floor((Math.random() * gQuote.length));
 	document.querySelector("#quote").innerText = gQuote[x].quote;
-
-});
-
+}
