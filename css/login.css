@@ -9,6 +9,10 @@ h1 {
   font-family: "Titillium Web", sans-serif;
 }
 
+a {
+  font-weight: bold;
+}
+
 
 /*-------------------------------------IDs-------------------------------------*/
 
