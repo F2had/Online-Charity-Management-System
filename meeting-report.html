@@ -1,45 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
-	
-    <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+		integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<title>Online Charity Management System</title>
 </head>
 
 
 <body class="m-2">
 
-		<nav class="navbar navbar-expand-lg navbar-light bg-light ">
-			<a class="navbar-brand p-2 h1"><img src="img/logo-filler.png ">Raise reason</a>
+	<header>
+		<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+			<div class="container-fluid">
+				<!-- container fluid is make use of 100% of the screen -->
+				<a class="navbar-brand" href="homepage.html"><img src="img/logo-filler.png">
+					<lo>Raise reason</lo>
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=#navbarResponsive>
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-				<div class="container justify-content-end">
-					<ul class="navbar-nav">
-						<li class="nav-item" > <a class="nav-link" href="charityProjectPage.html">Home</a> </li>
-						<li class="nav-item" > <a class="nav-link" href="#">Volunteer</a></li>
-						<li class="nav-item" > <a class="nav-link" href="#">Contact</a></li>
+
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<!-- push our notification to right hand side -->
+						<li class="nav-item"> <a class="nav-link" href="homepage.html">Home</a> </li>
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle px-2" href="#" id="navbardrop" data-toggle="dropdown"><i class="fas fa-user ">User</i></a>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">Profile</a>
-									<a class="dropdown-item" href="login.html">Login</a>
-									<a class="dropdown-item" href="#">Sign up</a>
-								</div>
+							<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+								data-toggle="dropdown">Volunteer</a>
+							<div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" href="Volunteer.html">Volunteer Registration</a>
+								<a class="dropdown-item" href="ProjectRegisterationForm.html">Volunteer project
+									registration</a>
+
+							</div>
+						</li>
+
+						<li class="nav-item"> <a class="nav-link" href="meeting-report.html">Reports</a></li>
+
+						<li class="nav-item"> <a class="nav-link " href="login.html"><i
+									class="fa fa-user-circle fa-lg"></i></a>
 						</li>
 					</ul>
 				</div>
+			</div>
 		</nav>
 
-		
+
+	</header>
 
 
-	<main >
-		<h1 class="text-light text-center p-4 my-3" style="background-color: #e8d2b0 ;font-size: 60px; font-weight: 700 ; height: 150px ">Awesome Charity</h1>
-		<button type='button' class="btn btn-outline-secondary text-dark my-3"data-toggle='modal'  data-target="#ReportForm">Add Report <i class="fas fa-file-alt"></i></button>
-	
-		
+
+	<main>
+		<h1 class="text-light text-center p-4 my-3"
+			style="background-color: #e8d2b0 ;font-size: 60px; font-weight: 700 ; height: 150px ">Awesome Charity</h1>
+		<button type='button' class="btn btn-outline-secondary text-dark my-3" data-toggle='modal'
+			data-target="#ReportForm">Add Report <i class="fas fa-file-alt"></i></button>
+
+
 		<div class="table-responsive my-3">
 			<table class="table table-light table-striped" id="report-table">
 				<thead class="text-primary">
@@ -55,19 +79,23 @@
 						<td>first meeting</td>
 						<td>2020-01-01</td>
 						<td class="btn-group" id="table-action">
-							<a class="btn btn-outline-secondary" data-toggle='modal'  data-target="#ReportForm"><i class="fas fa-file"></i></a>
-							<a class="btn btn-outline-danger" onclick="deleteRow(this)"><i class="fas fa-trash-alt"></i></a>
+							<a class="btn btn-outline-secondary" data-toggle='modal' data-target="#ReportForm"><i
+									class="fas fa-file"></i></a>
+							<a class="btn btn-outline-danger" onclick="deleteRow(this)"><i
+									class="fas fa-trash-alt"></i></a>
 						</td>
 					</tr>
-					
-					
+
+
 					<tr>
 						<td>2</td>
 						<td>Second meeting</td>
 						<td>2020-05-01</td>
 						<td class="btn-group">
-							<a class="btn btn-outline-secondary" data-toggle='modal'  data-target="#ReportForm"><i class="fas fa-file"></i></a>
-							<a class="btn btn-outline-danger" onclick="deleteRow(this)"><i class="fas fa-trash-alt"></i></a>
+							<a class="btn btn-outline-secondary" data-toggle='modal' data-target="#ReportForm"><i
+									class="fas fa-file"></i></a>
+							<a class="btn btn-outline-danger" onclick="deleteRow(this)"><i
+									class="fas fa-trash-alt"></i></a>
 						</td>
 					</tr>
 				</tbody>
@@ -81,9 +109,9 @@
 
 					<div class="modal-header text-left bg-warning">
 						<h4 class="modal-title w-100 font-weight-bold">Report</h4>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
 					</div>
 
 					<div class="modal-body" id="addreport">
@@ -94,12 +122,12 @@
 								<div class="col-sm-9">
 									<input type="number" class="form-control" id="report-ID" value="0001">
 								</div>
-							  </div>
+							</div>
 							<div class="form-group row ">
-							  <label for="report-title" class="col-sm-3 col-form-label">Tile:</label>
-							  <div class="col-sm-9">
-							  	<input type="text" class="form-control" id="report-title" value="First meeting">
-							  </div>
+								<label for="report-title" class="col-sm-3 col-form-label">Tile:</label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" id="report-title" value="First meeting">
+								</div>
 							</div>
 
 							<div class="form-group row ">
@@ -112,7 +140,8 @@
 							<div class="form-group row ">
 								<label for="report-content" class="col-sm-3 col-form-label">content:</label>
 								<div class="col-sm-9">
-									<textarea class="form-control" id="report-content" value="discuss about project objective"></textarea>
+									<textarea class="form-control" id="report-content"
+										value="discuss about project objective"></textarea>
 								</div>
 							</div>
 
@@ -125,29 +154,33 @@
 
 						</form>
 					</div>
-					
+
 					<div class="modal-footer" id="submit-report">
-						<button type="button" class="btn btn-outline-success" value="Submit Report" onclick="confirmAdd()" data-dismiss="modal">Submit</button>
-					</div>		
+						<button type="button" class="btn btn-outline-success" value="Submit Report"
+							onclick="confirmAdd()" data-dismiss="modal">Submit</button>
+					</div>
 
 				</div>
 			</div>
 		</div>
 
 
-		
+
 
 	</main>
 
 
-	<footer class="container-fluid text-center overflow-auto  font-italic mt-5 bg-light" >
-			<h4 class="text-light">Get in touch with us</h4>
-				<address>
-					<strong>Sailor company Inc</strong><br>
-					Sailor suite room V124, DB 91<br>
-					Someplace 71745 Earth 
-				</address>
-			<p>Copyright@WIF2003 web programming  <br><a href="mailto:info@pathoflight.com.my">WIF2003@webprogramming.com</a></Copyright@2020></Copyright@2020></p>
+	<footer class="container-fluid text-center overflow-auto  font-italic mt-5 bg-light">
+		<h4 class="text-light">Get in touch with us</h4>
+		<address>
+			<strong>Sailor company Inc</strong><br>
+			Sailor suite room V124, DB 91<br>
+			Someplace 71745 Earth
+		</address>
+		<p>Copyright@WIF2003 web programming <br><a href="mailto:info@pathoflight.com.my">WIF2003@webprogramming.com</a>
+			</Copyright@2020>
+			</Copyright@2020>
+		</p>
 	</footer>
 
 
@@ -155,60 +188,66 @@
 
 
 
-		<!--<script type="text/javascript "src="js/report.js"></script>-->
-		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-		
-		<script type="text/javascript">
+	<!--<script type="text/javascript "src="js/report.js"></script>-->
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
 
-				var content;
-				var title;
-				var date;
-				var ID;
+	<script type="text/javascript">
 
-
-				function addRow(r){
-
-					content= document.getElementById("report-content").value;
-					title= document.getElementById("report-title").value;
-					date= document.getElementById("report-date").value;
-					ID=Number(document.getElementById("report-ID").value);
-
-					var action=document.getElementById("table-action");
-					var actionNode=action.cloneNode(true)
-					
-					var table=document.getElementById("report-table").getElementsByTagName("tbody")[0]
-					var row = table.insertRow(-1);
-					
-					var cell1 = row.insertCell(0);
-					var cell2 = row.insertCell(1);
-					var cell3 = row.insertCell(2);
-					var cell4 = row.insertCell(3);
+		var content;
+		var title;
+		var date;
+		var ID;
 
 
-					cell1.innerHTML = ID;
-					cell2.innerHTML = title;
-					cell3.innerHTML = date;	
-					cell4.appendChild(actionNode)				
-				}
+		function addRow(r) {
+
+			content = document.getElementById("report-content").value;
+			title = document.getElementById("report-title").value;
+			date = document.getElementById("report-date").value;
+			ID = Number(document.getElementById("report-ID").value);
+
+			var action = document.getElementById("table-action");
+			var actionNode = action.cloneNode(true)
+
+			var table = document.getElementById("report-table").getElementsByTagName("tbody")[0]
+			var row = table.insertRow(-1);
+
+			var cell1 = row.insertCell(0);
+			var cell2 = row.insertCell(1);
+			var cell3 = row.insertCell(2);
+			var cell4 = row.insertCell(3);
 
 
-				function deleteRow(r){
-					var i = r.parentNode.parentNode.rowIndex;
-					document.getElementById("report-table").deleteRow(i);		
-				}
+			cell1.innerHTML = ID;
+			cell2.innerHTML = title;
+			cell3.innerHTML = date;
+			cell4.appendChild(actionNode)
+		}
 
 
-				function confirmAdd(c){
-					var r = confirm("add a new report ?");
-						if (r == true) {
-							addRow();
-						} 
-				}
+		function deleteRow(r) {
+			var i = r.parentNode.parentNode.rowIndex;
+			document.getElementById("report-table").deleteRow(i);
+		}
 
-		</script>
-	
-	</body>
-	
+
+		function confirmAdd(c) {
+			var r = confirm("add a new report ?");
+			if (r == true) {
+				addRow();
+			}
+		}
+
+	</script>
+
+</body>
+
 </html>

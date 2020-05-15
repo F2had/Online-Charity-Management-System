@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <!-- CSS -->
-    <link rel="stylesheet" href="./css/login.css"/>
+    <link rel="stylesheet" href="./css/login.css" />
     <!-- Line Awsome -->
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
@@ -42,7 +42,16 @@
                         <ul class="navbar-nav ml-auto">
                             <!-- push our notification to right hand side -->
                             <li class="nav-item"> <a class="nav-link" href="homepage.html">Home</a> </li>
-                            <li class="nav-item"> <a class="nav-link" href="Volunteer.html">Volunteer</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+                                    data-toggle="dropdown">Volunteer</a>
+                                <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="Volunteer.html">Volunteer Registration</a>
+                                    <a class="dropdown-item" href="ProjectRegisterationForm.html">Volunteer project registration</a>
+
+                                </div>
+                            </li>
+
                             <li class="nav-item"> <a class="nav-link" href="meeting-report.html">Reports</a></li>
 
 
