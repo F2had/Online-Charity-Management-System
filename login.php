@@ -11,12 +11,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <!-- CSS -->
+    <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/login.css" />
     <!-- Line Awsome -->
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Titillium+Web&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Montserrat:wght|Titillium+Web&display=swap" rel="stylesheet">
 
 </head>
 
@@ -27,48 +28,20 @@
         <!-- /////////////////////////////////////////////////////////////start header////////////////////////////////////////////////////////// -->
 
         <header>
-            <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+            <nav class="navbar navbar-expand-md navbar-light bg-light ">
                 <div class="container-fluid">
                     <!-- container fluid is make use of 100% of the screen -->
-                    <a class="navbar-brand" href="homepage.html"><img src="img/logo-filler.png">
-                        <lo>Raise reason</lo>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=#navbarResponsive>
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                    <nav class="navbar navbar-light bg-light">
+                        <a class="navbar-brand" href="homepage.html">
 
-
-                    <div class="collapse navbar-collapse" id="navbarResponsive">
-                        <ul class="navbar-nav ml-auto">
-                            <!-- push our notification to right hand side -->
-                            <li class="nav-item"> <a class="nav-link" href="homepage.html">Home</a> </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
-                                    data-toggle="dropdown">Volunteer</a>
-                                <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="Volunteer.html">Volunteer Registration</a>
-                                    <a class="dropdown-item" href="ProjectRegisterationForm.html">Volunteer project
-                                        registration</a>
-
-                                </div>
-                            </li>
-
-                            <li class="nav-item"> <a class="nav-link" href="meeting-report.html">Reports</a></li>
-
-
-
-                            <li class="nav-item"> <a class="nav-link " href="login.html"><i
-                                        class="la la-user-circle la-2x"></i></a>
-                            </li>
-                        </ul>
-                    </div>
+                         <img src="img/logo-filler.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                                                              Raise Reason
+                        </a>
+                    </nav> 
                 </div>
             </nav>
-
-
         </header>
         <!-- Navigation end -->
-
 
         <div class="container">
 
@@ -95,7 +68,7 @@
 
                         <h1 class="text-center mb-1 py-3">Welcome Back!</h1>
 
-                        <form action="/login.php" method="POST">
+                        <form action="/loginprocess.php" id="" method="POST">
 
 
 
@@ -139,13 +112,13 @@
                     <div role="tabpanel" class="tap-pane container-fluid" id="register">
 
                         <h1 class="text-center py-3 mb-1 container-fluid">Join Us Today!</h1>
-                        <form action="/register.php" method="POST">
+                        <form action="includes/signup.inc.php" id="signup-form" method="POST">
 
                             <!-- Name -->
                             <div class="form-group w-75 py-3 container-fluid">
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-signature"></i></div>
-                                    <input type="text" class="form-control" placeholder="Name *" required />
+                                    <input id="name_input" name="name" type="text" class="form-control" placeholder="Name *" required />
                                 </div>
                             </div>
 
@@ -154,7 +127,7 @@
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-user"></i></div>
 
-                                    <input type="text" name="username" class="form-control" placeholder="Username *"
+                                    <input type="text" id="usrname_input" name="username" class="form-control" placeholder="Username *"
                                         required />
                                 </div>
                             </div>
@@ -163,7 +136,7 @@
                             <div class="form-group w-75 py-3 container-fluid">
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-at"></i></div>
-                                    <input type="email" class="form-control" placeholder="Email *" required />
+                                    <input type="email" id="email_input" name="email" class="form-control" placeholder="Email *" required />
                                 </div>
                             </div>
 
@@ -171,27 +144,33 @@
                             <div class="form-group w-75 py-3 container-fluid">
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-key"></i></div>
-                                    <input type="password" class="form-control" placeholder="Password *" required />
+                                    <input id='ps1' type="password" name="pass1" class="form-control .pass" placeholder="Password *" required />
                                 </div>
                             </div>
-
+                            
                             <!-- Repeat password -->
                             <div class="form-group w-75 py-3 container-fluid">
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-key"></i></div>
-                                    <input type="password" class="form-control" placeholder="Confirm your Password *"
+                                    <input type="password" id='ps2' name="pass2" class="form-control" placeholder="Confirm your Password *"
                                         required />
                                 </div>
                             </div>
+                           
 
                             <!-- Register button -->
-                            <div class="text-center"> <input type="submit" class="btn btn-outline-light btn-custom"
+                            <div class="text-center"> <input type="submit" id="submit-signup" name="submit-signup" class="btn btn-outline-light btn-custom"
                                     value="Register" /></div>
 
                         </form>
 
                     </div>
                     <!-- Register form end-->
+
+                    <!-- success message -->
+                    <div id="reg-suc" class='container'>
+                    
+                    </div>
 
                 </div>
                 <!-- Tap content end -->
@@ -231,41 +210,12 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
 
-        <!-- jQuery code to show the clicked form and hide the rest -->
-        <script>
+        <!-- Jquery validate  -->
+        <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js
+        "></script>
 
-            // Aimate hide forms
-            $('.login').click(function () {
-
-                $('#login').slideDown('slow');
-                $('#register').hide('slow');
-                $('#passform').slideUp('slow');
-            });
-
-            $('.register').click(function () {
-                $('#login').hide('slow');
-                $('#passform').hide();
-                $('#register').animate({ width: 'show' }, 'slow');
-            });
-
-
-            $('#resetpass').click(function () {
-                $('#login').hide('slow');
-                $('#passform').slideDown('slow');
-            });
-
-            // Animate buttons
-            $('.btn-custom').mouseenter(function () {
-                $('.btn').stop();
-                $('.btn').animate({ width: "40%" }, 'slow');
-            });
-
-            $('.btn-custom').mouseleave(function () {
-                $('.btn').stop();
-                $('.btn').animate({ width: "30%" }, 'slow');
-            });
-
-        </script>
+        <!-- jQuery code to show the clicked form and hide the rest && error handling -->
+        <script src='js/login_register.js'></script>
 
 
 </body>

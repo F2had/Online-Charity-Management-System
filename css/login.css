@@ -37,6 +37,20 @@ a {
 
 }
 
+.err {
+  font-size: .7rem;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: rgb(230, 20, 20);
+}
+
+.error{
+  border: solid;
+  border-color: red;
+  color: red;
+}
+
 @media (max-width: 575px){
 
   .container {
@@ -49,6 +63,7 @@ a {
 }
 .login-register {
   padding-top: 2%;
+  margin-bottom: 3.5%;
     font-family: "Roboto", sans-serif;
 }
 
@@ -90,3 +105,7 @@ a {
 
 
 
+.suc-message {
+  color: #fff;
+  text-align: center;
+}
