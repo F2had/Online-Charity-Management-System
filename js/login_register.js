@@ -62,6 +62,7 @@ $(document).ready(function () {
     $('#name_input').removeClass('error');
     $('#name_input + span').remove();
     $('#email_input').removeClass('error');
+    $('#email_input + span').remove();
     $('#ps1').removeClass('error');
     $('#ps1 + span').remove();
     $('#ps2').removeClass('error');

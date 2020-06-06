@@ -50,6 +50,11 @@ if ($_SERVER['REQUEST_METHOD']  == 'POST'){
                 $data['success'] = register_user($username, $email, $pass1, $name, $db);
               }
            
+} 
+else {
+    // Return the user to the login page if tried to access this page without a POST method
+    header('Location: ../login.php');
+    die();
 }
 
 function validate_name($name){
@@ -73,7 +78,7 @@ function validate_match($pass2, $pass1){
 
 function check_exist($username, $email, $db){
     
-    $sql = "SELECT COUNT(1) FROM users WHERE username = ? OR email = ?";
+    $sql = "SELECT COUNT(1) FROM users WHERE username = ? OR email = ? ;";
     $stmt = $db->prepare($sql);
     $stmt->bind_param('ss',$username, $email);
     $stmt->execute();
@@ -87,7 +92,7 @@ function check_exist($username, $email, $db){
 
 function register_user($username, $email, $pass1,$name, $db){
 
-    $sql = "INSERT INTO users(username, email, `password`, `name`) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO users(username, email, `password`, `name`) VALUES (?, ?, ?, ?) ;";
     if($db->prepare($sql)){
         $stmt = $db->prepare($sql);
         $stmt->bind_param('ssss',  $username, $email, $pass1, $name);

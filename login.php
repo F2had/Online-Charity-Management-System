@@ -68,7 +68,7 @@
 
                         <h1 class="text-center mb-1 py-3">Welcome Back!</h1>
 
-                        <form action="/loginprocess.php" id="" method="POST">
+                        <form action="includes/login.inc.php" id="" method="POST">
 
 
 
@@ -77,8 +77,7 @@
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-at"></i></div>
 
-                                    <input type="email" name="email" class="form-control" placeholder="Email"
-                                        required />
+                                    <input type="text" name="uid" class="form-control" placeholder="Username or Email"/>
                                 </div>
                             </div>
 
@@ -87,11 +86,27 @@
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-lock"></i></div>
 
-                                    <input type="password" name="password" class="form-control" placeholder="Password"
-                                        required />
+                                    <input type="password" name="password" class="form-control" placeholder="Password" required/>
                                 </div>
                             </div>
-
+                            <!-- Handle login errors  -->
+                            <?php
+                                   if(isset($_GET['error'])){
+                                        if($_GET['error'] == 'empty'){
+                                            echo "<div class='container text-center err-login'>All fields are required</div>";
+                                        } 
+                                        // For secuity we will not show if the user is not registerd and will output inccorrect password in both cases
+                                        else if ($_GET['error'] == 'incorrectpass' || $_GET['error'] == 'notexist'){
+                                            echo "<div class='container text-center err-login'>Incorrect username or password.</div>";
+                                        }
+                                   }
+                                   if(isset($_GET['login'])){
+                                    if($_GET['login'] == 'success'){
+                                        // FIXME change to php later
+                                        header("Location: homepage.html");
+                                    } 
+                               }
+                                   ?>
                             <!-- Remember me and forget password -->
                             <div class="form-group w-75 py-3 container-fluid">
                                 <input type="checkbox" id="rememberMe" />
@@ -100,7 +115,7 @@
                             </div>
 
                             <!-- Login button -->
-                            <div class="text-center"><input type="submit"
+                            <div class="text-center"><input name="login-submit" type="submit"
                                     class="btn btn-success btn-custom btn-outline-light" value="Login" /></div>
 
                         </form>
@@ -179,7 +194,7 @@
 
             <!-- Reset password form -->
             <div id="passform" class="container-fluid">
-                <form action="/resetpassword.php" method="POST">
+                <form action="includes/reset.inc.php" method="POST">
                     <h1 class="text-center pt-3 mb-1 container">Reset Password</h1>
 
                     <!-- Name -->
@@ -191,7 +206,7 @@
                     </div>
 
                     <!-- Reset password button -->
-                    <div class="text-center"> <input type="submit" class="btn btn-custom btn-outline-light"
+                    <div class="text-center"> <input name="reset-submit" type="submit" class="btn btn-custom btn-outline-light"
                             value="Reset" /></div>
                 </form>
             </div>
@@ -210,9 +225,6 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
 
-        <!-- Jquery validate  -->
-        <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js
-        "></script>
 
         <!-- jQuery code to show the clicked form and hide the rest && error handling -->
         <script src='js/login_register.js'></script>
