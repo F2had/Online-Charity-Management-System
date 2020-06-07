@@ -17,29 +17,59 @@ session_start();
 		<link rel="stylesheet"
           href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
 		<!-- Google Fonts -->
-		<link href="https://fonts.googleapis.com/css?family=Roboto|Montserrat:wght|Titillium+Web&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto|Lexend+Tera|Montserrat:wght|Titillium+Web&display=swap" rel="stylesheet">
 		</head>
 		<body>
+
 			<!-- Navigation -->
 			<div id="wrapper">
 				<!-- /////////////////////////////////////////////////////////////start header////////////////////////////////////////////////////////// -->
 				<header>
 					<?php
-			if(!$_SESSION['logged_in']){
-			header("Location: login.php");
-			}
-		?>
-					<nav class="navbar navbar-expand-md navbar-light bg-light ">
-						<div class="container-fluid">
-							<!-- container fluid is make use of 100% of the screen -->
-							<nav class="navbar navbar-light bg-light">
-								<a class="navbar-brand" href="homepage.html">
-									<img src="img/logo-filler.png" width="30" height="30" class="d-inline-block align-top" alt=""> Raise Reason 
-              
-									</a>
-								</nav>
-							</div>
-						</nav>
+		    	if(!$_SESSION['logged_in']){
+	    		header("Location: login.php");
+	      		}
+	      	?>
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+				<div class="container-fluid"> <!-- container fluid is make use of 100% of the screen -->
+					<a class="navbar-brand" href="homepage.html">
+						<img src="img/logo-filler.png" width="30" height="30" class="d-inline-block align-top" alt="">
+															   Raise Reason
+					   </a>
+
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=#navbarResponsive>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+
+					<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto"><!-- push our notification to right hand side -->
+							<li class="nav-item" > <a class="nav-link" href="homepage.html">Home</a> </li>
+							
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">Volunteer</a>
+								<div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+									<a class="dropdown-item" href="Volunteer.html">Volunteer Registration</a>
+									<a class="dropdown-item" href="ProjectRegisterationForm.html">Volunteer project registration</a>
+									
+								</div>
+							</li>
+							<li class="nav-item" > <a class="nav-link" href="meeting-report.html">Reports</a></li>
+			
+           <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"><?php echo $_SESSION['name']?> <i class="la la-user-circle la-lg" ></i></a>
+						<div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+			  		<a class="dropdown-item" href="profile.php">Profile</a>
+						<a class="dropdown-item" href="logout.php">Logout</a>
+						</div>
+						</li>
+						</ul>
+          </div>
+          
+
+				</div>
+			</nav>			
+
 					</header>
 					<!-- Navigation end -->
 
@@ -52,11 +82,10 @@ session_start();
 						<form method="POST" action="includes/edit-profile.inc.php">
 							<div class="container" style="background-color:#4c5962;">
 								<div class="row">
-									<div class="col-md-8">
+									<div class="col-md-10">
 										<div class="py-3 ">
 											<h5>
                    	 Welcome, 
-                   	 
 												<?php
 			                			echo $_SESSION['name'];
 			            		 ?>
@@ -65,9 +94,6 @@ session_start();
 									</div>
 									<div class="col-sm-2">
 										<input type="submit" id="submit-edit" class="edit-profile btn btn-outline-dark mt-3"  value="Edit Profile"/>
-									</div>
-									<div class="col-sm-2">
-										<input type="submit" id="submit-password" class="edit-profile  btn btn-outline-dark mt-3"  value="Edit Password"/>
 									</div>
 								</div>
 							</div>

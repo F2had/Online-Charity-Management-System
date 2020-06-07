@@ -4,7 +4,6 @@ require('config.inc.php');
 
 if($_SERVER["REQUEST_METHOD"] = "POST"){
 
-    
 
         if(!empty($_POST['pass1']) && !empty($_POST['pass2']) ){
             if($_POST['pass1'] == $_POST['pass2']){

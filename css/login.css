@@ -120,9 +120,18 @@ a {
   width: 30%;
 }
 
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0,0,0,.5);
+}
 
 
 .suc-message {
   color: #fff;
   text-align: center;
+}
+
+
+
+.navbar-light .navbar-brand {
+  font-family: 'Lexend Tera', sans-serif;
 }

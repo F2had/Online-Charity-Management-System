@@ -24,23 +24,34 @@ session_start();
     <div id="wrapper">
       <!-- /////////////////////////////////////////////////////////////start header////////////////////////////////////////////////////////// -->
       <header>
-        <?php
+         <?php
 			if(!$_SESSION['logged_in']){
 			header("Location: login.php");
 			} else {
                 session_destroy();
             }
 		?>
-        <nav class="navbar navbar-expand-md navbar-light bg-light ">
-          <div class="container-fluid">
-            <!-- container fluid is make use of 100% of the screen -->
-            <nav class="navbar navbar-light bg-light">
-              <a class="navbar-brand" href="homepage.html">
-                <img src="img/logo-filler.png" width="30" height="30" class="d-inline-block align-top" alt=""> Raise Reason 
-              </a>
-            </nav> 
+        <nav class="navbar navbar-expand-md navbar-light bg-light">
+				<div class="container-fluid"> <!-- container fluid is make use of 100% of the screen -->
+					<a class="navbar-brand" href="homepage.html">
+						<img src="img/logo-filler.png" width="30" height="30" class="d-inline-block align-top" alt="">
+															   Raise Reason
+					   </a>
+
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=#navbarResponsive>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+
+					<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto"><!-- push our notification to right hand side -->
+            <li class="nav-item" > <a class="nav-link" href="login.php">Login <i class="la la-user-circle la-lg" ></i></a>
+						</ul>
           </div>
-        </nav>
+          
+
+				</div>
+			</nav>		
       </header>
       <!-- Navigation end -->
       <div class="container text-white" style="background-color:#4c5962;">
