@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +31,11 @@
         <!-- /////////////////////////////////////////////////////////////start header////////////////////////////////////////////////////////// -->
 
         <header>
+        <?php
+            if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']){
+                header("Location: homepage.html");
+            }
+        ?>
             <nav class="navbar navbar-expand-md navbar-light bg-light ">
                 <div class="container-fluid">
                     <!-- container fluid is make use of 100% of the screen -->
@@ -93,11 +101,11 @@
                             <?php
                                    if(isset($_GET['error'])){
                                         if($_GET['error'] == 'empty'){
-                                            echo "<div class='container text-center err-login'>All fields are required</div>";
+                                            echo "<div class='container text-center err-login mb-3'>All fields are required</div>";
                                         } 
                                         // For secuity we will not show if the user is not registerd and will output inccorrect password in both cases
                                         else if ($_GET['error'] == 'incorrectpass' || $_GET['error'] == 'notexist'){
-                                            echo "<div class='container text-center err-login'>Incorrect username or password.</div>";
+                                            echo "<div class='container text-center err-login mb-3'>Incorrect username or password.</div>";
                                         }
                                    }
                                    if(isset($_GET['login'])){
@@ -107,13 +115,7 @@
                                     } 
                                }
                                    ?>
-                            <!-- Remember me and forget password -->
-                            <div class="form-group w-75 py-3 container-fluid">
-                                <input type="checkbox" id="rememberMe" />
-                                <label class="text-white" for="rememberMe">Remember me</label>
-                                <a href="#" id="resetpass" class="float-right">Forgot password?</a>
-                            </div>
-
+                            
                             <!-- Login button -->
                             <div class="text-center"><input name="login-submit" type="submit"
                                     class="btn btn-success btn-custom btn-outline-light" value="Login" /></div>
@@ -192,25 +194,6 @@
 
             </div>
 
-            <!-- Reset password form -->
-            <div id="passform" class="container-fluid">
-                <form action="includes/reset.inc.php" method="POST">
-                    <h1 class="text-center pt-3 mb-1 container">Reset Password</h1>
-
-                    <!-- Name -->
-                    <div class="form-group w-75 py-4 container-fluid">
-                        <div class="input-group">
-                            <div class="input-group-text"><i class="las la-at"></i></div>
-                            <input type="email" class="form-control" placeholder="Email" required />
-                        </div>
-                    </div>
-
-                    <!-- Reset password button -->
-                    <div class="text-center"> <input name="reset-submit" type="submit" class="btn btn-custom btn-outline-light"
-                            value="Reset" /></div>
-                </form>
-            </div>
-            <!-- Reset password form end-->
 
         </div>
         <!-- Contaienr end -->

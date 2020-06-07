@@ -54,5 +54,5 @@ function check_credentials($uid, $password, $db){
     die();
   }
    
-  
+  $db->close();
 }

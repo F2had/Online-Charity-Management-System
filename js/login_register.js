@@ -77,21 +77,15 @@ $(document).ready(function () {
   $(".login").click(function () {
     $("#login").slideDown("slow");
     $("#register").hide("slow");
-    $("#passform").slideUp("slow");
     $("#reg-mesg").hide();
   });
 
   $(".register").click(function () {
     $("#login").hide("slow");
-    $("#passform").hide();
     $("#register").animate({ width: "show" }, "slow");
   });
 
-  $("#resetpass").click(function () {
-    $("#login").hide("slow");
-    $("#passform").slideDown("slow");
-  });
-
+  
   // Animate buttons
   $(".btn-custom").mouseenter(function () {
     $(".btn").stop();
