@@ -32,7 +32,7 @@ session_start();
 	      	?>
         <nav class="navbar navbar-expand-md navbar-light bg-light">
 				<div class="container-fluid"> <!-- container fluid is make use of 100% of the screen -->
-					<a class="navbar-brand" href="homepage.html">
+					<a class="navbar-brand" href="homepage.php">
 						<img src="img/logo-filler.png" width="30" height="30" class="d-inline-block align-top" alt="">
 															   Raise Reason
 					   </a>
@@ -44,7 +44,7 @@ session_start();
 
 					<div class="collapse navbar-collapse" id="navbarResponsive">
 						<ul class="navbar-nav ml-auto"><!-- push our notification to right hand side -->
-							<li class="nav-item" > <a class="nav-link" href="homepage.html">Home</a> </li>
+							<li class="nav-item" > <a class="nav-link" href="homepage.php">Home</a> </li>
 							
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">Volunteer</a>

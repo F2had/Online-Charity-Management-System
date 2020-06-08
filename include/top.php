@@ -66,12 +66,12 @@
                             <?php if (!empty($_SESSION['username'])) : ?>
                                 <li class="nav-item dropdown"> <a class="nav-link" data-toggle="dropdown" href="#"><?php echo $_SESSION['username'] ?> <i class="fa fa-user-circle fa-lg"></i></a>
                                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="Volunteer.html">Profile</a>
+                                        <a class="dropdown-item" href="profile.php">Profile</a>
                                         <a class="dropdown-item" href="logout.php">Logout</a>
                                     </div>
                                 </li>
                             <?php else : ?>
-                                <li class="nav-item"> <a class="nav-link" href="login.php">Login/Signup <i class="fa fa-user-circle fa-lg"></i></a>
+                                <li class="nav-item"> <a class="nav-link" href="login.php">Login|Signup <i class="fa fa-user-circle fa-lg"></i></a>
                                 </li>
                             <?php endif ?>
                         </ul>

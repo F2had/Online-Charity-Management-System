@@ -33,7 +33,7 @@ session_start();
 		?>
         <nav class="navbar navbar-expand-md navbar-light bg-light">
 				<div class="container-fluid"> <!-- container fluid is make use of 100% of the screen -->
-					<a class="navbar-brand" href="homepage.html">
+					<a class="navbar-brand" href="homepage.php">
 						<img src="img/logo-filler.png" width="30" height="30" class="d-inline-block align-top" alt="">
 															   Raise Reason
 					   </a>
