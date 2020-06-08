@@ -108,8 +108,8 @@
 			</div>
 
 			<div class="form-group">
-				<label for="amountproject">Number of Volunteers:</label>
-				<input class="form-control" name="amountproject" placeholder="Enter amount here" value="<?php echo $amountproject ?>"></input>
+				<label for="amountvolunteer">Number of Volunteers:</label>
+				<input class="form-control" name="amountvolunteer" placeholder="Enter amount here" value="<?php echo $amountvolunteer ?>"></input>
 			</div>
 
 			<div class="form-group">
