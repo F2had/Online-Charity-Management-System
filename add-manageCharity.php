@@ -74,7 +74,10 @@
 	}
 </style>
 
-<?php include_once 'include/process_E.php' ?>
+<?php include_once 'include/process_E.php';
+$admin = 1;
+$user = $_SESSION['userID'];
+?>
 <section id="content">
 	<!-- Page Content -->
 	<div class="container">
@@ -126,10 +129,44 @@
 
 			</div>
 
-			<div class="form-group">
-				<label for="username">User name:</label>
-				<input class="form-control" name="username" placeholder="Enter user name here" value="<?php echo $username ?>"></input>
-			</div>
+
+			<?php if ($username == "" && $_SESSION["userID"] == $admin) : ?>
+				<div class="form-group">
+					<label for="userID">User ID:</label>
+					<input class="form-control" name="userID" placeholder="Enter user ID here">
+				</div>
+			<?php else : ?>
+				<div class="form-group">
+					<label for="userID">User ID:</label>
+					<input class="form-control" name="" placeholder="Enter user name here" <?php if ($_SESSION["userID"] == $admin) {
+																								echo 'value="' . $userID . '" disabled';
+																							} else {
+																								echo 'value="' . $_SESSION["userID"] . '" disabled';
+																							} ?>>
+
+					<input type="hidden" name="userID" <?php if ($_SESSION["userID"] == $admin) {
+															echo 'value="' . $userID . '" ';
+														} else {
+															echo 'value="' . $_SESSION["userID"] . '" ';
+														} ?>>
+				</div>
+				<div class="form-group">
+					<label for="username">User Name:</label>
+					<input class="form-control" name="" placeholder="Enter user name here" <?php if ($_SESSION["userID"] == $admin) {
+																								echo 'value="' . $username . '" disabled';
+																							} else {
+																								echo 'value="' . $_SESSION["username"] . '" disabled';
+																							} ?>>
+					<input type="hidden" name="username" <?php if ($_SESSION["userID"] == $admin) {
+																echo 'value="' . $username . '" ';
+															} else {
+																echo 'value="' . $_SESSION["username"] . '" ';
+															} ?>>
+				</div>
+			<?php endif ?>
+
+
+
 
 			<br>
 
@@ -165,7 +202,11 @@
 							<tbody id="table-body">
 								<?php include_once "include/connect_database.php";
 
-								$sql = "SELECT * FROM `project`";
+								if ($_SESSION["userID"] == $admin) {
+									$sql = "SELECT * FROM `project`";
+								} else {
+									$sql = "SELECT * FROM `project` WHERE userID = $user";
+								}
 
 								$result = mysqli_query($conn, $sql);
 								$resultCheck = mysqli_num_rows($result);
@@ -176,7 +217,7 @@
                                         <tr>
                                             <td>' . $row["nameproject"] . '</td>
                                             <td> ' . $row["desproject"] . ' </td>
-                                            <td> ' . $row["username"] . ' </td>
+                                            <td> ' . $row["userID"] . ' </td>
 
                                             <td class="btn-group" id="table-action">
                                                 <a class="btn btn-outline-warning" href="add-manageCharity.php?manage=' . $row["idproject"] . '" >Manage</a>

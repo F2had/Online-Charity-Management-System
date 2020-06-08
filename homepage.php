@@ -8,16 +8,31 @@ if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
 	$page_no = 1;
 }
 // change here for the record shown
-$total_records_per_page = 5;
+$total_records_per_page = 2;
 
 $offset = ($page_no - 1) * $total_records_per_page;
 $previous_page = $page_no - 1;
 $next_page = $page_no + 1;
 // $adjacents = "2";
-$result_count = mysqli_query(
-	$conn,
-	"SELECT COUNT(*) As total_records FROM `project`"
-);
+
+$sortby = 'orderproject';
+
+if (isset($_GET['sortby'])) {
+	$sortby = $_GET['sortby'];
+	$result_count = mysqli_query(
+		$conn,
+		"SELECT COUNT(*) As total_records FROM project INNER JOIN users ON project.userID = users.userID ORDER BY $sortby "
+	);
+	// echo "<script type='text/javascript'>alert('$sortby');</script>";
+} else {
+	$sql = "SELECT * FROM `project` LIMIT $offset, $total_records_per_page";
+	$result_count = mysqli_query(
+		$conn,
+		"SELECT COUNT(*) As total_records FROM project INNER JOIN users ON project.userID = users.userID"
+	);
+}
+
+
 $total_records = mysqli_fetch_array($result_count);
 $total_records = $total_records['total_records'];
 $total_no_of_pages = ceil($total_records / $total_records_per_page);
@@ -87,10 +102,10 @@ $second_last = $total_no_of_pages - 1; // total pages minus 1
 
 		if (isset($_GET['sortby'])) {
 			$sortby = $_GET['sortby'];
-			$sql = "SELECT * FROM `project` ORDER BY $sortby LIMIT $offset, $total_records_per_page";
+			$sql = "SELECT * FROM project INNER JOIN users ON project.userID = users.userID ORDER BY $sortby LIMIT $offset, $total_records_per_page";
 			// echo "<script type='text/javascript'>alert('$sortby');</script>";
 		} else {
-			$sql = "SELECT * FROM `project` LIMIT $offset, $total_records_per_page";
+			$sql = "SELECT * FROM project INNER JOIN users ON project.userID = users.userID LIMIT $offset, $total_records_per_page";
 		}
 
 		$result = mysqli_query($conn, $sql);
@@ -169,7 +184,7 @@ $second_last = $total_no_of_pages - 1; // total pages minus 1
 						<div class="row">
 							<div class="col-md-12">
 								<h4 class="heading">Current: </h4>
-								<p>Need ... </p>
+								<p class="text-muted"> Looking for: <?php echo $row['amountvolunteer'] ?> volunteers </p>
 							</div>
 						</div>
 
@@ -276,14 +291,14 @@ $second_last = $total_no_of_pages - 1; // total pages minus 1
 				<a class="page-link" href="#">Next</a>
 			</li> -->
 			<?php if ($page_no > 1) {
-				echo "<li class='page-item'><a class='page-link' href='homepage.php?page_no=1'>First Page</a></li>";
+				echo "<li class='page-item'><a class='page-link' href='homepage.php?&page_no=1&sortby=" . $sortby . "'>First Page</a></li>";
 			} ?>
 			<li <?php if ($page_no <= 1) {
 					echo 'class="page-item disabled"';
 				} else {
 					echo 'class="page-item"';
 				} ?>>
-				<a <?php echo " class='page-link'href='homepage.php?page_no=$previous_page'"; ?>>Previous</a>
+				<a <?php echo " class='page-link'href='homepage.php?&page_no=" . $previous_page . "&sortby=" . $sortby . "'"; ?>>Previous</a>
 			</li>
 
 			<li <?php if ($page_no >= $total_no_of_pages) {
@@ -291,10 +306,10 @@ $second_last = $total_no_of_pages - 1; // total pages minus 1
 				} else {
 					echo 'class="page-item"';
 				} ?>>
-				<a <?php echo " class='page-link'href='homepage.php?page_no=$next_page'"; ?>>Next</a>
+				<a <?php echo " class='page-link'href='homepage.php?page_no=" . $next_page . "&sortby=" . $sortby . "'"; ?>>Next</a>
 			</li>
 			<?php if ($page_no < $total_no_of_pages) {
-				echo "<li class='page-item'><a class='page-link' href='homepage.php?page_no=$total_no_of_pages'>Last &rsaquo;&rsaquo;</a></li>";
+				echo "<li class='page-item'><a class='page-link' href='homepage.php?page_no=" . $total_no_of_pages . "&sortby=" . $sortby . "'>Last &rsaquo;&rsaquo;</a></li>";
 			} ?>
 		</ul>
 
@@ -357,12 +372,14 @@ $second_last = $total_no_of_pages - 1; // total pages minus 1
 	</div>
 </div>
 
+<?php if (!empty($_SESSION['username'])) : ?>
+	<div class="scrollup2">
+		<a href="add-manageCharity.php">
+			<button class="btn btn-circle btn-xl btn-1 volunteerIcon">
+				<i class="fa fa-tasks fa-l" g></i>
+			</button>
+		</a>
+		<span class="scrolluptext">Click to add/manage charity</span>
+	</div>
 
-<div class="scrollup2">
-	<a href="add-manageCharity.php">
-		<button class="btn btn-circle btn-xl btn-1 volunteerIcon">
-			<i class="fa fa-tasks fa-l" g></i>
-		</button>
-	</a>
-	<span class="scrolluptext">Click to add/manage charity</span>
-</div>
+<?php endif ?>

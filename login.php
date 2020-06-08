@@ -11,14 +11,12 @@ session_start();
 
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <!-- CSS -->
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/login.css" />
     <!-- Line Awsome -->
-    <link rel="stylesheet"
-        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto|Montserrat:wght|Titillium+Web&display=swap" rel="stylesheet">
 
@@ -31,21 +29,21 @@ session_start();
         <!-- /////////////////////////////////////////////////////////////start header////////////////////////////////////////////////////////// -->
 
         <header>
-        <?php
-            if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']){
-                header("Location: homepage.html");
+            <?php
+            if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+                header("Location: homepage.php");
             }
-        ?>
+            ?>
             <nav class="navbar navbar-expand-md navbar-light bg-light ">
                 <div class="container-fluid">
                     <!-- container fluid is make use of 100% of the screen -->
                     <nav class="navbar navbar-light bg-light">
-                        <a class="navbar-brand" href="homepage.html">
+                        <a class="navbar-brand" href="homepage.php">
 
-                         <img src="img/logo-filler.png" width="30" height="30" class="d-inline-block align-top" alt="">
-                                                              Raise Reason
+                            <img src="img/logo-filler.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                            Raise Reason
                         </a>
-                    </nav> 
+                    </nav>
                 </div>
             </nav>
         </header>
@@ -85,7 +83,7 @@ session_start();
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-at"></i></div>
 
-                                    <input type="text" name="uid" class="form-control" placeholder="Username or Email"/>
+                                    <input type="text" name="uid" class="form-control" placeholder="Username or Email" />
                                 </div>
                             </div>
 
@@ -94,31 +92,30 @@ session_start();
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-lock"></i></div>
 
-                                    <input type="password" name="password" class="form-control" placeholder="Password" required/>
+                                    <input type="password" name="password" class="form-control" placeholder="Password" required />
                                 </div>
                             </div>
                             <!-- Handle login errors  -->
                             <?php
-                                   if(isset($_GET['error'])){
-                                        if($_GET['error'] == 'empty'){
-                                            echo "<div class='container text-center err-login mb-3'>All fields are required</div>";
-                                        } 
-                                        // For secuity we will not show if the user is not registerd and will output inccorrect password in both cases
-                                        else if ($_GET['error'] == 'incorrectpass' || $_GET['error'] == 'notexist'){
-                                            echo "<div class='container text-center err-login mb-3'>Incorrect username or password.</div>";
-                                        }
-                                   }
-                                   if(isset($_GET['login'])){
-                                    if($_GET['login'] == 'success'){
-                                        // FIXME change to php later
-                                        header("Location: homepage.html");
-                                    } 
-                               }
-                                   ?>
-                            
+                            if (isset($_GET['error'])) {
+                                if ($_GET['error'] == 'empty') {
+                                    echo "<div class='container text-center err-login mb-3'>All fields are required</div>";
+                                }
+                                // For secuity we will not show if the user is not registerd and will output inccorrect password in both cases
+                                else if ($_GET['error'] == 'incorrectpass' || $_GET['error'] == 'notexist') {
+                                    echo "<div class='container text-center err-login mb-3'>Incorrect username or password.</div>";
+                                }
+                            }
+                            if (isset($_GET['login'])) {
+                                if ($_GET['login'] == 'success') {
+                                    // FIXME change to php later
+                                    header("Location: homepage.php");
+                                }
+                            }
+                            ?>
+
                             <!-- Login button -->
-                            <div class="text-center"><input name="login-submit" type="submit"
-                                    class="btn btn-success btn-custom btn-outline-light" value="Login" /></div>
+                            <div class="text-center"><input name="login-submit" type="submit" class="btn btn-success btn-custom btn-outline-light" value="Login" /></div>
 
                         </form>
 
@@ -144,8 +141,7 @@ session_start();
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-user"></i></div>
 
-                                    <input type="text" id="usrname_input" name="username" class="form-control" placeholder="Username *"
-                                        required />
+                                    <input type="text" id="usrname_input" name="username" class="form-control" placeholder="Username *" required />
                                 </div>
                             </div>
 
@@ -164,20 +160,18 @@ session_start();
                                     <input id='ps1' type="password" name="pass1" class="form-control .pass" placeholder="Password *" required />
                                 </div>
                             </div>
-                            
+
                             <!-- Repeat password -->
                             <div class="form-group w-75 py-3 container-fluid">
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-key"></i></div>
-                                    <input type="password" id='ps2' name="pass2" class="form-control" placeholder="Confirm your Password *"
-                                        required />
+                                    <input type="password" id='ps2' name="pass2" class="form-control" placeholder="Confirm your Password *" required />
                                 </div>
                             </div>
-                           
+
 
                             <!-- Register button -->
-                            <div class="text-center"> <input type="submit" id="submit-signup" name="submit-signup" class="btn btn-outline-light btn-custom"
-                                    value="Register" /></div>
+                            <div class="text-center"> <input type="submit" id="submit-signup" name="submit-signup" class="btn btn-outline-light btn-custom" value="Register" /></div>
 
                         </form>
 
@@ -186,7 +180,7 @@ session_start();
 
                     <!-- success message -->
                     <div id="reg-suc" class='container'>
-                    
+
                     </div>
 
                 </div>
@@ -201,12 +195,8 @@ session_start();
 
         <!-- Bootsrap jQuery and JavaScript -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 
         <!-- jQuery code to show the clicked form and hide the rest && error handling -->
