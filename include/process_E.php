@@ -5,6 +5,7 @@ $nameproject = '';
 $desproject = '';
 $amountvolunteer = '';
 $imgproject = '';
+$userID = '';
 $username = '';
 
 $id = 0;
@@ -17,8 +18,15 @@ if (isset($_POST['submit'])) {
     $nameproject = $_POST['nameproject'];
     $desproject = $_POST['desproject'];
     $amountvolunteer = $_POST['amountvolunteer'];
+    $userID = $_POST["userID"];
     $username = $_POST["username"];
-    // echo $username;
+
+    // echo "hi" . "<br>";
+    // echo $nameproject . "<br>";
+
+    // echo $userID . "<br>";
+    // echo $username . "<br>";
+
     $file = $_FILES['imgproject'];
 
     $imgname = $file["name"];
@@ -55,7 +63,7 @@ if (isset($_POST['submit'])) {
                         $rowcount = mysqli_num_rows($result);
                         $set_img_order = $rowcount + 1;
 
-                        $sql = "INSERT INTO project (nameproject, desproject, amountvolunteer, imgproject, imguniqname, orderproject, username)
+                        $sql = "INSERT INTO project (nameproject, desproject, amountvolunteer, imgproject, imguniqname, orderproject, userID)
                             VALUES(?,?,?,?,?,?,?);";
 
                         // echo "here entered";
@@ -72,9 +80,15 @@ if (isset($_POST['submit'])) {
                                 $imgname,
                                 $imgnewname,
                                 $set_img_order,
-                                $username
+                                $userID
                             );
-                            mysqli_stmt_execute($stmt);
+                            // mysqli_stmt_execute($stmt)
+                            if (mysqli_stmt_execute($stmt)) {
+                                echo "sucess";
+                            } else {
+                                echo "fail" . mysqli_error($conn) . "<br>";
+                                echo $sql;
+                            };
 
                             move_uploaded_file($imgtempname, $imgdestination);
                             redirect(" ../add-manageCharity.php?upload=success");
@@ -103,18 +117,21 @@ if (isset($_GET['manage'])) {
 
     $idproject = $_GET['manage'];
     $id = $idproject;
-    $sql2 = "SELECT * FROM project WHERE idproject=$idproject";
+    $sql2 = "SELECT * FROM project INNER JOIN users ON project.userID = users.userID WHERE idproject=$idproject";
     $result2 = mysqli_query($conn, $sql2);
+
     $resultCheck2 = mysqli_num_rows($result2);
 
     if ($resultCheck2 > 0) {
         $row = mysqli_fetch_assoc($result2);
+        // print_r($row);
         $nameproject = $row['nameproject'];
         $desproject = $row['desproject'];
         $amountvolunteer = $row['amountvolunteer'];
         $imgproject = $row['imgproject'];
+        $userID = $row['userID'];
         $username = $row['username'];
-        // echo '<script> alert("hi u success") </script>';
+        // echo '<script> alert("' .  $username . '") </script>';
     }
 }
 
@@ -138,7 +155,7 @@ if (isset($_POST['update'])) {
     $nameproject = $_POST['nameproject'];
     $desproject = $_POST['desproject'];
     $amountvolunteer = $_POST['amountvolunteer'];
-    $username = $_POST["username"];
+
 
     $file = $_FILES['imgproject'];
     // print_r($file);
@@ -185,8 +202,8 @@ if (isset($_POST['update'])) {
                     desproject = '$desproject', 
                     amountvolunteer = '$amountvolunteer', 
                     imgproject='$imgname', 
-                    imguniqname='$imgnewname',
-                    username = '$username'
+                    imguniqname='$imgnewname'
+                    
                     WHERE idproject=$idproject";
 
                     // echo "enter if";
@@ -212,12 +229,16 @@ if (isset($_POST['update'])) {
         $sql = "UPDATE project SET 
                     nameproject='$nameproject', 
                     desproject = '$desproject', 
-                    amountvolunteer = '$amountvolunteer', 
-                    username = '$username'
+                    amountvolunteer = '$amountvolunteer'                
                     WHERE idproject=$idproject";
-        // echo "enter else";
 
-        mysqli_query($conn, $sql);
+        if (mysqli_query($conn, $sql)) {
+            echo "sucess";
+        } else {
+            echo "fail" . mysqli_error($conn) . "<br>";
+            echo $sql;
+        };
+
         redirect(" ../add-manageCharity.php?update=success");
     }
 }

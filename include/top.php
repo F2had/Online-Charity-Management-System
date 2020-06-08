@@ -1,5 +1,9 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
+</html>
 
 <head>
     <meta charset="utf-8">
@@ -46,10 +50,10 @@
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto">
                             <!-- push our notification to right hand side -->
-                            <li class="nav-item"> <a class="nav-link" href="homepage.html">Home</a> </li>
+                            <li class="nav-item"> <a class="nav-link" href="homepage.php">Home</a> </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">Volunteer</a>
+                                <a class="nav-link dropdown-toggle" href="Volunteer.html" id="navbarDropdownMenuLink" data-toggle="dropdown">Volunteer</a>
                                 <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="Volunteer.html">Volunteer Registration</a>
                                     <a class="dropdown-item" href="ProjectRegisterationForm.html">Volunteer project
@@ -59,19 +63,17 @@
                             </li>
                             <li class="nav-item"> <a class="nav-link" href="meeting-report.html">Reports</a></li>
 
-
-                            <li class="nav-item">
-                                <div id="sb-search" class="sb-search">
-                                    <form>
-                                        <input class="sb-search-input" placeholder="Enter your search term..." type="text" value="" name="search" id="search">
-                                        <input class="sb-search-submit" type="submit" value="">
-                                        <span class="sb-icon-search" title="Click to start searching"></span>
-                                    </form>
-                                </div>
-                            </li>
-
-                            <li class="nav-item"> <a class="nav-link" href="login.html">User <i class="fa fa-user-circle fa-lg"></i></a>
-                            </li>
+                            <?php if (!empty($_SESSION['username'])) : ?>
+                                <li class="nav-item dropdown"> <a class="nav-link" data-toggle="dropdown" href="#"><?php echo $_SESSION['username'] ?> <i class="fa fa-user-circle fa-lg"></i></a>
+                                    <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" href="Volunteer.html">Profile</a>
+                                        <a class="dropdown-item" href="logout.php">Logout</a>
+                                    </div>
+                                </li>
+                            <?php else : ?>
+                                <li class="nav-item"> <a class="nav-link" href="login.php">Login/Signup <i class="fa fa-user-circle fa-lg"></i></a>
+                                </li>
+                            <?php endif ?>
                         </ul>
                     </div>
 
