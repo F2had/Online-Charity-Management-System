@@ -54,11 +54,15 @@ session_start();
 			</nav>		
       </header>
       <!-- Navigation end -->
-      <div class="container text-white" style="background-color:#4c5962;">
-            <div class="text-center">
-              <h2>Logged out successfully</h2>
+      <div class="container">
+         <hr>
+            <div>
+              <h2 class="text-center">You have been logged out successfully</h2>
+              <p class="text-center demo">You will be redircted to the Home Page in <strong><span id="seconds"></span></strong>s</p>
             </div>
-    </div>
+
+      </div>
+          <hr>
 		<!-- Contaienr end -->
 		
     	<!-- Bootsrap jQuery and JavaScript -->
@@ -71,7 +75,22 @@ session_start();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous">
-	</script>
+  </script>
+  <script>
+
+      var counter = 6;
+let countDown = new Date('Sep 30, 2020 00:00:00').getTime(),
+    x = setInterval(function() {    
+       counter--;
+      $("#seconds").text(counter);
+      
+      if(counter < 1){
+        window.location.replace("homepage.php");
+      }
+
+    }, 1000)
+  </script>
+  
 
   </body>
 </html>

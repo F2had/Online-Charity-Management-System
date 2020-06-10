@@ -3,93 +3,88 @@ session_start();
 require('config.inc.php');
 
 if($_SERVER["REQUEST_METHOD"] = "POST"){
+    $pass = mysqli_real_escape_string($db, $_POST['cpass']);
+    $valid_password = check_password($pass, $db);
+    if(!$valid_password){
 
+    }
 
         if(!empty($_POST['pass1']) && !empty($_POST['pass2']) ){
             if($_POST['pass1'] == $_POST['pass2']){
-                $pass = mysqli_real_escape_string($db, $_POST['pass']);
                 $pass1 = password_hash(mysqli_real_escape_string($db, $_POST['pass1']), PASSWORD_BCRYPT);
-                $validpass = check_password($pass, $db);
-    
-    
-                if($validpass){
+               
+               
+
+             
                     $seccuss_pass = change_password($pass1, $db);
                     header("Location: ../profile.php?password_changed=$seccuss_pass");
                     die();
-                 }
-                 else {
-                     header("Location: ../profile.php?error=incorrectpassword");
-                     die();
-                 } 
             }
-            else {
+                    else {
+            
                 header("Location: ../profile.php?error=passwordfoesnotmatch");
-                die();
+ 
             }
         }
 
         
-        if(!empty($_POST['name']) &&   !empty($_POST['email'])){
+        if(isset($_POST['name']) &&  isset($_POST['email'])){
 
             $name = mysqli_real_escape_string($db, $_POST['name']);
             $email = mysqli_real_escape_string($db, $_POST['email']);
-            $pass = mysqli_real_escape_string($db, $_POST['pass']);
-
+           
             if($name == $_SESSION['name'] && $email == $_SESSION['email']){
                 header("Location: ../profile.php?error=unchanged");
                  die();
-            }
+            }else {
+                
 
-            $valid_password = check_password($pass, $db);
-
-            if($valid_password){
-
-                $valid_name = validate_name($name);
-                $valid_email = validate_email($email);
-             
-
-                if($valid_email &&  $valid_name){
-
-                    if($_SESSION['email'] == $email){
-                        $exist= false;
-                    }
-                    else {
-                        check_exist($email, $db);
-                    }
-
-                    if(!$exist){    
-
-                        $seccuss = edit_info($name,$email, $db);
-
-                        if($seccuss){
-                            header("Location: ../profile.php?error=seccuss");
-                            die();
+                    $valid_name = validate_name($name);
+                    $valid_email = validate_email($email);
+                 
+    
+                    if($valid_email &&  $valid_name){
+    
+                        if($_SESSION['email'] == $email){
+                            $exist= false;
                         }
                         else {
-                            eader("Location: ../profile.php?error=unseccuss");
-                            die();
+                            check_exist($email, $db);
                         }
-
-                    }
+    
+                        if(!$exist){    
+    
+                            $seccuss = edit_info($name,$email, $db);
+    
+                            if($seccuss){
+                                header("Location: ../profile.php?error=seccuss");
+                                die();
+                            }
+                            else {
+                                eader("Location: ../profile.php?error=unseccuss");
+                                die();
+                            }
+    
+                        }
+                        else {
+                            header("Location: ../profile.php?error=exist");
+                        die();
+                        }
+    
+                    } 
                     else {
-                        header("Location: ../profile.php?error=exist");
-                    die();
+                        header("Location: ../profile.php?error=Incorrecformat");
+                        die();
                     }
+    
+    
+    
+                header("Location: ../profile.php?error=de");
+                die();
 
-                } 
-                else {
-                    header("Location: ../profile.php?error=Incorrecformat");
-                    die();
-                }
-
-            }else {
-                header("Location: ../profile.php?error=Incorrectpassword");
-            die();
             }
 
 
-            header("Location: ../profile.php?error=de");
-            die();
 
             
         } 

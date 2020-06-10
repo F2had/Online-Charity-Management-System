@@ -225,8 +225,8 @@ session_start();
             </div>
         </div>
     </div>
-    <div id="sub-footer mt-2">
-        <div class="container">
+    <div id="sub-footer mt-2" class="sub-footer">
+        <div class="container sub-footer">
         <hr>
             <div class="row">
                 <div class="col-lg-6">
