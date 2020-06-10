@@ -1,9 +1,11 @@
 /*-------------------------------------Elements-------------------------------------*/
 
-
+body {
+  font-family: 'Titillium Web', sans-serif;
+}
 
 h1 {
-  color: #fff;
+  color: #000;
   font-weight: bold;
   margin: 0 0 40px;
   font-family: "Titillium Web", sans-serif;
@@ -13,6 +15,13 @@ a {
   font-weight: bold;
 }
 
+footer {
+  background: #f2f2f2;
+}
+
+body {
+  background-color: #f2f2f257 ;
+}
 
 /*-------------------------------------IDs-------------------------------------*/
 
@@ -28,10 +37,12 @@ a {
   display: none;
 }
 
+
+
 /*-------------------------------------Classes-------------------------------------*/
 
 .container {
-  background-color: #36424b;
+  
   margin-left: auto;
   margin-right: auto;
   margin-top: 4%;
@@ -42,12 +53,11 @@ a {
   border: 1px solid black;
 }
 .edit-profile {
-  background-color: #36424b;
   color: #fff;
 
 }
 .err {
-  font-size: .7rem;
+  font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
@@ -55,12 +65,13 @@ a {
 }
 
 .err-login {
-  font-size: .8rem;
+  font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
   color: rgb(233, 15, 15);
 }
+
 
 .error{
   border: solid;
@@ -71,7 +82,6 @@ a {
 @media (max-width: 575px){
 
   .container {
-    background-color: #36424b;
     margin-left: 5%;
     margin-right: 5%;
     margin-top: 4%;
@@ -79,26 +89,31 @@ a {
   }
 }
 .login-register {
+  border: 2px solid #949494;
+  border-radius: 18px 9px 40px 0px;
   padding-top: 2%;
   margin-bottom: 3.5%;
-    font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
+-webkit-box-shadow: 0px -1px 18px -3px #000000; 
+box-shadow: 0px -1px 18px -3px #000000;
+background-image: url('../images/86373.jpg');
 }
 
 .login-register .nav-tabs > li > a {
-  color: #fff;
+  color: #000;
 }
 
 .login-register .nav-tabs > li > a.active {
-  background-color: #537780;
+  background-color: rgb(139,145,149);
   border-color: #537780;
-  border-bottom: 0.4rem solid #014572;
+  border-bottom: 0.2rem solid #414141;
   color: white;
 }
 
 .login-register .nav-tabs > li > a:hover {
-  background-color: #11d3bc;
-  border-bottom: 0.4rem solid #005792;
-  color: white;
+  background-color: #f9f9f9;
+  border-bottom: 0.4rem solid #5c5e5f;
+  color: #000;
   font-style: italic;
   font-weight: bold;
   filter: brightness(50%);
@@ -113,11 +128,12 @@ a {
 
 /* Buttons */
 .btn-custom {
-  background-color: #11d3bc;
+  background-color: rgb(51,51,51);
   border-radius: 0;
   color: #fff;
   margin-bottom: 0.5rem;
   width: 30%;
+  font-weight: bold;
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -131,7 +147,10 @@ a {
 }
 
 
-
 .navbar-light .navbar-brand {
   font-family: 'Lexend Tera', sans-serif;
+}
+
+.bg-light  {
+  background-color: #f2f2f2;
 }

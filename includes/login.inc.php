@@ -24,7 +24,6 @@ else {
 
 function check_credentials($uid, $password, $db){
     
-  $validpass = false;
   $sql = "SELECT * FROM users WHERE username = ? OR email = ? ;";
   $stmt = $db->prepare($sql);
   $stmt->bind_param('ss', $uid, $uid);

@@ -2,7 +2,7 @@
 
 
  $host = 'localhost';
- $dbname = 'charity';
+ $dbname = 'wif2003';
  $usrname = 'admin';
  $passwd = 'a';
 $db = new mysqli($host, $usrname, $passwd, $dbname);
