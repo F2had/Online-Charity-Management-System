@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jun 11, 2020 at 01:23 PM
+-- Host: 127.0.0.1
+-- Generation Time: Jun 08, 2020 at 03:11 PM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.5
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -59,18 +60,17 @@ CREATE TABLE `users` (
   `username` varchar(20) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` tinytext NOT NULL,
-  `name` varchar(20) DEFAULT NULL,
-  `img` longtext NOT NULL
+  `name` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userID`, `username`, `email`, `password`, `name`, `img`) VALUES
-(1, 'Fahad', 'fahad.ali.331@gmail.com', '$2y$10$u9sty4icifLX.u3iswDkjO0BQsEwiUGJj1kPUiqlMWCOmkk9OK90K', 'Fahad Ali', ''),
-(2, 'niwle', 'elwin.ev0407@gmail.com', '$2y$10$rhJSZ8H5gX5gz1Td.bkahuOlEUpyktpO7n2/ddsMXLPKYDT2ZGOSS', 'Elwin Von', ''),
-(3, 'iliacrit', 'blabla@gmail.com', '$2y$10$bM5xyuDg/bawGMw8crjLLOiYVvsNnW7Dc2am1KWfdjU9rgMFssACy', 'elvina', '');
+INSERT INTO `users` (`userID`, `username`, `email`, `password`, `name`) VALUES
+(1, 'Fahad', 'fahad.ali.331@gmail.com', '$2y$10$p/73nGJhBK/rXh7KXRqlz.a6slEumSmu6IqJfc/E2P0Vdlps0PPiS', 'Fahad Ali'),
+(2, 'niwle', 'elwin.ev0407@gmail.com', '$2y$10$rhJSZ8H5gX5gz1Td.bkahuOlEUpyktpO7n2/ddsMXLPKYDT2ZGOSS', 'Elwin Von'),
+(3, 'iliacrit', 'blabla@gmail.com', '$2y$10$/ROUA8a4JZNQhrR.SnMhbuEa92naOciSTfcfMd5lTORe7ziI1NTYe', 'elvina');
 
 --
 -- Indexes for dumped tables

@@ -56,8 +56,19 @@ session_start();
       <!-- Navigation end -->
       <div class="container">
          <hr>
-            <div>
-              <h2 class="text-center">You have been logged out successfully</h2>
+         
+           <div>
+
+            <?if(isset($_GET)){
+           if(isset($_GET['deleted']) && $_GET['deleted']){
+            echo ' <h1 class="text-center">Your account has been deleted successfully</h1>';
+           }
+         }else {
+          echo ' <h2 class="text-center">You have been logged out successfully</h2>';
+         }
+      
+         ?>
+
               <p class="text-center demo">You will be redircted to the Home Page in <strong><span id="seconds"></span></strong>s</p>
             </div>
 
@@ -79,7 +90,6 @@ session_start();
   <script>
 
       var counter = 6;
-let countDown = new Date('Sep 30, 2020 00:00:00').getTime(),
     x = setInterval(function() {    
        counter--;
       $("#seconds").text(counter);

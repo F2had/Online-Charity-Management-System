@@ -55,7 +55,7 @@ session_start();
             <div class="login-register">
 
                 <!-- Nav tap -->
-                <ul class="nav nav-tabs nav-fill test" role="tablist">
+                <ul class="nav nav-tabs nav-fill" role="tablist">
 
                     <li class="nav-item">
                         <a class="nav-link login active" href="#login" role="tab" data-toggle="tab">LOGIN</a>
@@ -109,12 +109,16 @@ session_start();
                             }
                             if (isset($_GET['login'])) {
                                 if ($_GET['login'] == 'success') {
-                                    // FIXME change to php later
+                                   
                                     header("Location: homepage.php");
                                 }
                             }
                             ?>
 
+                            <!-- Remember me and forget password -->
+                            <div class="form-group w-75 py-3 container-fluid">
+                                <a href="#" id="resetpass" class="float-right">Forgot password?</a>
+                            </div>
                             <!-- Login button -->
                             <div class="text-center"><input name="login-submit" type="submit" class="btn btn-success btn-custom btn-outline-light" value="Login" /></div>
 
@@ -195,9 +199,28 @@ session_start();
                 </div>
                 <!-- Tap content end -->
 
+                <!-- Reset password form -->
+          <div id="passform" class="container-fluid">
+                <form action="/resetpassword.php" method="POST">
+                    <h1 class="text-center pt-3 mb-1 container">Reset Password</h1>
+
+                    <!-- Name -->
+                    <div class="form-group w-75 py-4 container-fluid">
+                        <div class="input-group">
+                            <div class="input-group-text"><i class="las la-at"></i></div>
+                            <input type="email" class="form-control" placeholder="Email" required />
+                        </div>
+                    </div>
+
+                    <!-- Reset password button -->
+                    <div class="text-center"> <input type="submit" class="btn btn-custom btn-outline-light"
+                            value="Reset" /></div>
+                </form>
             </div>
-                    <hr>
-         
+            <!-- Reset password form end-->
+            </div>
+            <hr>
+
         </div>
         <!-- Contaienr end -->
         <div>

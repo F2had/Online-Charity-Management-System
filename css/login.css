@@ -51,16 +51,13 @@ input.edit {
 
 /* Hide register and reset password form because when we use nav-tabs it won't complete disapear. used jQuery to change it whenever button is clicked */
 
-#register {
-	display: none;
+a#resetpass {
+  color: #000;
 }
 
-#passform {
-	display: none;
-}
 
-#message {
-	display: none;
+#delete, #profile, #password, #message,  #passform, #register  {
+  display: none;
 }
 
 /*-------------------------------------Classes-------------------------------------*/
@@ -249,7 +246,7 @@ input.edit {
 }
 
 .suc-message {
-	color: #fff;
+	color: #000;
 	text-align: center;
 }
 

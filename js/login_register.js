@@ -85,15 +85,49 @@ $(document).ready(function () {
   // Aimate hide forms
   $(".login").click(function () {
     $("#login").slideDown("slow");
+    $("#passform").hide();
     $("#register").hide("slow");
     $("#reg-mesg").hide();
   });
 
   $(".register").click(function () {
     $("#login").hide("slow");
+    $("#passform").hide();
     $("#register").animate({ width: "show" }, "slow");
   });
 
+  $('#resetpass').click(function () {
+    $('#login').hide('slow');
+    $('#passform').slideDown('slow');
+});
+
+$('#home-tab').click(function () {
+  $('#home').show('slow');
+  $('#profile').hide('slow');
+  $('#password').hide('slow');
+  $('#delete').hide('slow');
+});
+
+$('#profile-tab').click(function () {
+  $('#profile').show('slow');
+  $('#home').hide('slow');
+  $('#password').hide('slow');
+  $('#delete').hide('slow');
+});
+
+$('#password-tab').click(function () {
+  $('#password').show('slow');
+  $('#home').hide('slow');
+  $('#profile').hide('slow');
+  $('#delete').hide('slow');
+});
+
+$('#delete-tab').click(function () {
+  $('#delete').show('slow');
+  $('#home').hide('slow');
+  $('#profile').hide('slow');
+  $('#password').hide('slow');
+});
   
   // Animate buttons
   $(".btn-custom").mouseenter(function () {
@@ -105,4 +139,6 @@ $(document).ready(function () {
     $(".btn").stop();
     $(".btn").animate({ width: "30%" }, "slow");
   });
+
+  
 });
