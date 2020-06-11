@@ -127,13 +127,13 @@ session_start();
                     <div role="tabpanel" class="tap-pane container-fluid" id="register">
 
                         <h1 class="text-center py-3 mb-1 container-fluid">Join Us Today!</h1>
-                        <form action="includes/signup.inc.php" id="signup-form" method="POST">
+                        <form id="signup-form" method="POST" enctype="multipart/form-data">
 
                             <!-- Name -->
                             <div class="form-group w-75 py-3 container-fluid">
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-signature"></i></div>
-                                    <input id="name_input" name="name" type="text" class="form-control" placeholder="Name *" required />
+                                    <input id="name_input" name="name" type="text" class="form-control" placeholder="Name *"  />
                                 </div>
                             </div>
 
@@ -142,7 +142,7 @@ session_start();
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-user"></i></div>
 
-                                    <input type="text" id="usrname_input" name="username" class="form-control" placeholder="Username *" required />
+                                    <input type="text" id="usrname_input" name="username" class="form-control" placeholder="Username *"/>
                                 </div>
                             </div>
 
@@ -150,10 +150,18 @@ session_start();
                             <div class="form-group w-75 py-3 container-fluid">
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-at"></i></div>
-                                    <input type="email" id="email_input" name="email" class="form-control" placeholder="Email *" required />
+                                    <input type="email" id="email_input" name="email" class="form-control" placeholder="Email *"/>
                                 </div>
                             </div>
 
+                            <!-- Profile picture -->
+                            <div class="form-group w-75 py-3 container-fluid">
+                                <div class="input-group">
+                                    <div class="input-group-text"><i class="las la-portrait"></i></div>
+                                    <input class="input-file" id="fileInput" type="file" name="file">
+                                </div>
+                            </div>
+                            <!-- onfocus="this.type='file' -->
                             <!-- Password -->
                             <div class="form-group w-75 py-3 container-fluid">
                                 <div class="input-group">

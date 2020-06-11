@@ -2,12 +2,16 @@ $(document).ready(function () {
   
   $("#signup-form").submit(function (event) {
     event.preventDefault();
-    
+    var form = $(this)[0];
+    var formData = new FormData(form);
+    console.log(formData);
     $.ajax({
       method: "POST",
       url: "includes/signup.inc.php?",
-      data: $(this).serialize(),
+      data: formData,
       dataType: "JSON",
+      contentType: false, 
+       processData: false,
       success: function (response) {
         console.log(response);
         rmAll();
@@ -58,6 +62,10 @@ $(document).ready(function () {
     });
   });
 
+
+    function check_type(){
+
+    }
   //Remove all errors spans if any
   function rmAll(){
     $('#name_input').removeClass('error');

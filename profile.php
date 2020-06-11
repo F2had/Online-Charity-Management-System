@@ -91,7 +91,7 @@ session_start();
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
                 <div class="file btn btn-lg btn-primary">
                   		<label for="file" >Change Photo</label>
-                  <input type="file" name="file"/>
+                  <input type="file" name="img"/>
                 </div>
               </div>
             </div>
