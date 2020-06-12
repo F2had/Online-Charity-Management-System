@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital@1&display=swap" rel="stylesheet');
+
+#loader {
+    z-index: 9999;
+    position: fixed;
+    background-color: #fff;
+    z-index: 99;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+#fountainTextG{
+	width:570px;
+	margin:auto;
+}
+
+.fountainTextG{
+	color:rgba(0,0,0,0.39);
+	font-family:'Ubuntu', sans-serif;
+	font-size:59px;
+	text-decoration:none;
+	font-weight:normal;
+	font-style:normal;
+	float:left;
+	animation-name:bounce_fountainTextG;
+		-o-animation-name:bounce_fountainTextG;
+		-ms-animation-name:bounce_fountainTextG;
+		-webkit-animation-name:bounce_fountainTextG;
+		-moz-animation-name:bounce_fountainTextG;
+	animation-duration:1.551s;
+		-o-animation-duration:1.551s;
+		-ms-animation-duration:1.551s;
+		-webkit-animation-duration:1.551s;
+		-moz-animation-duration:1.551s;
+	animation-iteration-count:infinite;
+		-o-animation-iteration-count:infinite;
+		-ms-animation-iteration-count:infinite;
+		-webkit-animation-iteration-count:infinite;
+		-moz-animation-iteration-count:infinite;
+	animation-direction:normal;
+		-o-animation-direction:normal;
+		-ms-animation-direction:normal;
+		-webkit-animation-direction:normal;
+		-moz-animation-direction:normal;
+	transform:scale(.5);
+		-o-transform:scale(.5);
+		-ms-transform:scale(.5);
+		-webkit-transform:scale(.5);
+		-moz-transform:scale(.5);
+}#fountainTextG_1{
+	animation-delay:0.5525s;
+		-o-animation-delay:0.5525s;
+		-ms-animation-delay:0.5525s;
+		-webkit-animation-delay:0.5525s;
+		-moz-animation-delay:0.5525s;
+}
+#fountainTextG_2{
+	animation-delay:0.659s;
+		-o-animation-delay:0.659s;
+		-ms-animation-delay:0.659s;
+		-webkit-animation-delay:0.659s;
+		-moz-animation-delay:0.659s;
+}
+#fountainTextG_3{
+	animation-delay:0.7755s;
+		-o-animation-delay:0.7755s;
+		-ms-animation-delay:0.7755s;
+		-webkit-animation-delay:0.7755s;
+		-moz-animation-delay:0.7755s;
+}
+#fountainTextG_4{
+	animation-delay:0.882s;
+		-o-animation-delay:0.882s;
+		-ms-animation-delay:0.882s;
+		-webkit-animation-delay:0.882s;
+		-moz-animation-delay:0.882s;
+}
+#fountainTextG_5{
+	animation-delay:0.9985s;
+		-o-animation-delay:0.9985s;
+		-ms-animation-delay:0.9985s;
+		-webkit-animation-delay:0.9985s;
+		-moz-animation-delay:0.9985s;
+}
+#fountainTextG_6{
+	animation-delay:1.105s;
+		-o-animation-delay:1.105s;
+		-ms-animation-delay:1.105s;
+		-webkit-animation-delay:1.105s;
+		-moz-animation-delay:1.105s;
+}
+#fountainTextG_7{
+	animation-delay:1.2115s;
+		-o-animation-delay:1.2115s;
+		-ms-animation-delay:1.2115s;
+		-webkit-animation-delay:1.2115s;
+		-moz-animation-delay:1.2115s;
+}
+#fountainTextG_8{
+	animation-delay:1.328s;
+		-o-animation-delay:1.328s;
+		-ms-animation-delay:1.328s;
+		-webkit-animation-delay:1.328s;
+		-moz-animation-delay:1.328s;
+}
+#fountainTextG_9{
+	animation-delay:1.4345s;
+		-o-animation-delay:1.4345s;
+		-ms-animation-delay:1.4345s;
+		-webkit-animation-delay:1.4345s;
+		-moz-animation-delay:1.4345s;
+}
+#fountainTextG_10{
+	animation-delay:1.551s;
+		-o-animation-delay:1.551s;
+		-ms-animation-delay:1.551s;
+		-webkit-animation-delay:1.551s;
+		-moz-animation-delay:1.551s;
+}
+#fountainTextG_11{
+	animation-delay:1.6575s;
+		-o-animation-delay:1.6575s;
+		-ms-animation-delay:1.6575s;
+		-webkit-animation-delay:1.6575s;
+		-moz-animation-delay:1.6575s;
+}
+#fountainTextG_12{
+	animation-delay:1.764s;
+		-o-animation-delay:1.764s;
+		-ms-animation-delay:1.764s;
+		-webkit-animation-delay:1.764s;
+		-moz-animation-delay:1.764s;
+}
+#fountainTextG_13{
+	animation-delay:1.8805s;
+		-o-animation-delay:1.8805s;
+		-ms-animation-delay:1.8805s;
+		-webkit-animation-delay:1.8805s;
+		-moz-animation-delay:1.8805s;
+}
+#fountainTextG_14{
+	animation-delay:1.987s;
+		-o-animation-delay:1.987s;
+		-ms-animation-delay:1.987s;
+		-webkit-animation-delay:1.987s;
+		-moz-animation-delay:1.987s;
+}
+#fountainTextG_15{
+	animation-delay:2.1035s;
+		-o-animation-delay:2.1035s;
+		-ms-animation-delay:2.1035s;
+		-webkit-animation-delay:2.1035s;
+		-moz-animation-delay:2.1035s;
+}
+#fountainTextG_16{
+	animation-delay:2.21s;
+		-o-animation-delay:2.21s;
+		-ms-animation-delay:2.21s;
+		-webkit-animation-delay:2.21s;
+		-moz-animation-delay:2.21s;
+}
+#fountainTextG_17{
+	animation-delay:2.3165s;
+		-o-animation-delay:2.3165s;
+		-ms-animation-delay:2.3165s;
+		-webkit-animation-delay:2.3165s;
+		-moz-animation-delay:2.3165s;
+}
+#fountainTextG_18{
+	animation-delay:2.433s;
+		-o-animation-delay:2.433s;
+		-ms-animation-delay:2.433s;
+		-webkit-animation-delay:2.433s;
+		-moz-animation-delay:2.433s;
+}
+#fountainTextG_19{
+	animation-delay:2.5395s;
+		-o-animation-delay:2.5395s;
+		-ms-animation-delay:2.5395s;
+		-webkit-animation-delay:2.5395s;
+		-moz-animation-delay:2.5395s;
+}
+#fountainTextG_20{
+	animation-delay:2.656s;
+		-o-animation-delay:2.656s;
+		-ms-animation-delay:2.656s;
+		-webkit-animation-delay:2.656s;
+		-moz-animation-delay:2.656s;
+}
+#fountainTextG_21{
+	animation-delay:2.7625s;
+		-o-animation-delay:2.7625s;
+		-ms-animation-delay:2.7625s;
+		-webkit-animation-delay:2.7625s;
+		-moz-animation-delay:2.7625s;
+}
+
+
+
+
+@keyframes bounce_fountainTextG{
+	0%{
+		transform:scale(1);
+		color:rgb(0,0,0);
+	}
+
+	100%{
+		transform:scale(.5);
+		color:rgb(255,255,255);
+	}
+}
+
+@-o-keyframes bounce_fountainTextG{
+	0%{
+		-o-transform:scale(1);
+		color:rgb(0,0,0);
+	}
+
+	100%{
+		-o-transform:scale(.5);
+		color:rgb(255,255,255);
+	}
+}
+
+@-ms-keyframes bounce_fountainTextG{
+	0%{
+		-ms-transform:scale(1);
+		color:rgb(0,0,0);
+	}
+
+	100%{
+		-ms-transform:scale(.5);
+		color:rgb(255,255,255);
+	}
+}
+
+@-webkit-keyframes bounce_fountainTextG{
+	0%{
+		-webkit-transform:scale(1);
+		color:rgb(0,0,0);
+	}
+
+	100%{
+		-webkit-transform:scale(.5);
+		color:rgb(255,255,255);
+	}
+}
+
+@-moz-keyframes bounce_fountainTextG{
+	0%{
+		-moz-transform:scale(1);
+		color:rgb(0,0,0);
+	}
+
+	100%{
+		-moz-transform:scale(.5);
+		color:rgb(255,255,255);
+	}
+}

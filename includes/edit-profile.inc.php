@@ -16,8 +16,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $valid_password = check_password($pass, $db);
 
     if (!$valid_password == 1) {
-        header("Location: ../profile.php?error=incorrectPass");
-        die();
+        $data['password'] = false;
+      
+    } else {
+        $data['password'] = true;
     }
 
 
@@ -27,34 +29,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_POST['pass1']) && isset($_POST['pass2'])) {
             if ($_POST['pass1'] == $_POST['pass2']) {
                 $pass1 = password_hash(mysqli_real_escape_string($db, $_POST['pass1']), PASSWORD_BCRYPT);
+               
+                $data['password_match'] =true;
+
+               if($data['password']){
                 
                 $seccuss_pass = change_password($pass1, $db);
-                header("Location: ../profile.php?password_changed=$seccuss_pass");
-                die();
-            } else {
+                $data['password_changed'] = $seccuss_pass;
+                  }
+                  else {
+                     $data['password_changed'] = false;
+                        }
+
+            }    
+            
+            else {
                 
-                header("Location: ../profile.php?error=passwordfoesnotmatch");
+                $data['password_match'] =false;
                 
             }
         } else {
-            header("Location: ../profile.php?error=missinginput");
+            $data['missing_input'] = false;
+            
+           
         }
     }
     
     if(isset($_POST["delete"])){
-
+        $data['delete'] = true;
        $deleted = delete_account($db);
        if($deleted){
-        header("Location: ../logout.php?deleted=$deleted");
-        die();
+        $data['deleted'] = true;
+       
+        
        }
-       header("Location: ../profile.php?deleted=erorr");
-       die();
+       $data['deleted'] = false;
+      
     }
     
     if(isset($_POST['update'])){
       
-        
+        $data['update'] = true;
         if (isset($_POST['name']) && isset($_POST['email'])) {
 
             $name  = mysqli_real_escape_string($db, $_POST['name']);
@@ -66,36 +81,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
 
                 if (!in_array($ext, $allowedext)) {
-                    header("Location: ../profile.php?error=notallowedExt");
-                    die();
+                    $data['valid_ext'] = false;
                     
+
+                } else {
+                    $data['valid_ext'] = true;
+                  
                 }
                 
                 
                 
                 $imgsize = $_FILES['img']['size'];
                 if ($imgsize > 2000000) {
-                    header("Location: ../profile.php?error=size");
-                    die();
+                    $data['valid_size'] = false;
+                    
+                }
+                else {
+                    $data['valid_size'] = true;
+                    
                 }
 
                 $imgData = file_get_contents($_FILES['img']['tmp_name']);
                 $imgBase64 = "data:image/" . $ext . ";base64," . base64_encode($imgData);
                 $newImg  = true;
+                $data['newImg'] = true;
+               
                 
             } else {
                 $newImg = false;
-                echo $newImg;
+                $data['newImg'] = false;
+             
+                
        
             }
 
             
             if ($name == $_SESSION['name'] && $email == $_SESSION['email'] && !$newImg) {
-                header("Location: ../profile.php?error=unchanged");
-                die();
-            } else {
+                $data['changed'] = false;
+               
+            } 
+            else {
                 
-                
+                $data['changed'] = true;
+             
+
                 $valid_name  = validate_name($name);
                 $valid_email = validate_email($email);
                 
@@ -104,6 +133,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     
                     if ($_SESSION['email'] == $email) {
                         $exist = false;
+                        $data['exist'] = false;
+                       
                     } else {
                         check_exist($email, $db);
                     }
@@ -128,24 +159,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $seccuss_img = 0;
                         }
  
-                            header("Location: ../profile.php?email=$seccuss_email&name=$seccuss_name&img=$seccuss_img");
-                            die();
+                           
+                            $data['name'] = $seccuss_name;
+                            $data['email'] = $seccuss_email;
+                            $data['img'] = $seccuss_img;
+                            
                         
                         
                     } else {
-                        header("Location: ../profile.php?error=exist");
-                        die();
+                        $data['exist'] = true;
+                       
                     }
                     
                 } else {
-                    header("Location: ../profile.php?error=Incorrecformat");
-                    die();
+                    $data['valid_name'] =  $valid_name ;
+                    $data['valid_email'] =  $valid_email ;
+                    
                 }
                 
                 
-                
-                header("Location: ../profile.php?error=de");
-                die();
+               
                 
             }
             
@@ -156,8 +189,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
 } else {
-    header("Location: ../profile.php?error=method");
-    die();
+    $data['method'] = false; 
+   
 }
 
 function validate_name($name)
@@ -229,7 +262,7 @@ function edit_img($img, $db)
     $stmt = $db->prepare($sql);
     $stmt->bind_param('ss',  $img, $_SESSION['username']);
     $stmt->execute();
-    echo $stmt->error;
+    $data["stmt_img"] = $stmt->error;
     if ($stmt->execute()) {
         return true;
     }
@@ -245,7 +278,7 @@ function edit_name($name, $db)
     $stmt = $db->prepare($sql);
     $stmt->bind_param('ss',  $name, $_SESSION['username']);
     $stmt->execute();
-    echo $stmt->error;
+    $data["stmt_name"] =$stmt->error;
     if ($stmt->execute()) {
         return true;
     }else {
@@ -263,7 +296,7 @@ function edit_email($email, $db)
     $stmt = $db->prepare($sql);
     $stmt->bind_param('ss', $email,  $_SESSION['username']);
     $stmt->execute();
-    echo $stmt->error;
+    $data["stmt_email"] = $stmt->error;
     if ($stmt->execute()) {
         return true;
     }
@@ -279,7 +312,7 @@ function delete_account($db)
     $stmt = $db->prepare($sql);
     $stmt->bind_param('s', $_SESSION['username']);
     $stmt->execute();
-    echo $stmt->error;
+    $data["stmt_delete"] = $stmt->error;
     if ($stmt->execute()) {
         return true;
     }
@@ -290,3 +323,5 @@ function delete_account($db)
 
 
 $db->close();
+
+echo json_encode($data);

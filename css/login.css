@@ -79,8 +79,8 @@ a#resetpass {
   text-align: center;
 }
 .profile-img img{
-  width: 70%;
-  height: 100%;
+  width: 50%;
+  height: 80%;
 }
 .profile-img .file {
   position: relative;
@@ -169,6 +169,15 @@ a#resetpass {
 	color: rgb(230, 20, 20);
 }
 
+span.err2 {
+	font-size: .8rem;
+	font-family: 'Montserrat', sans-serif;
+	margin-left: 0;
+	padding: 1;
+  color:red!important;
+  font-weight: bold;
+}
+
 .err-login {
 	font-size: 1rem;
 	font-family: 'Montserrat', sans-serif;
@@ -181,6 +190,20 @@ a#resetpass {
 	border: solid;
 	border-color: red;
 	color: red;
+}
+
+.error2 {
+	border: solid;
+	border-color: red;
+  color: red;
+  font-weight: red;
+}
+
+.sueccess {
+
+  color: 0.8rem  #0062cc;
+  font-weight: bold;
+  line-height: 1;
 }
 
 @media (max-width: 575px) {

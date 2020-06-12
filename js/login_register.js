@@ -101,34 +101,7 @@ $(document).ready(function () {
     $('#passform').slideDown('slow');
 });
 
-$('#home-tab').click(function () {
-  $('#home').show('slow');
-  $('#profile').hide('slow');
-  $('#password').hide('slow');
-  $('#delete').hide('slow');
-});
 
-$('#profile-tab').click(function () {
-  $('#profile').show('slow');
-  $('#home').hide('slow');
-  $('#password').hide('slow');
-  $('#delete').hide('slow');
-});
-
-$('#password-tab').click(function () {
-  $('#password').show('slow');
-  $('#home').hide('slow');
-  $('#profile').hide('slow');
-  $('#delete').hide('slow');
-});
-
-$('#delete-tab').click(function () {
-  $('#delete').show('slow');
-  $('#home').hide('slow');
-  $('#profile').hide('slow');
-  $('#password').hide('slow');
-});
-  
   // Animate buttons
   $(".btn-custom").mouseenter(function () {
     $(".btn").stop();

@@ -14,6 +14,7 @@
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
       <!-- CSS -->
+      <link rel="stylesheet" href="./css/loader.css" />
       <link rel="stylesheet" href="./css/styles.css" />
       <link href="css/style2.css" rel="stylesheet" />
       <!-- Theme skin -->
@@ -28,6 +29,8 @@
       <!-- Bootsrap jQuery and JavaScript -->
    </head>
    <body>
+
+      <? include_once("includes/loader.inc.php") ?>
       <header>
          <?php
             if(!$_SESSION['logged_in']){
@@ -57,7 +60,7 @@
                      </li>
                      <li class="nav-item"> <a class="nav-link" href="meeting-report.html">Reports</a></li>
                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"><?php echo $_SESSION['name']?> <i class="la la-user-circle la-lg"></i></a>
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"><?php echo $_SESSION['name']   ?><img src="<? echo $_SESSION['img']; ?>" width="25" height="25"; alt="profile" /></a>
                         <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                            <a class="dropdown-item" href="profile.php">Profile</a>
                            <a class="dropdown-item" href="logout.php">Logout</a>
@@ -72,12 +75,12 @@
       <div class="container">
          <hr>
          <div class="container emp-profile">
-         <form action="includes/edit-profile.inc.php" method="POST" enctype="multipart/form-data">
+         <form action="includes/edit-profile.inc.php" id="profile-form" method="POST" enctype="multipart/form-data">
             <div class="row">
             
                <div class="col-md-4">
                   <div class="profile-img">
-                     <img src="<? echo $_SESSION['img']; ?>" width:20px; height:20px; alt="profile" />
+                     <img src="<? echo $_SESSION['img']; ?>" width="10" height="10"; alt="profile" />
                      <div class="file btn btn-lg btn-primary">
                         <label for="file" >Change Photo</label>
                         <input type="file" name="img"/>
@@ -96,7 +99,7 @@
                         Web Developer and Designer
                      </h6>
 
-                     <ul class="nav nav-tabs" id="myTab" role="tablist">
+                     <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
                         <li class="nav-item">
                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" >Info
                            </a>
@@ -259,7 +262,7 @@
 
                <div  class="col-md-8" id="password">
                   <div class=" profile-tab" id="myTabContent">
-                  <form action="includes/edit-profile.inc.php" method="POST" enctype="multipart/form-data">
+                  <form action="includes/edit-profile.inc.php" id="password-form" method="POST" enctype="multipart/form-data">
                      <div class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
                       
 
@@ -270,7 +273,7 @@
                               </label>
                            </div>
                            <div class="col-md-6">
-                           <input type="password" class="edit" name="pass1">
+                           <input type="password" id="newPass_input1" class="edit" name="pass1">
                            </div>
                         </div>
 
@@ -280,7 +283,7 @@
                               </label>
                            </div>
                            <div class="col-md-6">
-                           <input type="password" class="edit" name="pass2">
+                           <input type="password"  id="newPass_input2" class="edit" name="pass2">
                            </div>
                         </div>
 
@@ -291,11 +294,11 @@
                               </label>
                            </div>
                            <div class="col-md-6">
-                              <input name="cpass" type="password" class="edit">
+                              <input name="cpass"  id="newPass_input3" type="password" class="edit">
                            </div>
                         </div>
 
-                        <input type="submit" name="reset" id="">
+                        <input type="submit" name="reset" id="reset">
                         
                        
                      </div>
@@ -304,7 +307,7 @@
                </div>
 
                <div  class="col-md-8" id="delete">
-               <form action="includes/edit-profile.inc.php" method="POST" enctype="multipart/form-data">
+               <form action="includes/edit-profile.inc.php" id="delete-form" method="POST" enctype="multipart/form-data">
                <div class=" profile-tab" id="myTabContent">
                      <div class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
                        
@@ -444,7 +447,7 @@
             </div>
          </footer>
       </div>
-      <!-- jQuery code to show the clicked form and hide the rest && error handling -->
-      <script src='js/login_register.js'></script>
+      <!-- jQuery code to show the clicked  && error handling -->
+      <script src='js/profile-handler.js'></script>
    </body>
 </html>

@@ -12,6 +12,7 @@ session_start();
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <!-- CSS -->
+    <link rel="stylesheet" href="./css/loader.css" />
     <link rel="stylesheet" href="./css/styles.css" />
     <link href="css/style2.css" rel="stylesheet" />
     <!-- Theme skin -->
@@ -23,12 +24,14 @@ session_start();
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Roboto&family=Titillium+Web&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    
 </head>
 
-<body>
+<body >
 
-    
- 
+
+        <? include_once("includes/loader.inc.php") ?>
+
         <header>
             <?php
             if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
