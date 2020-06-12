@@ -49,6 +49,8 @@ $(document).ready(function () {
           $('#register').hide();
           $('#reg-suc').after('<h2 id="reg-mesg" class="py-4 suc-message">Account created successfully</h2>');
           
+        }else {
+          console.log('error');
         }
       },
       error: function (jqXHR, textStatus, errorThrown) {

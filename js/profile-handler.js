@@ -27,9 +27,7 @@ $(document).ready(function () {
         var form = $(this)[0];
         var formData = new FormData(form);
         formData.append('reset', true);
-        for (var value of formData.values()) {
-            console.log(value); 
-         }
+
         $.ajax({
           method: "POST",
           url: "includes/edit-profile.inc.php?",
@@ -77,7 +75,9 @@ $(document).ready(function () {
         event.preventDefault();
         var form = $(this)[0];
         var formData = new FormData(form);
-        console.log(formData);
+        formData.append('delete', true);
+
+      
         $.ajax({
           method: "POST",
           url: "includes/edit-profile.inc.php?",
@@ -88,6 +88,10 @@ $(document).ready(function () {
           success: function (response) {
             console.log(response);
             rmAll();
+
+            if(response.deleted){
+              window.location = "logout.php?deleted=" + response.deleted;
+            }
 
           },
           error: function (jqXHR, textStatus, errorThrown) {

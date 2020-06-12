@@ -27,13 +27,14 @@ session_start();
     <div id="wrapper">
       <!-- /////////////////////////////////////////////////////////////start header////////////////////////////////////////////////////////// -->
       <header>
-         <?php
-			if(!$_SESSION['logged_in']){
-			header("Location: login.php");
-			} else {
-                session_destroy();
-            }
-		?>
+      <?php
+		    	if(!$_SESSION['logged_in']){
+		    	header("Location: login.php");
+		    	} else {
+                    session_destroy();
+                }
+		    ?>
+
         <nav class="navbar navbar-expand-md navbar-light bg-light">
 				<div class="container-fluid"> <!-- container fluid is make use of 100% of the screen -->
 					<a class="navbar-brand" href="homepage.php">
@@ -62,11 +63,11 @@ session_start();
          
            <div>
 
-            <?if(isset($_GET)){
+            <?
            if(isset($_GET['deleted']) && $_GET['deleted']){
             echo ' <h1 class="text-center">Your account has been deleted successfully</h1>';
            }
-         }else {
+         else {
           echo ' <h2 class="text-center">You have been logged out successfully</h2>';
          }
       

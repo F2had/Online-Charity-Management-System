@@ -86,11 +86,11 @@ if ($_SERVER['REQUEST_METHOD']  == 'POST'){
 
                if(!$needPH){
                 $data['success'] = register_user($username, $email, $pass1, $name,$imgBase64,  $db);
-                 $data['ph'] = "we gave a pic";
+                 $data['ph'] = "you gave a pic";
                }else {
              
                 $data['success'] = register_user($username, $email, $pass1, $name,$imgBase64_ph,  $db);
-                $data['ph'] = "you gave a pic";
+                $data['ph'] = "we gave a pic";
                }
               }
            
@@ -140,7 +140,11 @@ function register_user($username, $email, $pass1,$name,$img, $db){
     if($db->prepare($sql)){
         $stmt = $db->prepare($sql);
         $stmt->bind_param('sssss',  $username, $email, $pass1, $name, $img);
-        return  $stmt->execute();
+          $stmt->execute();
+        $data['stmt'] = $stmt->error;
+        if($stmt->execute()){
+            return true;
+        }
     }
     return false;
 } 

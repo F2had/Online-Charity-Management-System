@@ -57,13 +57,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if(isset($_POST["delete"])){
         $data['delete'] = true;
+
        $deleted = delete_account($db);
+
        if($deleted){
         $data['deleted'] = true;
        
         
+       }else {
+        $data['deleted'] = false;
        }
-       $data['deleted'] = false;
+       
       
     }
     
