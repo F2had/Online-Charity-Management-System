@@ -54,7 +54,7 @@
                      <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">Volunteer</a>
                         <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                           <a class="dropdown-item" href="Volunteer.html">Volunteer Registration</a>
+                           <a class="dropdown-item" href="Volunteer.php">Volunteer Registration</a>
                            <a class="dropdown-item" href="ProjectRegisterationForm.html">Volunteer project registration</a>
                         </div>
                      </li>

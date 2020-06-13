@@ -8,11 +8,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- css -->
 	<!-- <link href="css/bootstrap.min.css" rel="stylesheet" /> -->
-	
+	<link rel="stylesheet" href="./css/loader.css" />
+
 
 	<link href="plugins/flexslider/flexslider.css" rel="stylesheet" media="screen" />
-	<link href="css/cubeportfolio.min.css" rel="stylesheet" />
-
+  <link href="css/cubeportfolio.min.css" rel="stylesheet" />
+         
 	<link href="css/style2_2.css" rel="stylesheet" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	
@@ -28,14 +29,14 @@
 </head>
 
 <body>
-	
+<? include_once("includes/loader.inc.php") ?>
 	<div id="wrapper">
 		<!-- start header -->
 		<header>
 			
 			<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
 				<div class="container-fluid"> <!-- container fluid is make use of 100% of the screen -->
-					<a class="navbar-brand" href="homepage.html"><img src="img/logo-filler.png"><lo>Raise reason</lo></a>
+					<a class="navbar-brand" href="homepage.php"><img src="img/logo-filler.png"><lo>Raise reason</lo></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=#navbarResponsive>
 						<span class="navbar-toggler-icon"></span>
 					</button>
@@ -43,11 +44,11 @@
 
 					<div class="collapse navbar-collapse" id="navbarResponsive">
 						<ul class="navbar-nav ml-auto"><!-- push our notification to right hand side -->
-							<li class="nav-item" > <a class="nav-link" href="index.html">Home</a> </li>
+							<li class="nav-item" > <a class="nav-link" href="homepage.php">Home</a> </li>
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">Volunteer</a>
 								<div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-									<a class="dropdown-item" href="Volunteer.html">Volunteer Registration</a>
+									<a class="dropdown-item" href="Volunteer.php">Volunteer Registration</a>
 									<a class="dropdown-item" href="ProjectRegisterationForm.html">Volunteer project registration</a>
 									
 								</div>

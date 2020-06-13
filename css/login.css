@@ -67,7 +67,9 @@ a#resetpass {
 	margin-right: auto;
 	margin-top: 4%;
 }
-
+a.navbar-brand {
+  color: #666!important;
+}
 .emp-profile{
   padding: 3%;
   margin-top: 3%;
