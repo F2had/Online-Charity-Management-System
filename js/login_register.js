@@ -4,7 +4,6 @@ $(document).ready(function () {
     event.preventDefault();
     var form = $(this)[0];
     var formData = new FormData(form);
-    console.log(formData);
     $.ajax({
       method: "POST",
       url: "includes/signup.inc.php?",
@@ -15,7 +14,10 @@ $(document).ready(function () {
       success: function (response) {
         console.log(response);
         rmAll();
+          console.log(response.size);
+        
         if(!response.validnmae){
+          
             $('#name_input').addClass('error');
             $('#name_input').after('<span class="err"> Name should be A-Z a-z and space only</span>');
         }
@@ -28,7 +30,7 @@ $(document).ready(function () {
         if(!response.validemail){
           $('#email_input').addClass('error');
           $('#email_input').after('<span class="err"> Use a valid email</span>');
-      }
+         }
 
         if(!response.matchpass){
             $('#ps1').addClass('error');
@@ -45,12 +47,28 @@ $(document).ready(function () {
             
         }
 
+        if(!response.validext){
+          console.log("not valid ex");
+          $('#file-Input').addClass('error');
+          $('#file-Input').after('<span class="err">Invalid extenstion {gif, png, jpg} are allowed only</span>');
+          $('#file-Input').addClass('error');
+          
+       }
+
+       if(!response.size){
+        $('#file-Input').addClass('error');
+        $('#file-Input').after('<span class="err">Maximum size 2MB</span>');
+        $('#file-Input').addClass('error');
+        
+        }
+       
+
         if(response.success){
           $('#register').hide();
           $('#reg-suc').after('<h2 id="reg-mesg" class="py-4 suc-message">Account created successfully</h2>');
           
         }else {
-          console.log('error');
+          console.log('register error');
         }
       },
       error: function (jqXHR, textStatus, errorThrown) {
@@ -82,6 +100,10 @@ $(document).ready(function () {
     $('#usrname_input + span').remove();
     $('#name_input').removeClass('error');
     $('#name_input + span').remove();
+
+    $('#file-Input').removeClass('error');
+    $('#file-Input + span').remove();
+    $('#file-Input + span').remove();
   }
 
   // Aimate hide forms

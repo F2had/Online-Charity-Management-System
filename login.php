@@ -165,10 +165,11 @@ session_start();
                             <div class="form-group w-75 py-3 container-fluid">
                                 <div class="input-group">
                                     <div class="input-group-text"><i class="las la-portrait"></i></div>
-                                    <input class="input-file" id="fileInput" type="file" name="file">
+                                    <input class="input-file" id="file-Input" type="file" name="file">
                                 </div>
                             </div>
-                            <!-- onfocus="this.type='file' -->
+
+                          
                             <!-- Password -->
                             <div class="form-group w-75 py-3 container-fluid">
                                 <div class="input-group">

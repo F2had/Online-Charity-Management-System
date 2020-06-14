@@ -1,32 +1,31 @@
 /*-------------------------------------Elements-------------------------------------*/
 
 body {
-	font-family: 'Titillium Web', sans-serif;
+  font-family: "Titillium Web", sans-serif;
 }
 
 h1 {
-	color: #000;
-	font-weight: bold;
-	margin: 0 0 40px;
-	font-family: "Titillium Web", sans-serif;
+  color: #000;
+  font-weight: bold;
+  margin: 0 0 40px;
+  font-family: "Titillium Web", sans-serif;
 }
 
 a {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 footer {
-	background: #f2f2f2;
+  background: #f2f2f2;
 }
 
 body {
-	background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 input::placeholder {
-	font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
-
 
 .custom-file-upload {
   border: 1px solid #ccc;
@@ -41,13 +40,10 @@ input::placeholder {
   cursor: pointer;
 }
 input.edit {
-  border-bottom: 1px solid #1C6EA4;
-  
-
+  border-bottom: 1px solid #1c6ea4;
 }
 
 /*-------------------------------------IDs-------------------------------------*/
-
 
 /* Hide register and reset password form because when we use nav-tabs it won't complete disapear. used jQuery to change it whenever button is clicked */
 
@@ -55,32 +51,36 @@ a#resetpass {
   color: #000;
 }
 
-
-#delete, #profile, #password, #message,  #passform, #register  {
+#delete,
+#profile,
+#password,
+#message,
+#passform,
+#register {
   display: none;
 }
 
 /*-------------------------------------Classes-------------------------------------*/
 
 .container {
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 4%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4%;
 }
 a.navbar-brand {
-  color: #666!important;
+  color: #666 !important;
 }
-.emp-profile{
+.emp-profile {
   padding: 3%;
   margin-top: 3%;
   margin-bottom: 3%;
   border-radius: 0.5rem;
   background-color: #fff;
 }
-.profile-img{
+.profile-img {
   text-align: center;
 }
-.profile-img img{
+.profile-img img {
   width: 50%;
   height: 80%;
 }
@@ -100,13 +100,13 @@ a.navbar-brand {
   right: 0;
   top: 0;
 }
-.profile-head h5{
+.profile-head h5 {
   color: #333;
 }
-.profile-head h6{
+.profile-head h6 {
   color: #0062cc;
 }
-.profile-edit-btn{
+.profile-edit-btn {
   border: none;
   border-radius: 1.5rem;
   width: 70%;
@@ -116,44 +116,105 @@ a.navbar-brand {
   cursor: pointer;
 }
 
+.profile-btn {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 1px solid #3498db;
+  border-radius: 0.6em;
+  color: #3498db;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 200;
+  line-height: 0.4;
+  margin: 10px;
+  padding: 1.2em 1.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+.profile-btn:hover,
+.profile-btn:focus {
+  color: #fff;
+  outline: 0;
+}
 
+.btn-ani {
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.btn-ani:hover {
+  box-shadow: 0 0 40px 40px #3498db inset;
+}
 
-.profile-head .nav-tabs{
-  margin-bottom:5%;
+.delete-btn {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 1px solid #e74c3c;
+  border-radius: 0.6em;
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 200;
+  line-height: 0.4;
+  margin: 10px;
+  padding: 1.2em 1.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+.delete-btn:hover,
+.delete-btn:focus {
+  color: #fff;
+  outline: 0;
+}
+
+.delete-ani {
+  transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.delete-ani:hover {
+  box-shadow: 0 0 40px 40px #e74c3c inset;
+}
+.profile-head .nav-tabs {
+  margin-bottom: 5%;
   color: rgb(141, 140, 140);
 }
-.profile-head .nav-tabs .nav-link{
-  font-weight:600;
+.profile-head .nav-tabs .nav-link {
+  font-weight: 600;
   border: none;
   color: #000;
 }
-.profile-head .nav-tabs .nav-link.active{
+.profile-head .nav-tabs .nav-link.active {
   border: none;
-  border-bottom:2px solid #0062cc;
+  border-bottom: 2px solid #0062cc;
 }
-.profile-work{
+.profile-work {
   padding: 14%;
   margin-top: -15%;
 }
-.profile-work p{
+.profile-work p {
   font-size: 12px;
   color: #818182;
   font-weight: 600;
   margin-top: 10%;
 }
-.profile-work a{
+.profile-work a {
   text-decoration: none;
   color: #495057;
   font-weight: 600;
   font-size: 14px;
 }
-.profile-work ul{
+.profile-work ul {
   list-style: none;
 }
-.profile-tab label{
+.profile-tab label {
   font-weight: 600;
 }
-.profile-tab p{
+.profile-tab p {
   font-weight: 600;
   color: #0062cc;
 }
@@ -164,125 +225,123 @@ a.navbar-brand {
   margin-left: auto;
 }
 .err {
-	font-size: .9rem;
-	font-family: 'Montserrat', sans-serif;
-	margin: 0;
-	padding: 0;
-	color: rgb(230, 20, 20);
+  font-size: 0.9rem;
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: rgb(230, 20, 20);
 }
 
 span.err2 {
-	font-size: .8rem;
-	font-family: 'Montserrat', sans-serif;
-	margin-left: 0;
-	padding: 1;
-  color:red!important;
+  font-size: 0.8rem;
+  font-family: "Montserrat", sans-serif;
+  margin-left: 0;
+  padding: 1;
+  color: red !important;
   font-weight: bold;
 }
 
 .err-login {
-	font-size: 1rem;
-	font-family: 'Montserrat', sans-serif;
-	margin: 0;
-	padding: 0;
-	color: rgb(233, 15, 15);
+  font-size: 1rem;
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: rgb(233, 15, 15);
 }
 
 .error {
-	border: solid;
-	border-color: red;
-	color: red;
+  border: solid;
+  border-color: red;
+  color: red;
 }
 
 .error2 {
-	border: solid;
-	border-color: red;
+  border: solid;
+  border-color: red;
   color: red;
   font-weight: red;
 }
 
 .sueccess {
-
-  color: 0.8rem  #0062cc;
+  color: 0.8rem #0062cc;
   font-weight: bold;
   line-height: 1;
 }
 
 @media (max-width: 575px) {
-	.container {
-		margin-left: 5%;
-		margin-right: 5%;
-		margin-top: 4%;
-	}
+  .container {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 4%;
+  }
 }
 
 .login-register {
-	border: 2px solid #949494;
-	border-radius: 18px 9px 40px 0px;
-	padding-top: 2%;
-	margin-bottom: 3.5%;
-	font-weight: bold;
-	-webkit-box-shadow: 0px -1px 18px -3px #000000;
-	box-shadow: 0px -1px 18px -3px #000000;
-	background-image: url('../images/86373.jpg');
+  border: 2px solid #949494;
+  border-radius: 18px 9px 40px 0px;
+  padding-top: 2%;
+  margin-bottom: 3.5%;
+  font-weight: bold;
+  -webkit-box-shadow: 0px -1px 18px -3px #000000;
+  box-shadow: 0px -1px 18px -3px #000000;
+  background-image: url("../images/86373.jpg");
 }
 
-.login-register .nav-tabs>li>a {
-	color: #000;
+.login-register .nav-tabs > li > a {
+  color: #000;
 }
 
-.login-register .nav-tabs>li>a.active {
-	background-color: rgb(139, 145, 149);
-	border-color: #537780;
-	border-bottom: 0.2rem solid #0062cc;
-	color: white;
+.login-register .nav-tabs > li > a.active {
+  background-color: rgb(139, 145, 149);
+  border-color: #537780;
+  border-bottom: 0.2rem solid #0062cc;
+  color: white;
 }
 
-.login-register .nav-tabs>li>a:hover {
-	background-color: #f9f9f9;
-	border-bottom: 0.4rem solid #5c5e5f;
-	color: #000;
-	font-style: italic;
-	font-weight: bold;
-	filter: brightness(50%);
+.login-register .nav-tabs > li > a:hover {
+  background-color: #f9f9f9;
+  border-bottom: 0.4rem solid #5c5e5f;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+  filter: brightness(50%);
 }
 
-.login-register .nav-tabs>ul>li>a,
-.login-register .nav-tabs>ul>li>a.active {
-	border-radius: 3%;
-	text-align: center;
-	width: auto;
+.login-register .nav-tabs > ul > li > a,
+.login-register .nav-tabs > ul > li > a.active {
+  border-radius: 3%;
+  text-align: center;
+  width: auto;
 }
-
 
 /* Buttons */
 
 .btn-custom {
-	background-color: rgb(51, 51, 51);
-	border-radius: 0;
-	color: #fff;
-	margin-bottom: 0.5rem;
-	width: 30%;
-	font-weight: bold;
+  background-color: rgb(51, 51, 51);
+  border-radius: 0;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  width: 30%;
+  font-weight: bold;
 }
 
 .navbar-light .navbar-nav .nav-link {
-	color: rgba(0, 0, 0, .5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .suc-message {
-	color: #000;
-	text-align: center;
+  color: #000;
+  text-align: center;
 }
 
 .navbar-light .navbar-brand {
-	font-family: 'Lexend Tera', sans-serif;
+  font-family: "Lexend Tera", sans-serif;
 }
 .header {
-  background-color: #f7f7f7!important;
+  background-color: #f7f7f7 !important;
 }
 .bg-light {
-	background-color: #f7f7f7!important;
+  background-color: #f7f7f7 !important;
 }
 .sub-footer {
   background-color: #f7f7f7;
