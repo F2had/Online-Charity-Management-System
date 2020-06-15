@@ -82,10 +82,32 @@ $(document).ready(function () {
     });
   });
 
+  $("#reset-form").submit(function (event) {
+    event.preventDefault();
+    var form = $(this)[0];
+    var formData = new FormData(form);
 
-    function check_type(){
+    $.ajax({
+      method: "POST",
+      url: "includes/resetPassword-inc.php?",
+      data: formData,
+      dataType: "JSON",
+      contentType: false, 
+       processData: false,
+      success: function (response) {
+        if(response){
+          Swal.fire({
+            title: 'Password Reset',
+            text: 'Instrctions will be send to your Email if a match found in our Database. Make sure to check spam/junk folder',
+            icon: 'info'
+          })
+        }
+      }
+      
+    });
+  });
 
-    }
+
   //Remove all errors spans if any
   function rmAll(){
     $('#name_input').removeClass('error');

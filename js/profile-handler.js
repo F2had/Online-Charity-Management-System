@@ -124,8 +124,8 @@ $(document).ready(function () {
 
         if (!response.password_match) {
           Swal.fire({
-
-            title: "Password Does't Match",
+            icon: 'error',
+            title: "Password Doesn't Match",
           })
         }
 
@@ -194,7 +194,7 @@ $(document).ready(function () {
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
           'Cancelled',
-          'You can keep enjoying us with'
+          'Thank you for keep giving'
         )
       }
     })
