@@ -98,7 +98,7 @@ $(document).ready(function () {
         if(response){
           Swal.fire({
             title: 'Password Reset',
-            text: 'Instrctions will be send to your Email if a match found in our Database. Make sure to check spam/junk folder',
+            text: 'Instructions will be send to your Email if a match found in our Database. Make sure to check spam/junk folder',
             icon: 'info'
           })
         }
