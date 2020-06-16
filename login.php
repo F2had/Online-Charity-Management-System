@@ -17,8 +17,6 @@ session_start();
     <link href="css/style2.css" rel="stylesheet" />
     <!-- Theme skin -->
     <link href="skins/default.css" rel="stylesheet" />
-    <!-- boxed bg -->
-    <!-- <link id="bodybg" href="bodybg/bg1.css" rel="stylesheet" type="text/css" /> -->
     <link rel="stylesheet" href="./css/login.css" />
     <!-- Line Awsome -->
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
@@ -42,16 +40,23 @@ session_start();
             <div class="container-fluid header">
                 <!-- container fluid is make use of 100% of the screen -->
                 <nav class="navbar navbar-light bg-light header">
-                    <a class="navbar-brand header" href="homepage.php">
-
-                        <img src="img/logo-filler.png" width="30" height="30" class="d-inline-block align-top" alt="">
-                        Raise Reason
+                <a class="navbar-brand " href="homepage.php"><img style="width: 25%; height: 25%;" src="img/logo-filler.png">
+                        <lo>Raise reason</lo>
                     </a>
                 </nav>
             </div>
         </nav>
     </header>
     <!-- Navigation end -->
+
+    <div class="container2" style='font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";'>
+      <img src="img/bodybg/bg1.png" width="100%" height="150px">
+      <div class="centered">
+         <y style="text-transform: uppercase;font-size: 60px;font-weight: 700; line-height: 1em; letter-spacing: -1px;">
+            Awesome Charity
+         </y>
+      </div>
+   </div>
 
     <div class="container">
         <hr>
@@ -161,14 +166,30 @@ session_start();
                             </div>
                         </div>
 
-                        <!-- Profile picture -->
+                        <!-- Phone -->
                         <div class="form-group w-75 py-3 container-fluid">
                             <div class="input-group">
-                                <div class="input-group-text"><i class="las la-portrait"></i></div>
-                                <input class="input-file" id="file-Input" type="file" name="file">
+                                <div class="input-group-text"><i class="las la-phone"></i></div>
+                                <input type="text" id="phone_input" name="phone" class="form-control" placeholder="Phone *" />
                             </div>
                         </div>
 
+                        <!--   Occupation -->
+                        <div class="form-group w-75 py-3 container-fluid">
+                            <div class="input-group">
+                                <div class="input-group-text"><i class="las la-building"></i></div>
+                                <input type="text" id="occ_input" name="occ" class="form-control" placeholder="Occupation *" />
+                            </div>
+                        </div>
+
+                        <!-- Profile picture -->
+                        <div class="form-group w-75 py-3 container-fluid">
+                            <div class="input-group">
+                                <div class="input-group-text"><i class="las la-portrait"></i> </div>
+                                <label class=" btn-sm" id="file-lab" for="file-Input">Upload a Profile Picture</label>
+                                <input class="input-file" style="visibility:hidden;" id="file-Input" type="file" name="file">
+                            </div>
+                        </div>
 
                         <!-- Password -->
                         <div class="form-group w-75 py-3 container-fluid">
@@ -218,7 +239,7 @@ session_start();
 
                     <!-- Reset password button -->
                     <div class="text-center">
-                        <input type="submit"  class="btn btn-custom btn-outline-light" value="Reset" /></div>
+                        <input type="submit" class="btn btn-custom btn-outline-light" value="Reset" /></div>
                 </form>
             </div>
             <!-- Reset password form end-->
@@ -297,7 +318,7 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-   
+
     <!-- SweetAlert2  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 

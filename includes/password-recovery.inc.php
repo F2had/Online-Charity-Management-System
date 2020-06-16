@@ -17,13 +17,13 @@ if (isset($_GET['email']) && isset($_GET['token']))
         
     }
     else {
-        header("Location: ../homepage.php");
+        header("Location: ../homepage.php?nomatch=true");
         die();
     }
 } 
 else
 {
-    header("Location: ../homepage.php?");
+    header("Location: ../homepage.php?get=false");
     die();
 }
 ?>

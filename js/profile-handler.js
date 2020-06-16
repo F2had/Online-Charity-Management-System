@@ -17,6 +17,7 @@ $(document).ready(function () {
 
 
         if (!response.password) {
+
           Swal.fire({
             icon: 'error',
             title: "Incorrect Password"
@@ -25,42 +26,36 @@ $(document).ready(function () {
         else {
 
           if (!response.changed) {
+            
             Swal.fire({
               icon: 'error',
               title: "Nothing Changed"
             })
+              return ;
           } else {
-
-            
-              if (!response.valid_email) {
+            if (!response.valid_email) {
+              Swal.fire({
+                icon: 'error',
+                title: "Invalid e-mail"
+              })
+            }
+            else {
+              if (response.exist) {
                 Swal.fire({
                   icon: 'error',
-                  title: "Invalid e-mail"
+                  title: "E-mail already exist"
                 })
               }
-              else {
-                if (response.exist) {
-                  Swal.fire({
-                    icon: 'error',
-                    title: "E-mail already exist"
-                  })
-                }
-              }
-
-             
-            
+            }
 
 
-              if (!response.valid_name) {
-                Swal.fire({
-                  icon: 'error',
-                  title: "Invalid Name",
-                  text: "Only A-Z a-z allowed"
-                })
-              }
-            
-
-
+            if (!response.valid_name) {
+              Swal.fire({
+                icon: 'error',
+                title: "Invalid Name",
+                text: "Only A-Z a-z allowed"
+              })
+            }
 
             if (response.newImg) {
 
@@ -68,35 +63,50 @@ $(document).ready(function () {
                 Swal.fire({
                   icon: 'error',
                   title: "Incorrect Extension",
-                  text: '{gif, png or jpg Only!}'
+                  text: '{gif, png, jpeg or jpg Only!}'
                 })
-              }else {
+              } else {
 
-                if (!response.size) {
+                if (!response.valid_size) {
                   Swal.fire({
                     icon: 'error',
                     title: "Size should be less than 2MB"
                   })
                 }
               }
-              }
-
-
-
             }
 
+          }
 
-            if (response.name || response.email || response.img) {
-              Swal.fire({
-                icon: 'success',
-                title: "Profile Updated!"
-              })
-            }
+          if (!response.valid_phone) {
+            Swal.fire({
+              icon: 'error',
+              title: "Invalid phone number e.g. 01234567213"
+            })
+          }
+
+          if (!response.valid_occupation) {
+            Swal.fire({
+              icon: 'error',
+              title: "Occupation should be A-Z a-z e.g. Web Developer"
+            })
+          }else {
+
           }
 
 
-        },
-      });
+
+          if (response.name_changed || response.phone_changed || response.occupation_changed || response.email_changed || response.img_changed) {
+            Swal.fire({
+              icon: 'success',
+              title: "Profile Updated!"
+            })
+          }
+        }
+
+
+      },
+    });
   });
 
 
@@ -113,21 +123,23 @@ $(document).ready(function () {
       dataType: "JSON",
       processData: false,
       contentType: false,
-      success: function (response, textStatus, jqXHR) {
+      success: function (response, _textStatus, _jqXHR) {
 
         if (!response.password) {
           Swal.fire({
             icon: 'error',
             title: "Incorrect Password",
           })
+        } else {
+          if (!response.password_match) {
+            Swal.fire({
+              icon: 'error',
+              title: "Password Doesn't Match",
+            })
+          }
         }
 
-        if (!response.password_match) {
-          Swal.fire({
-            icon: 'error',
-            title: "Password Doesn't Match",
-          })
-        }
+
 
 
         if (response.password && response.password_match && response.password_changed) {
@@ -140,7 +152,7 @@ $(document).ready(function () {
 
 
       },
-      error: function (jqXHR, textStatus, errorThrown, exception) {
+      error: function (jqXHR, textStatus, errorThrown, _exception) {
         console.log(jqXHR);
         console.log(textStatus);
         console.log(errorThrown);

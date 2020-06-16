@@ -69,6 +69,16 @@ a#resetpass {
 }
 a.navbar-brand {
   color: #666 !important;
+  margin: 0;
+  padding: 0;
+}
+
+a.nav-link {
+  font-size: 1rem;
+}
+
+.swal2-icon.swal2-warning {
+  border-color: red!important;
 }
 .emp-profile {
   padding: 3%;
@@ -120,7 +130,7 @@ a.navbar-brand {
   box-sizing: border-box;
   appearance: none;
   background-color: transparent;
-  border: 1px solid #3498db;
+  border: 1.5px solid #3498db;
   border-radius: 0.6em;
   color: #3498db;
   cursor: pointer;
@@ -152,7 +162,7 @@ a.navbar-brand {
   box-sizing: border-box;
   appearance: none;
   background-color: transparent;
-  border: 1px solid #e74c3c;
+  border: 1.5px solid #e74c3c;
   border-radius: 0.6em;
   color: #e74c3c;
   cursor: pointer;
@@ -335,8 +345,11 @@ span.err2 {
 }
 
 .navbar-light .navbar-brand {
-  font-family: "Lexend Tera", sans-serif;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.9rem;
+
 }
+
 .header {
   background-color: #f7f7f7 !important;
 }

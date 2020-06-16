@@ -39,6 +39,8 @@ function check_credentials($uid, $password, $db){
             $_SESSION['email'] = $row['email'];
             $_SESSION['name'] = $row['name'];
             $_SESSION['img'] = $row['img'];  
+            $_SESSION['phone'] = $row['phone'];
+            $_SESSION['occ'] = $row['occupation'];
             $_SESSION['logged_in'] = true;   
             header("Location: ../login.php?login=success");
             exit();

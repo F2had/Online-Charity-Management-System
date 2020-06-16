@@ -8,6 +8,8 @@ $_SESSION['userID']
 $_SESSION['username']
 $_SESSION['email'] 
 $_SESSION['name']  
+$_SESSION['phone'] 
+$_SESSION['occ'] 
 $_SESSION['logged_in']  
 
 

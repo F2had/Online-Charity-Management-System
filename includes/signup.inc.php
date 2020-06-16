@@ -2,7 +2,7 @@
 
 require('config.inc.php');
 
-$allowedext = array('gif', 'png', 'jpg');
+$allowedext = array('gif', 'png', 'jpg', 'jpeg');
 
 // if a profile image not uploaded will replace it with place holder
 $data['needPH'] = true;
@@ -10,19 +10,20 @@ $imgBase64_ph = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAMAAADDp
 
 if ($_SERVER['REQUEST_METHOD']  == 'POST'){
     
-        if(isset($_POST['name']) && isset($_POST['username']) && isset($_POST['email']) && isset($_POST['pass1']) && isset($_POST['pass2']) ){
+        if(isset($_POST['name']) && isset($_POST['username']) && isset($_POST['email']) && isset($_POST['pass1']) && isset($_POST['pass2'])  && isset($_POST['phone'])  && isset($_POST['occ'])){
             
             $name = mysqli_real_escape_string($db, $_POST['name']);
             $username = mysqli_real_escape_string($db, $_POST['username']);
             $email = mysqli_real_escape_string($db, $_POST['email']);
+            $phone = mysqli_real_escape_string($db, $_POST['phone']);
+            $occupation = mysqli_real_escape_string($db, $_POST['occ']);
             $pass1 = password_hash(mysqli_real_escape_string($db, $_POST['pass1']), PASSWORD_BCRYPT);
             $pass2 = mysqli_real_escape_string($db, $_POST['pass2']);   
             
-            if(isset($_FILES['file'])){
+            if(is_uploaded_file($_FILES['file']['tmp_name'])){
                 $img = $_FILES['file']['name'];
                 $ext = pathinfo($img, PATHINFO_EXTENSION);
                 $data['ext'] = $ext;
-                $data['needPH'] = false;
                 if(!in_array($ext, $allowedext)){
                     $data['validext'] = false;
                 }
@@ -30,19 +31,20 @@ if ($_SERVER['REQUEST_METHOD']  == 'POST'){
                     $data['validext'] = true;
                 }
 
-                if($data['validext']) {
-                $imgsize=$_FILES['file']['size'];
+                $imgsize = $_FILES['file']['size'];
                 if($imgsize > 2000000){
                     $data['size'] = false;
                 }else {
-                $data['size'] = true;
+                    $data['size'] = true;
+                }
+                if($data['validext'] &&  $data['size']) {
                 $imgData = file_get_contents($_FILES['file']['tmp_name']);
                 $imgBase64 = "data:image/" . $ext . ";base64," .base64_encode($imgData);
-               
+                
                 }
                 
                 
-                }
+                $data['needPH'] = false;
                 
             } 
            
@@ -59,6 +61,8 @@ if ($_SERVER['REQUEST_METHOD']  == 'POST'){
             $data['validnmae'] = validate_name($name);
             $data['validuname'] = validate_uname($username);
             $data['validemail'] = validate_email($email);
+            $data['validphone'] = validate_phone($phone);
+            $data['validoccupation'] = validate_occ($occupation);
             $data['matchpass'] = validate_match($pass2, $pass1);
         }
         else {
@@ -66,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD']  == 'POST'){
         }
          
 
-    if($data['validnmae'] && $data['matchpass'] && $data['validuname'] && $data['validemail'] ){
+    if($data['validnmae'] && $data['matchpass'] && $data['validuname'] && $data['validemail']  &&  $data['validoccupation'] && $data['validphone'] ){
         if(!empty($img)){
             if($data['validext'] && $data['size']){
                 $data['valid_info'] = true;
@@ -95,10 +99,10 @@ if ($_SERVER['REQUEST_METHOD']  == 'POST'){
 
                if(!$data['needPH']){
 
-                $data['success'] = register_user($username, $email, $pass1, $name,$imgBase64,  $db);
+                $data['success'] = register_user($username, $email, $pass1, $name, $phone, $occupation, $imgBase64,  $db);
                } 
                else {
-                $data['success'] = register_user($username, $email, $pass1, $name,$imgBase64_ph,  $db);
+                $data['success'] = register_user($username, $email, $pass1, $name, $phone, $occupation,$imgBase64_ph,  $db);
             }
                
              
@@ -117,6 +121,11 @@ function validate_name($name){
     if(preg_match('/^[a-zA-Z ]*$/', $name))   return true;
     return false;
 } 
+
+function validate_occ($occupation){
+    if(preg_match('/^[a-zA-Z ]*$/', $occupation))   return true;
+    return false;
+} 
 function validate_email($email){
     if(preg_match('/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i', $email))   return true;
     return false;
@@ -124,6 +133,11 @@ function validate_email($email){
 
 function validate_uname($username){
     if(preg_match("/^[a-zA-z0-9]*$/", $username)) return true;
+    return false;
+}
+
+function validate_phone($phone){
+    if(preg_match("/^(01)[0-46-9]*[0-9]{7,8}$/", $phone)) return true;
     return false;
 }
 
@@ -146,15 +160,18 @@ function check_exist($username, $email, $db){
     return false;
 }
 
-function register_user($username, $email, $pass1,$name,$img, $db){
+function register_user($username, $email, $pass1,$name,$phone, $occupation,$img, $db){
 
-    $sql = "INSERT INTO users(username, email, `password`, `name`, `img`) VALUES (?, ?, ?, ?, ?) ;";
+    $sql = "INSERT INTO users(username, email, `password`, `name`, `phone`, `occupation`, `img`) VALUES (?, ?, ?, ?, ?, ?, ?) ;";
     if($db->prepare($sql)){
         $stmt = $db->prepare($sql);
-        $stmt->bind_param('sssss',  $username, $email, $pass1, $name, $img);
+        $stmt->bind_param('sssssss',  $username, $email, $pass1, $name, $phone, $occupation, $img);
+       
         if($stmt->execute()){
+            
             return true;
         }
+        $data['stmt'] = $stmt->error;
     }
     return false;
 } 

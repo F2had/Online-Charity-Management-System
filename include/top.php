@@ -33,7 +33,7 @@
 </head>
 
 <body>
-<? include_once("includes/loader.inc.php") ?>
+    <? include_once("includes/loader.inc.php") ?>
     <div id="wrapper">
         <header>
             <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -65,10 +65,11 @@
                             <li class="nav-item"> <a class="nav-link" href="meeting-report.html">Reports</a></li>
 
                             <?php if (!empty($_SESSION['username'])) : ?>
-                                <li class="nav-item dropdown"> <a class="nav-link" data-toggle="dropdown" href="#"><?php echo $_SESSION['username'] ?> <i class="fa fa-user-circle fa-lg"></i></a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"><?php echo $_SESSION['name']   ?><img src="<? echo $_SESSION['img']; ?>" width="30" height="30" alt="profile" class="rounded-circle" /></a>
                                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                                         <a class="dropdown-item" href="profile.php">Profile</a>
-                                        <a class="dropdown-item" href="logout.php">Logout</a>
+                                        <a class="dropdown-item" href="logout.php"><button class="btn btn-danger">Logout</button></a>
                                     </div>
                                 </li>
                             <?php else : ?>

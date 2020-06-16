@@ -43,9 +43,8 @@ session_start();
       <nav class="navbar navbar-expand-md navbar-light bg-light">
          <div class="container-fluid">
             <!-- container fluid is make use of 100% of the screen -->
-            <a class="navbar-brand" href="homepage.php">
-               <img src="img/logo-filler.png" width="30" height="30" class="d-inline-block align-top" alt="">
-               Raise Reason
+            <a class="navbar-brand " href="homepage.php"><img style="width: 25%; height: 25%;" src="img/logo-filler.png">
+               <lo>Raise reason</lo>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=#navbarResponsive>
                <span class="navbar-toggler-icon"></span>
@@ -63,10 +62,10 @@ session_start();
                   </li>
                   <li class="nav-item"> <a class="nav-link" href="meeting-report.html">Reports</a></li>
                   <li class="nav-item dropdown">
-                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"><?php echo $_SESSION['name']   ?><img src="<? echo $_SESSION['img']; ?>" width="25" height="25" ; alt="profile" /></a>
+                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"><?php echo $_SESSION['name']   ?><img src="<? echo $_SESSION['img']; ?>" width="30" height="30" alt="profile" class="rounded-circle" /></a>
                      <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="profile.php">Profile</a>
-                        <a class="dropdown-item" href="logout.php">Logout</a>
+                        <a class="dropdown-item" href="logout.php"><button class="btn btn-danger">Logout</button></a>
                      </div>
                   </li>
                </ul>
@@ -74,6 +73,14 @@ session_start();
          </div>
       </nav>
    </header>
+   <div class="container2" style='font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";'>
+      <img src="img/bodybg/bg1.png" width="100%" height="150px">
+      <div class="centered">
+         <y style="text-transform: uppercase;font-size: 60px;font-weight: 700; line-height: 1em; letter-spacing: -1px;">
+            Awesome Charity
+         </y>
+      </div>
+   </div>
    <!-- Navigation end -->
    <div class="container">
       <hr>
@@ -99,7 +106,7 @@ session_start();
                         <?echo $_SESSION['name']?>
                      </h5>
                      <h6>
-                        Web Developer and Designer
+                        <?echo $_SESSION['occ']?>
                      </h6>
 
                      <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
@@ -130,9 +137,9 @@ session_start();
             </div>
 
 
-            <div class="row">
+            <div class="row" id="main">
 
-               <div class="col-md-8" id="home">
+               <div class="col-md-6" id="home">
                   <div class="tab-content profile-tab" id="myTabContent">
                      <div class="tab-pane  show active" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
@@ -185,17 +192,19 @@ session_start();
                               </label>
                            </div>
                            <div class="col-md-6">
-                              <p>123 456 7890
+                              <p>
+                                 <?echo $_SESSION['phone']?>
                               </p>
                            </div>
                         </div>
                         <div class="row">
                            <div class="col-md-6">
-                              <label>Profession
+                              <label>Occupation
                               </label>
                            </div>
                            <div class="col-md-6">
-                              <p>Web Developer and Designer
+                              <p>
+                                 <?echo $_SESSION['occ']?>
                               </p>
                            </div>
                         </div>
@@ -203,7 +212,7 @@ session_start();
                   </div>
                </div>
 
-               <div class="col-md-8" id="profile">
+               <div class="col-md-6" id="profile">
                   <div class=" profile-tab" id="myTabContent">
                      <div class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
 
@@ -234,36 +243,49 @@ session_start();
                               </label>
                            </div>
                            <div class="col-md-6">
-                              <input class="edit" valus="123 456 789">
+                              <input class="edit" name="phone" value="<?echo $_SESSION['phone']?>">
                            </div>
                         </div>
                      </div>
 
+
+
                      <div class="row">
                         <div class="col-md-6">
-                           <label>Current Password
+                           <label>Occupation
                            </label>
                         </div>
                         <div class="col-md-6">
-                           <input name="cpass" type="password" class="edit">
+                           <input class="edit" name="occupation" value="<? echo $_SESSION['occ']?>">
                         </div>
                      </div>
-
-
-                     <div class="row">
-                        <div class="col-md-12">
-                           <input name="update" type="submit" class="profile-btn btn-ani mt-4" vale="update">
-                        </div>
-                     </div>
-
                   </div>
+
+                  <div class="row">
+                     <div class="col-md-6">
+                        <label>Current Password
+                        </label>
+                     </div>
+                     <div class="col-md-6">
+                        <input name="cpass" type="password" class="edit">
+                     </div>
+                  </div>
+
+
+                  <div class="row">
+                     <div class="col-md-12">
+                        <input name="update" type="submit" class="profile-btn btn-ani mt-4" vale="update">
+                     </div>
+                  </div>
+
                </div>
+               </form>
             </div>
 
-         </form>
+         
 
 
-         <div class="col-md-8" id="password">
+         <div class="col-md-6" id="password">
             <div class=" profile-tab" id="myTabContent">
                <form action="includes/edit-profile.inc.php" id="password-form" method="POST" enctype="multipart/form-data">
                   <div class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
@@ -313,7 +335,7 @@ session_start();
             </form>
          </div>
 
-         <div class="col-md-8" id="delete">
+         <div class="col-md-3" id="delete">
             <form action="includes/edit-profile.inc.php" id="delete-form" method="POST" enctype="multipart/form-data">
                <div class=" profile-tab" id="myTabContent">
                   <div class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
@@ -326,7 +348,7 @@ session_start();
                            </label>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                            <input name="cpass" id="delete-input" type="password" class="edit">
                         </div>
 
@@ -344,13 +366,15 @@ session_start();
             </form>
          </div>
 
-
+        
       </div>
-
+      <hr>
+   </div>
+  
    </div>
 
    </div>
-   <hr>
+
    <!-- Contaienr end -->
    <div>
       <footer>

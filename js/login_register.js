@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  
+
   $("#signup-form").submit(function (event) {
     event.preventDefault();
     var form = $(this)[0];
@@ -9,65 +9,73 @@ $(document).ready(function () {
       url: "includes/signup.inc.php?",
       data: formData,
       dataType: "JSON",
-      contentType: false, 
-       processData: false,
+      contentType: false,
+      processData: false,
       success: function (response) {
-        console.log(response);
         rmAll();
-          console.log(response.size);
-        
-        if(!response.validnmae){
-          
-            $('#name_input').addClass('error');
-            $('#name_input').after('<span class="err"> Name should be A-Z a-z and space only</span>');
+        console.log(response);
+        if (!response.validnmae) {
+
+          $('#name_input').addClass('error');
+          $('#name_input').after('<span class="err"> Name should be A-Z a-z and space only</span>');
         }
 
-        if(!response.validuname){
-            $('#usrname_input').addClass('error');
-            $('#usrname_input').after('<span class="err"> Username should be A-Z a-z and 0-9 Only</span>');
+        if (!response.validuname) {
+          $('#usrname_input').addClass('error');
+          $('#usrname_input').after('<span class="err"> Username should be A-Z a-z and 0-9 Only</span>');
         }
 
-        if(!response.validemail){
+        if (!response.validemail) {
           $('#email_input').addClass('error');
           $('#email_input').after('<span class="err"> Use a valid email</span>');
-         }
-
-        if(!response.matchpass){
-            $('#ps1').addClass('error');
-            $('#ps1').after('<span class="err"> Password does not match</span>');
-            $('#ps2').addClass('error');
-            $('#ps2').after('<span class="err"> Password does not match</span>');
         }
 
-        if(response.exist){
-        
-            $('#usrname_input').addClass('error');
-            $('#usrname_input').after('<span id="reg-mesg" class="err"> Account already registered</span>');
-            $('#email_input').addClass('error');
+        if (!response.validphone) {
+          $('#phone_input').addClass('error');
+          $('#phone_input').after('<span class="err"> Invalid phone number e.g. 01234567213</span>');
+        }
+
+        if (!response.validoccupation) {
+          $('#occ_input').addClass('error');
+          $('#occ_input').after('<span class="err"> Occupation should be A-Z a-z e.g. Web Developer</span>');
+        }
+
+        if (!response.matchpass) {
+          $('#ps1').addClass('error');
+          $('#ps1').after('<span class="err"> Password does not match</span>');
+          $('#ps2').addClass('error');
+          $('#ps2').after('<span class="err"> Password does not match</span>');
+        }
+
+        if (response.exist) {
+
+          $('#usrname_input').addClass('error');
+          $('#usrname_input').after('<span id="reg-mesg" class="err"> Account already registered</span>');
+          $('#email_input').addClass('error');
+
+        }
+
+        if(!response.needPH){
+          if (!response.validext) {
+            $('#file-Input').addClass('error');
+            $('#file-Input').after('<span class="err"> Invalid extenstion {gif, png, jpg, jpeg} are allowed only</span>');
+  
             
+          }
+  
+          if (!response.size) {
+            $('#file-Input').addClass('error');
+            $('#file-Input').after('<span class="err">Maximum size 2MB </span> 	');
+      
+          }
         }
 
-        if(!response.validext){
-          console.log("not valid ex");
-          $('#file-Input').addClass('error');
-          $('#file-Input').after('<span class="err">Invalid extenstion {gif, png, jpg} are allowed only</span>');
-          $('#file-Input').addClass('error');
-          
-       }
 
-       if(!response.size){
-        $('#file-Input').addClass('error');
-        $('#file-Input').after('<span class="err">Maximum size 2MB</span>');
-        $('#file-Input').addClass('error');
-        
-        }
-       
-
-        if(response.success){
+        if (response.success) {
           $('#register').hide();
           $('#reg-suc').after('<h2 id="reg-mesg" class="py-4 suc-message">Account created successfully</h2>');
-          
-        }else {
+
+        } else {
           console.log('register error');
         }
       },
@@ -92,24 +100,24 @@ $(document).ready(function () {
       url: "includes/resetPassword-inc.php?",
       data: formData,
       dataType: "JSON",
-      contentType: false, 
-       processData: false,
+      contentType: false,
+      processData: false,
       success: function (response) {
-        if(response){
+        if (response) {
           Swal.fire({
             title: 'Password Reset',
-            text: 'Instructions will be send to your Email if a match found in our Database. Make sure to check spam/junk folder',
+            text: 'Instrctions will be send to your Email if a match found in our Database. Make sure to check spam/junk folder',
             icon: 'info'
           })
         }
       }
-      
+
     });
   });
 
 
   //Remove all errors spans if any
-  function rmAll(){
+  function rmAll() {
     $('#name_input').removeClass('error');
     $('#name_input + span').remove();
     $('#email_input').removeClass('error');
@@ -124,8 +132,14 @@ $(document).ready(function () {
     $('#name_input + span').remove();
 
     $('#file-Input').removeClass('error');
+    $('#file-Input + span ').remove();
     $('#file-Input + span').remove();
-    $('#file-Input + span').remove();
+
+    $('#phone_input').removeClass('error');
+    $('#phone_input + span ').remove();
+
+    $('#occ_input').removeClass('error');
+    $('#occ_input + span').remove();
   }
 
   // Aimate hide forms
@@ -145,7 +159,7 @@ $(document).ready(function () {
   $('#resetpass').click(function () {
     $('#login').hide('slow');
     $('#passform').slideDown('slow');
-});
+  });
 
 
   // Animate buttons
@@ -159,5 +173,6 @@ $(document).ready(function () {
     $(".btn").animate({ width: "30%" }, "slow");
   });
 
+  
   
 });
