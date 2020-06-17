@@ -115,7 +115,7 @@ $(document).ready(function () {
           if(!response.sent){
             Swal.fire({
               title: 'Password Reset',
-              text: "We couldn't a match for the email entered please enter again or singup. ",
+              text: "We couldn't find a match for the email entered please enter again or singup if you are not already. ",
               icon: 'error'
             })
           }
