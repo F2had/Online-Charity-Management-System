@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+
+  // Singup form handling
   $("#signup-form").submit(function (event) {
     event.preventDefault();
     var form = $(this)[0];
@@ -12,8 +14,11 @@ $(document).ready(function () {
       contentType: false,
       processData: false,
       success: function (response) {
+        //  Remove all the errors if set perviously
         rmAll();
         console.log(response);
+
+        // Printing the errors depending on the error
         if (!response.validnmae) {
 
           $('#name_input').addClass('error');
@@ -55,18 +60,18 @@ $(document).ready(function () {
 
         }
 
-        if(!response.needPH){
+        if (!response.needPH) {
           if (!response.validext) {
             $('#file-Input').addClass('error');
             $('#file-Input').after('<span class="err"> Invalid extenstion {gif, png, jpg, jpeg} are allowed only</span>');
-  
-            
+
+
           }
-  
+
           if (!response.size) {
             $('#file-Input').addClass('error');
             $('#file-Input').after('<span class="err">Maximum size 2MB </span> 	');
-      
+
           }
         }
 
@@ -78,18 +83,12 @@ $(document).ready(function () {
         } else {
           console.log('register error');
         }
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        console.log("jqXHR:");
-        console.log(jqXHR);
-        console.log("textStatus:");
-        console.log(textStatus);
-        console.log("errorThrown:");
-        console.log(errorThrown);
-      },
+      }
     });
   });
 
+
+  // Reset password form handling
   $("#reset-form").submit(function (event) {
     event.preventDefault();
     var form = $(this)[0];
@@ -103,13 +102,25 @@ $(document).ready(function () {
       contentType: false,
       processData: false,
       success: function (response) {
-        if (response) {
+        console.log(response);
+        if (response.sent) {
+          // if an email sent will display an alert with sweetalert
           Swal.fire({
             title: 'Password Reset',
-            text: 'Instrctions will be send to your Email if a match found in our Database. Make sure to check spam/junk folder',
-            icon: 'info'
+            text: 'Instrctions will be send to your Email. Make sure to check spam/junk folder',
+            icon: 'success'
           })
+        } else {
+          // if an email does not exists or wrongly entered will display an alert with sweetalert
+          if(!response.sent){
+            Swal.fire({
+              title: 'Password Reset',
+              text: "We couldn't a match for the email entered please enter again or singup. ",
+              icon: 'error'
+            })
+          }
         }
+
       }
 
     });
@@ -173,6 +184,6 @@ $(document).ready(function () {
     $(".btn").animate({ width: "30%" }, "slow");
   });
 
-  
-  
+
+
 });
