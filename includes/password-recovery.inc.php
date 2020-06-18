@@ -6,17 +6,23 @@ if (isset($_GET['email']) && isset($_GET['token']))
     $email = mysqli_real_escape_string($db, $_GET['email']);
     $token = mysqli_real_escape_string($db, $_GET['token']);
     //Check if the token valid and its not expired 
-    $sql = $db->query("SELECT userID FROM users WHERE email = '$email' AND token='$token' AND token<>'' AND tokenExpire > NOW() ");
+    $sql = $db->query("SELECT userID FROM users WHERE email = '$email' AND token='$token' AND token<>'' AND tokenExpire > NOW() ;");
     //if we found a match we will generate a new random password and the user can change it later 
     if($sql->num_rows > 0){
         $bytes = 5;
         $passwrod = bin2hex(openssl_random_pseudo_bytes($bytes));
         $encPassword = password_hash($passwrod, PASSWORD_BCRYPT);
         //Reset the token and date value
-        $db->query("UPDATE users SET token='', password = '$encPassword', tokenExpire = '0000-00-00 00:00:00' WHERE email = '$email'");
+        $db->query("UPDATE users SET token='', password = '$encPassword', tokenExpire = '0000-00-00 00:00:00' WHERE email = '$email' ;");
         
     }
     else {
+        //if the email vaid but the token expired we will reset the token and expire date
+        $sql = $db->query("SELECT userID FROM users WHERE email = '$email' ;");
+        if($sql->num_rows > 0){
+            $db->query("UPDATE users SET token='',  tokenExpire = '0000-00-00 00:00:00' WHERE email = '$email' ;");
+        }
+        
         //redirect to the home page if not match found 
         header("Location: ../homepage.php?nomatch=true");
         die();

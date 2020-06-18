@@ -2,6 +2,7 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 $url = "http://$_SERVER[HTTP_HOST]";
+$dir = dirname("$_SERVER[PHP_SELF]");
 date_default_timezone_set('Asia/Kuala_Lumpur');
 
 if (isset($_POST['email-reset'])) {
@@ -25,7 +26,7 @@ if (isset($_POST['email-reset'])) {
         require_once "phpmailer/Exception.php";
         require_once "phpmailer/SMTP.php";
         //Get the path to the recovery page
-       $path = "$url/Online-Charity-Management-System/includes/password-recovery.inc.php?email=$email&token=$token";
+       $path = "$url" .$dir."/password-recovery.inc.php?email=$email&token=$token";
         $mail = new PHPMailer();
         $mail->IsSMTP();
         $mail->SMTPAuth = true;
@@ -56,7 +57,7 @@ if (isset($_POST['email-reset'])) {
           </button>
         </div>
         <br />
-        PLEASE NOTE THIS TOKEN WILL EXPIRE ON <strong>'$expire'</strong>
+        PLEASE NOTE THIS TOKEN WILL EXPIRE ON <strong>$expire</strong>
         <br />
         <br />
         </div>
@@ -84,3 +85,4 @@ if (isset($_POST['email-reset'])) {
 
 $db->close();
 echo json_encode($data);
+
