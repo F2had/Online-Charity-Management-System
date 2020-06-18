@@ -19,61 +19,91 @@ $(document).ready(function () {
         console.log(response);
 
         // Printing the errors depending on the error
-        if (!response.validnmae) {
+
+
+        if (response.missingInfo) {
+          $('#submit-signup').after('<div><p class="err"> Highlighted fields are required</p></div>');
 
           $('#name_input').addClass('error');
           $('#name_input').after('<span class="err"> Name should be A-Z a-z and space only</span>');
-        }
 
-        if (!response.validuname) {
           $('#usrname_input').addClass('error');
           $('#usrname_input').after('<span class="err"> Username should be A-Z a-z and 0-9 Only</span>');
-        }
 
-        if (!response.validemail) {
           $('#email_input').addClass('error');
           $('#email_input').after('<span class="err"> Use a valid email</span>');
-        }
 
-        if (!response.validphone) {
           $('#phone_input').addClass('error');
           $('#phone_input').after('<span class="err"> Invalid phone number e.g. 01234567213</span>');
-        }
 
-        if (!response.validoccupation) {
           $('#occ_input').addClass('error');
           $('#occ_input').after('<span class="err"> Occupation should be A-Z a-z e.g. Web Developer</span>');
-        }
 
-        if (!response.matchpass) {
           $('#ps1').addClass('error');
-          $('#ps1').after('<span class="err"> Password does not match</span>');
           $('#ps2').addClass('error');
-          $('#ps2').after('<span class="err"> Password does not match</span>');
-        }
 
-        if (response.exist) {
 
-          $('#usrname_input').addClass('error');
-          $('#usrname_input').after('<span id="reg-mesg" class="err"> Account already registered</span>');
-          $('#email_input').addClass('error');
+        } else {
+          if (!response.validnmae) {
 
-        }
+            $('#name_input').addClass('error');
+            $('#name_input').after('<span class="err"> Name should be A-Z a-z and space only</span>');
+          }
 
-        if (!response.needPH) {
-          if (!response.validext) {
-            $('#file-Input').addClass('error');
-            $('#file-Input').after('<span class="err"> Invalid extenstion {gif, png, jpg, jpeg} are allowed only</span>');
+          if (!response.validuname) {
+            $('#usrname_input').addClass('error');
+            $('#usrname_input').after('<span class="err"> Username should be A-Z a-z and 0-9 Only</span>');
+          }
 
+          if (!response.validemail) {
+            $('#email_input').addClass('error');
+            $('#email_input').after('<span class="err"> Use a valid email</span>');
+          }
+
+          if (!response.validphone) {
+            $('#phone_input').addClass('error');
+            $('#phone_input').after('<span class="err"> Invalid phone number e.g. 01234567213</span>');
+          }
+
+          if (!response.validoccupation) {
+            $('#occ_input').addClass('error');
+            $('#occ_input').after('<span class="err"> Occupation should be A-Z a-z e.g. Web Developer</span>');
+          }
+
+          if (!response.matchpass) {
+            $('#ps1').addClass('error');
+            $('#ps1').after('<span class="err"> Password does not match</span>');
+            $('#ps2').addClass('error');
+            $('#ps2').after('<span class="err"> Password does not match</span>');
+          }
+
+          if (response.exist) {
+
+            $('#usrname_input').addClass('error');
+            $('#usrname_input').after('<span id="reg-mesg" class="err"> Account already registered</span>');
+            $('#email_input').addClass('error');
 
           }
 
-          if (!response.size) {
-            $('#file-Input').addClass('error');
-            $('#file-Input').after('<span class="err">Maximum size 2MB </span> 	');
+          if (!response.needPH) {
+            if (!response.validext) {
+              $('#file-Input').addClass('error');
+              $('#file-Input').after('<span class="err"> Invalid extenstion {gif, png, jpg, jpeg} are allowed only</span>');
 
+
+            }
+
+            if (!response.size) {
+              $('#file-Input').addClass('error');
+              $('#file-Input').after('<span class="err">Maximum size 2MB </span> 	');
+
+            }
           }
+
         }
+
+
+
 
 
         if (response.success) {
@@ -84,6 +114,7 @@ $(document).ready(function () {
           console.log('register error');
         }
       }
+
     });
   });
 
@@ -112,7 +143,7 @@ $(document).ready(function () {
           })
         } else {
           // if an email does not exists or wrongly entered will display an alert with sweetalert
-          if(!response.sent){
+          if (!response.sent) {
             Swal.fire({
               title: 'Password Reset',
               text: "We couldn't find a match for the email entered please enter again or singup if you are not already. ",
@@ -151,6 +182,11 @@ $(document).ready(function () {
 
     $('#occ_input').removeClass('error');
     $('#occ_input + span').remove();
+
+
+    $('#submit-signup + div').remove();
+
+    $('#reg-suc + h2').remove();
   }
 
   // Aimate hide forms

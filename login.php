@@ -195,7 +195,7 @@ session_start();
                         <div class="form-group w-75 py-3 container-fluid">
                             <div class="input-group">
                                 <div class="input-group-text"><i class="las la-key"></i></div>
-                                <input id='ps1' type="password" name="pass1" class="form-control .pass" placeholder="Password *" required />
+                                <input id='ps1' type="password" name="pass1" class="form-control .pass" placeholder="Password *"  />
                             </div>
                         </div>
 
@@ -203,7 +203,7 @@ session_start();
                         <div class="form-group w-75 py-3 container-fluid">
                             <div class="input-group">
                                 <div class="input-group-text"><i class="las la-key"></i></div>
-                                <input type="password" id='ps2' name="pass2" class="form-control" placeholder="Confirm your Password *" required />
+                                <input type="password" id='ps2' name="pass2" class="form-control" placeholder="Confirm your Password *"  />
                             </div>
                         </div>
 
