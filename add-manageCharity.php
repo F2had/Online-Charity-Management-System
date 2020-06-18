@@ -1,4 +1,4 @@
-<?php include_once 'include/top.php' ?>
+<?php include_once 'includes/top.php' ?>
 <style>
 	.brk-btn {
 		position: relative;
@@ -74,7 +74,7 @@
 	}
 </style>
 
-<?php include_once 'include/process_E.php';
+<?php include_once 'includes/process_E.php';
 $admin = 1;
 $user = $_SESSION['userID'];
 ?>
@@ -98,7 +98,7 @@ $user = $_SESSION['userID'];
 		<!-- data-toggle="modal" data-target="#checkproject_user" -->
 
 
-		<form action="include/process_E.php" method="POST" enctype="multipart/form-data">
+		<form action="includes/process_E.php" method="POST" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="<?php echo $id; ?>">
 			<div class="form-group">
 				<label for="nameproject">Charity Name:</label>
@@ -200,7 +200,7 @@ $user = $_SESSION['userID'];
 								<th>Perform Action</th>
 							</thead>
 							<tbody id="table-body">
-								<?php include_once "include/connect_database.php";
+								<?php include_once "includes/connect_database.php";
 
 								if ($_SESSION["userID"] == $admin) {
 									$sql = "SELECT * FROM `project`";
@@ -222,7 +222,7 @@ $user = $_SESSION['userID'];
                                             <td class="btn-group" id="table-action">
                                                 <a class="btn btn-outline-warning" href="add-manageCharity.php?manage=' . $row["idproject"] . '" >Manage</a>
                                                 
-                                                <a class="btn btn-outline-danger" href="include/process_E.php?delete=' . $row["idproject"] . '"><i class="fa fa-trash"></i></a>
+                                                <a class="btn btn-outline-danger" href="includes/process_E.php?delete=' . $row["idproject"] . '"><i class="fa fa-trash"></i></a>
                                             </td>
                                         </tr>                            
                                         ';
@@ -253,7 +253,7 @@ $user = $_SESSION['userID'];
 <!-- //////////////////////////////////////////////////////////////////////// -->
 
 
-<?php include_once 'include/footer.php' ?>
+<?php include_once 'includes/footer.php' ?>
 
 <div class="scrollup2">
 	<a href="homepage.php">

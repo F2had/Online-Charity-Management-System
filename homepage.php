@@ -1,5 +1,5 @@
-<?php include_once('include/top.php') ?>
-<?php include_once "include/connect_database.php" ?>
+<?php include_once('includes/top.php') ?>
+<?php include_once "includes/connect_database.php" ?>
 
 <?php
 if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
@@ -319,7 +319,7 @@ $second_last = $total_no_of_pages - 1; // total pages minus 1
 	<!-- /.container -->
 </section>
 
-<?php include_once('include/footer.php') ?>
+<?php include_once('includes/footer.php') ?>
 
 <!-- add poject button -->
 
