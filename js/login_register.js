@@ -16,7 +16,7 @@ $(document).ready(function () {
       success: function (response) {
         //  Remove all the errors if set perviously
         rmAll();
-        console.log(response);
+       
 
         // Printing the errors depending on the error
 
@@ -107,9 +107,14 @@ $(document).ready(function () {
 
 
         if (response.success) {
-          $('#register').hide();
-          $('#reg-suc').after('<h2 id="reg-mesg" class="py-4 suc-message">Account created successfully</h2>');
-
+          
+          Swal.fire({
+            title: 'Account created successfully ',
+            text: 'Please processed to login',
+            icon: 'success'
+          }).then (function(){
+            location.reload();
+          })
         } else {
           console.log('register error');
         }
@@ -186,7 +191,7 @@ $(document).ready(function () {
 
     $('#submit-signup + div').remove();
 
-    $('#reg-suc + h2').remove();
+  
   }
 
   // Aimate hide forms

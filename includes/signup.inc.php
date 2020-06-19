@@ -93,8 +93,12 @@ if ($_SERVER['REQUEST_METHOD']  == 'POST') {
             if (!$data['needPH']) {
 
                 $data['success'] = register_user($username, $email, $pass1, $name, $phone, $occupation, $imgBase64,  $db);
+                echo json_encode($data);
+                exit;
             } else {
                 $data['success'] = register_user($username, $email, $pass1, $name, $phone, $occupation, $imgBase64_ph,  $db);
+                echo json_encode($data);
+                exit;
             }
         } else {
             echo json_encode($data);
