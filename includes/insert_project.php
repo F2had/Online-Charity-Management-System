@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
                 include_once 'connect_database.php';
 
                 if (empty($desproject) || empty($nameproject)) {
-                    header("Location: ../add-manageCharity.php?upload=empty");
+                    header("Location: ../manageCharity.php?upload=empty");
                     exit();
                 } else {
                     $sql = "SELECT * FROM `project`;";
@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
 
                             move_uploaded_file($imgtempname, $imgdestination);
                             echo 'hiuiuuiuu';
-                            redirect(" ../add-manageCharity.php?upload=success");
+                            redirect(" ../manageCharity.php?upload=success");
                         }
                     }
                 }
@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
     }
 }
 
-// header("Location: ../add-manageCharity.php");
+// header("Location: ../manageCharity.php");
 function redirect($url)
 {
     if (!headers_sent()) {

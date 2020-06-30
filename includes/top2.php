@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-
+<!-- top2 -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,13 +56,13 @@
                                 <a class="nav-link dropdown-toggle" href="Volunteer.html" id="navbarDropdownMenuLink" data-toggle="dropdown">Volunteer</a>
                                 <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="Volunteer.php">Volunteer Registration</a>
-                                    <a class="dropdown-item" href="ProjectRegisterationForm.html">Volunteer project
+                                    <a class="dropdown-item" href="ProjectVolunteer.php">Volunteer project
                                         registration</a>
                                     <a class="dropdown-item" href="ViewList.php">Volunteer List</a>
 
                                 </div>
                             </li>
-                            <li class="nav-item"> <a class="nav-link" href="meeting-report.html">Reports</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="meeting-report.php">Reports</a></li>
 
                             <?php if (!empty($_SESSION['username'])) : ?>
                                 <li class="nav-item dropdown"> <a class="nav-link" data-toggle="dropdown" href="#"><?php echo $_SESSION['username'] ?> <i class="fa fa-user-circle fa-lg"></i></a>

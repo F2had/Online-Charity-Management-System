@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>List of Volunteer in Project</title>
 </head>
+
 <body>
 	<div id="wrapper">
 		<main>
-			<?php 
-				include_once("include/top.php");
-				include_once("include/connect_database.php");
+			<?php
+			include_once("includes/top.php");
+			include_once("includes/connect_database.php");
 
-				$host="localhost";
-				$dbUsername="root";
-				$dbPassword="";
-				$dbname="webproject";
-				$pname="";
+			$host = "localhost";
+			$dbUsername = "root";
+			$dbPassword = "";
+			$dbname = "wif2003";
+			$pname = "";
 
 
-				$conn=new mysqli($host,$dbUsername,$dbPassword,$dbname);
+			$conn = new mysqli($host, $dbUsername, $dbPassword, $dbname);
 
-				if(!empty($_GET['del'])){
-					$del = $_GET['del'];
-					$sql = "DELETE FROM joinList WHERE ID=$del";
- 
-        			mysqli_query($conn, $sql);
-				}
-								
+			if (!empty($_GET['del'])) {
+				$del = $_GET['del'];
+				$sql = "DELETE FROM joinList WHERE ID=$del";
 
-				if(mysqli_connect_error())
-				{
-					die('Connect Error('.mysqli_connect_errno().')'.mysqli_connect_error());
-				}
-            	
-            	$sql="SELECT * FROM joinList";
-				$result = mysqli_query($conn, $sql);
+				mysqli_query($conn, $sql);
+			}
 
-				$resultCheck = mysqli_num_rows($result);
 
-				if ($resultCheck > 0)
-				{
-					echo '<table>
+			if (mysqli_connect_error()) {
+				die('Connect Error(' . mysqli_connect_errno() . ')' . mysqli_connect_error());
+			}
+
+			$sql = "SELECT * FROM joinList";
+			$result = mysqli_query($conn, $sql);
+
+			$resultCheck = mysqli_num_rows($result);
+
+			if ($resultCheck > 0) {
+				echo '<table>
         					<tr>
         						<td style="padding:10px;">
         							<strong>No.</strong>
@@ -55,34 +55,31 @@
         						</td>
         					</tr>
         				';
-					$i=1;
+				$i = 1;
 
-					while ($row = mysqli_fetch_assoc($result))
-					{
-        				echo '
+				while ($row = mysqli_fetch_assoc($result)) {
+					echo '
         					<tr>
         						<td style="padding:10px;">
-        							'.$i.'
+        							' . $i . '
         						</td>
         						<td style="padding:10px;">
-        							'.$row['ProjectName'].'
+        							' . $row['ProjectName'] . '
         						</td>
         						<td style="padding:10px;">
-        							'.$row['VolunteerName'].'
+        							' . $row['VolunteerName'] . '
         						</td>
         						<td style="padding:10px;">
-        							<a href = ProjectVolunteer.php?del='.$row['ID'].'>delete</a>
+        							<a href = ProjectVolunteer.php?del=' . $row['ID'] . '>delete</a>
         						
         						</td>
         					</tr>';
-        					$i++;
-					}
-					echo '</table>';
-				} 
-				else 
-				{
-    				echo "no data found";
+					$i++;
 				}
+				echo '</table>';
+			} else {
+				echo "no data found";
+			}
 			?>
 		</main>
 
@@ -95,8 +92,8 @@
 							<address>
 								<strong>TheProcrastinators company Inc</strong><br>
 								TheProcrastinators suite room V124, DB 91<br>
-							Someplace 457648 Earth 
-						</address>
+								Someplace 457648 Earth
+							</address>
 							<p>
 								<i class="icon-phone"></i> (123) 456-7890<br>
 								<i class="icon-envelope-alt"></i> email@domainname.com
@@ -144,4 +141,5 @@
 			</div>
 		</footer>
 </body>
+
 </html>

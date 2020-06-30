@@ -57,10 +57,10 @@ session_start();
                      <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">Volunteer</a>
                      <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="Volunteer.html">Volunteer Registration</a>
-                        <a class="dropdown-item" href="ProjectRegisterationForm.html">Volunteer project registration</a>
+                        <a class="dropdown-item" href="ProjectVolunteer.php">Volunteer project registration</a>
                      </div>
                   </li>
-                  <li class="nav-item"> <a class="nav-link" href="meeting-report.html">Reports</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="meeting-report.php">Reports</a></li>
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"><?php echo $_SESSION['name']   ?><img src="<? echo $_SESSION['img']; ?>" width="30" height="30" alt="profile" class="rounded-circle" /></a>
                      <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
@@ -279,98 +279,98 @@ session_start();
                   </div>
 
                </div>
-               </form>
-            </div>
-
-         
+         </form>
+      </div>
 
 
-         <div class="col-md-6" id="password">
+
+
+      <div class="col-md-6" id="password">
+         <div class=" profile-tab" id="myTabContent">
+            <form action="includes/edit-profile.inc.php" id="password-form" method="POST" enctype="multipart/form-data">
+               <div class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
+
+
+                  <div class="row">
+
+                     <div class="col-md-6">
+                        <label> New Password
+                        </label>
+                     </div>
+                     <div class="col-md-6">
+                        <input type="password" id="newPass_input1" class="edit" name="pass1">
+                     </div>
+                  </div>
+
+                  <div class="row">
+                     <div class="col-md-6">
+                        <label>Repeat Password
+                        </label>
+                     </div>
+                     <div class="col-md-6">
+                        <input type="password" id="newPass_input2" class="edit" name="pass2">
+                     </div>
+                  </div>
+
+
+                  <div class="row">
+                     <div class="col-md-6">
+                        <label>Current Password
+                        </label>
+                     </div>
+                     <div class="col-md-6">
+                        <input name="cpass" id="newPass_input3" type="password" class="edit">
+                     </div>
+                  </div>
+
+                  <div class="row">
+
+                     <div class="col-sm-12">
+                        <input type="submit" class="profile-btn btn-ani" name="reset" id="reset" value="Change Password">
+                     </div>
+                  </div>
+
+               </div>
+         </div>
+         </form>
+      </div>
+
+      <div class="col-md-3" id="delete">
+         <form action="includes/edit-profile.inc.php" id="delete-form" method="POST" enctype="multipart/form-data">
             <div class=" profile-tab" id="myTabContent">
-               <form action="includes/edit-profile.inc.php" id="password-form" method="POST" enctype="multipart/form-data">
-                  <div class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
+               <div class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
 
 
-                     <div class="row">
+                  <div class="row">
 
-                        <div class="col-md-6">
-                           <label> New Password
-                           </label>
-                        </div>
-                        <div class="col-md-6">
-                           <input type="password" id="newPass_input1" class="edit" name="pass1">
-                        </div>
+                     <div class="col-md-6">
+                        <label>Current Password
+                        </label>
                      </div>
 
-                     <div class="row">
-                        <div class="col-md-6">
-                           <label>Repeat Password
-                           </label>
-                        </div>
-                        <div class="col-md-6">
-                           <input type="password" id="newPass_input2" class="edit" name="pass2">
-                        </div>
-                     </div>
-
-
-                     <div class="row">
-                        <div class="col-md-6">
-                           <label>Current Password
-                           </label>
-                        </div>
-                        <div class="col-md-6">
-                           <input name="cpass" id="newPass_input3" type="password" class="edit">
-                        </div>
-                     </div>
-
-                     <div class="row">
-
-                        <div class="col-sm-12">
-                           <input type="submit" class="profile-btn btn-ani" name="reset" id="reset" value="Change Password">
-                        </div>
+                     <div class="col-md-6">
+                        <input name="cpass" id="delete-input" type="password" class="edit">
                      </div>
 
                   </div>
-            </div>
-            </form>
-         </div>
 
-         <div class="col-md-3" id="delete">
-            <form action="includes/edit-profile.inc.php" id="delete-form" method="POST" enctype="multipart/form-data">
-               <div class=" profile-tab" id="myTabContent">
-                  <div class="tab-pane" role="tabpanel" aria-labelledby="profile-tab">
-
-
-                     <div class="row">
-
-                        <div class="col-md-6">
-                           <label>Current Password
-                           </label>
-                        </div>
-
-                        <div class="col-md-6">
-                           <input name="cpass" id="delete-input" type="password" class="edit">
-                        </div>
-
-                     </div>
-
-                     <div class="row">
-                        <div class="col-md-12">
-                           <button type="submit" id="delete-btn" class="btn btn-danger delete-btn delete-ani mt-2">
-                              <i class="glyphicon glyphicon-trash"></i> Delete
-                           </button>
-                        </div>
+                  <div class="row">
+                     <div class="col-md-12">
+                        <button type="submit" id="delete-btn" class="btn btn-danger delete-btn delete-ani mt-2">
+                           <i class="glyphicon glyphicon-trash"></i> Delete
+                        </button>
                      </div>
                   </div>
                </div>
-            </form>
-         </div>
-
-        
+            </div>
+         </form>
       </div>
-      <hr>
+
+
    </div>
-  
+   <hr>
+   </div>
+
    </div>
 
    </div>

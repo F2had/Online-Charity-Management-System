@@ -1,5 +1,5 @@
 <!-- ////////////////////////////////////////////////////////footer//////////////////////////////////////////////////////////////////////// -->
-
+<!-- This -->
 <footer>
     <div class="container">
         <div class="row">
@@ -83,6 +83,48 @@
 <script src="js/uisearch.js"></script>
 <script src="js/custom.js"></script>
 <script src="js/javascript.js"></script>
+<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+<script>
+    var dateToday = new Date();
+    dateToday.setDate(dateToday.getDate() - 1);
+    // var startdate = new Date().setDate(d.getDate() - 5);
+    var datestart = new Date();
+    datestart.setDate(datestart.getDate() - 2);
+
+    $(function() {
+        $("#datepicker").datepicker({
+
+            format: 'yyyy-mm-dd',
+            // format: 'dd/mm/yyyy',
+            numberOfMonths: 3,
+            showButtonPanel: true,
+            // defaultDate: -1
+            minDate: datestart
+        });
+    });
+
+    $(function() {
+        $("#datepicker2").datepicker({
+
+            format: 'yyyy-mm-dd',
+            // format: 'dd/mm/yyyy',
+            numberOfMonths: 3,
+            showButtonPanel: true,
+            minDate: dateToday
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
 </body>
 
 </html>

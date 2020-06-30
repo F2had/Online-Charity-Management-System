@@ -10,7 +10,7 @@ if (isset($_GET['delete'])) {
     // $_SESSION['message'] = "Project has been deleted";
     // $_SESSION['msg_type'] = "danger";
 
-    redirect("../add-manageCharity.php?delete=success");
+    redirect("../manageCharity.php?delete=success");
 }
 
 function redirect($url)

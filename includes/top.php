@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-
+<!-- main -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,17 +10,11 @@
     <title>Charity Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- css -->
-    <!-- <link href="css/bootstrap.min.css" rel="stylesheet" /> -->
-
-
-    <!-- <link href="plugins/flexslider/flexslider.css" rel="stylesheet" media="screen" /> -->
-    <!-- <link href="css/cubeportfolio.min.css" rel="stylesheet" /> -->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="./css/loader.css" />
     <link href="css/style2.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Theme skin -->
     <link href="skins/default.css" rel="stylesheet" />
@@ -34,6 +28,7 @@
 
 <body>
     <? include_once("includes/loader.inc.php") ?>
+
     <div id="wrapper">
         <header>
             <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -54,19 +49,19 @@
                             <li class="nav-item"> <a class="nav-link" href="homepage.php">Home</a> </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="Volunteer.html" id="navbarDropdownMenuLink" data-toggle="dropdown">Volunteer</a>
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">Volunteer</a>
                                 <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="Volunteer.html">Volunteer Registration</a>
-                                    <a class="dropdown-item" href="ProjectRegisterationForm.html">Volunteer project
+                                    <a class="dropdown-item" href="ProjectVolunteer.php">Volunteer project
                                         registration</a>
+                                    <a class="dropdown-item" href="ViewList.php">Volunteer List</a>
 
                                 </div>
                             </li>
-                            <li class="nav-item"> <a class="nav-link" href="meeting-report.html">Reports</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="meeting-report.php">Reports</a></li>
 
                             <?php if (!empty($_SESSION['username'])) : ?>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"><?php echo $_SESSION['name']   ?><img src="<? echo $_SESSION['img']; ?>" width="30" height="30" alt="profile" class="rounded-circle" /></a>
+                                <li class="nav-item dropdown"> <a class="nav-link" data-toggle="dropdown" href="#"><?php echo $_SESSION['username'] ?> <i class="fa fa-user-circle fa-lg"></i></a>
                                     <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                                         <a class="dropdown-item" href="profile.php">Profile</a>
                                         <a class="dropdown-item" href="logout.php"><button class="btn btn-danger">Logout</button></a>

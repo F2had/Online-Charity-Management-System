@@ -191,7 +191,7 @@ a.nav-link {
 }
 .profile-head .nav-tabs {
   margin-bottom: 5%;
-  color: rgb(141, 140, 140);
+  color: red;
 }
 .profile-head .nav-tabs .nav-link {
   font-weight: 600;

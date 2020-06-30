@@ -40,7 +40,7 @@ session_start();
             <div class="container-fluid header">
                 <!-- container fluid is make use of 100% of the screen -->
                 <nav class="navbar navbar-light bg-light header">
-                <a class="navbar-brand " href="homepage.php"><img style="width: 25%; height: 25%;" src="img/logo-filler.png">
+                    <a class="navbar-brand " href="homepage.php"><img style="width: 25%; height: 25%;" src="img/logo-filler.png">
                         <lo>Raise reason</lo>
                     </a>
                 </nav>
@@ -50,13 +50,13 @@ session_start();
     <!-- Navigation end -->
 
     <div class="container2" style='font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";'>
-      <img src="img/bodybg/bg1.png" width="100%" height="150px">
-      <div class="centered">
-         <y style="text-transform: uppercase;font-size: 60px;font-weight: 700; line-height: 1em; letter-spacing: -1px;">
-            Awesome Charity
-         </y>
-      </div>
-   </div>
+        <img src="img/bodybg/bg1.png" width="100%" height="150px">
+        <div class="centered">
+            <y style="text-transform: uppercase;font-size: 60px;font-weight: 700; line-height: 1em; letter-spacing: -1px;">
+                Awesome Charity
+            </y>
+        </div>
+    </div>
 
     <div class="container">
         <hr>
@@ -195,7 +195,7 @@ session_start();
                         <div class="form-group w-75 py-3 container-fluid">
                             <div class="input-group">
                                 <div class="input-group-text"><i class="las la-key"></i></div>
-                                <input id='ps1' type="password" name="pass1" class="form-control .pass" placeholder="Password *"  />
+                                <input id='ps1' type="password" name="pass1" class="form-control .pass" placeholder="Password *" />
                             </div>
                         </div>
 
@@ -203,7 +203,7 @@ session_start();
                         <div class="form-group w-75 py-3 container-fluid">
                             <div class="input-group">
                                 <div class="input-group-text"><i class="las la-key"></i></div>
-                                <input type="password" id='ps2' name="pass2" class="form-control" placeholder="Confirm your Password *"  />
+                                <input type="password" id='ps2' name="pass2" class="form-control" placeholder="Confirm your Password *" />
                             </div>
                         </div>
 

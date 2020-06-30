@@ -1,0 +1,72 @@
+.brk-btn {
+    position: relative;
+    background: none;
+    color: #007bff;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 0.2em solid #03adfc;
+    padding: 0.5em 1em;
+}
+
+.brk-btn::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 10%;
+    background: whitesmoke;
+    height: 0.3em;
+    right: 20%;
+    top: -0.21em;
+    transform: skewX(-45deg);
+    -webkit-transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
+    transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.brk-btn::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 10%;
+    background: whitesmoke;
+    height: 0.3em;
+    left: 20%;
+    bottom: -0.25em;
+    transform: skewX(45deg);
+    -webkit-transition: all 0.45 cubic-bezier(0.86, 0, 0.07, 1);
+    transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.brk-btn:hover::before {
+    right: 80%;
+}
+
+.brk-btn:hover::after {
+    left: 80%;
+}
+
+.inlinec {
+    overflow: hidden;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.inlinec h2:before,
+.inlinec h2:after {
+    background-color: #000;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.inlinec h2:before {
+    /* right: 0.5em; */
+    margin-left: -50%;
+}
+
+.inlinec h2:after {
+    /* left: 0.5em; */
+    margin-right: -50%;
+}

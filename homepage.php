@@ -2,33 +2,46 @@
 <?php include_once "includes/connect_database.php" ?>
 
 <?php
+// $currUser = $_SESSION['userID'];
+
+// $result = $conn->query("SELECT * FROM project WHERE userID=$currUser");
+
+// if ($result->num_rows >= 1) {
+// 	while ($row = $result->fetch_assoc()) {
+// 		echo $row['edate'];
+// 	}
+// }
+
+
 if (isset($_GET['page_no']) && $_GET['page_no'] != "") {
 	$page_no = $_GET['page_no'];
 } else {
 	$page_no = 1;
 }
 // change here for the record shown
-$total_records_per_page = 2;
+$total_records_per_page = 4;
 
 $offset = ($page_no - 1) * $total_records_per_page;
 $previous_page = $page_no - 1;
 $next_page = $page_no + 1;
-// $adjacents = "2";
+$adjacents = "2";
 
 $sortby = 'orderproject';
+$datetoday = date('Y-m-d');
 
 if (isset($_GET['sortby'])) {
 	$sortby = $_GET['sortby'];
+	// echo '<Script>alert("' . $sortby . '")</Script>';
 	$result_count = mysqli_query(
 		$conn,
-		"SELECT COUNT(*) As total_records FROM project INNER JOIN users ON project.userID = users.userID ORDER BY $sortby "
+		"SELECT COUNT(*) As total_records FROM project INNER JOIN users ON project.userID = users.userID WHERE project.edate>'$datetoday' ORDER BY $sortby "
 	);
 	// echo "<script type='text/javascript'>alert('$sortby');</script>";
 } else {
-	$sql = "SELECT * FROM `project` LIMIT $offset, $total_records_per_page";
+	// $sql = "SELECT * FROM `project` LIMIT $offset, $total_records_per_page";
 	$result_count = mysqli_query(
 		$conn,
-		"SELECT COUNT(*) As total_records FROM project INNER JOIN users ON project.userID = users.userID"
+		"SELECT COUNT(*) As total_records FROM project INNER JOIN users ON project.userID = users.userID WHERE project.edate>'$datetoday'"
 	);
 }
 
@@ -37,6 +50,8 @@ $total_records = mysqli_fetch_array($result_count);
 $total_records = $total_records['total_records'];
 $total_no_of_pages = ceil($total_records / $total_records_per_page);
 $second_last = $total_no_of_pages - 1; // total pages minus 1
+
+
 ?>
 
 <div class="container2">
@@ -84,7 +99,8 @@ $second_last = $total_no_of_pages - 1; // total pages minus 1
 							</button>
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href="homepage.php?sortby=nameproject">Charity Name</a>
-								<a class="dropdown-item" href="homepage.php?sortby=orderproject">Date Created</a>
+								<a class="dropdown-item" href="homepage.php?sortby=idproject">Date Created Ascending</a>
+								<a class="dropdown-item" href="homepage.php?sortby=idproject DESC">Date Created Descending</a>
 								<a class="dropdown-item" href="homepage.php?sortby=username">User</a>
 							</div>
 						</div>
@@ -102,44 +118,46 @@ $second_last = $total_no_of_pages - 1; // total pages minus 1
 
 		if (isset($_GET['sortby'])) {
 			$sortby = $_GET['sortby'];
-			$sql = "SELECT * FROM project INNER JOIN users ON project.userID = users.userID ORDER BY $sortby LIMIT $offset, $total_records_per_page";
+			$sql = "SELECT * FROM project INNER JOIN users ON project.userID = users.userID WHERE project.edate>'$datetoday' ORDER BY $sortby LIMIT $offset, $total_records_per_page";
 			// echo "<script type='text/javascript'>alert('$sortby');</script>";
 		} else {
-			$sql = "SELECT * FROM project INNER JOIN users ON project.userID = users.userID LIMIT $offset, $total_records_per_page";
+			$sql = "SELECT * FROM project INNER JOIN users ON project.userID = users.userID WHERE project.edate>'$datetoday' LIMIT $offset, $total_records_per_page";
 		}
 
 		$result = mysqli_query($conn, $sql);
 		$resultCheck = mysqli_num_rows($result);
+
+
 		?>
 
 		<?php if ($resultCheck > 0) : ?>
-			<?php while ($row = mysqli_fetch_assoc($result)) : ?>
-				<div class="row">
-					<div class="col-md-4">
-						<div class="cours2">
-							<a href="#" data-toggle="modal" data-target="#project_description1">
-								<?php echo '<img class="img-fluid hover" src="uploaded_img/' . $row['imguniqname'] . '">' ?>
-								<div class="cours4 text-center">
-									<button class="cou">View More</button>
-								</div>
-							</a>
-						</div>
-
-					</div>
-
-					<div class="col-md-5">
-						<div class="middle-left">
-							<div class="tooltip2">
-								<?php echo '<h3><a href="#" style="color: #4D4D4D; font-weight:800; top: 10%;" data-toggle="modal" data-target="#project_description1">' . $row['nameproject'] . '</a></h3>' ?>
-								<span class="tooltiptext2">Click to view more</span>
+			<?php while ($row = mysqli_fetch_assoc($result)) : if (date('Y-m-d') < $row['edate']) : ?>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="cours2">
+								<a href="#" data-toggle="modal" data-target="#project_description1<?php echo  $row["nameproject"] ?>">
+									<?php echo '<img class="img-fluid hover" src="uploaded_img/' . $row['imguniqname'] . '">' ?>
+									<div class="cours4 text-center">
+										<button class="cou">View More</button>
+									</div>
+								</a>
 							</div>
-							<?php echo '<p>by<a href="#"><strong style="color: #999999;"> ' . $row['username'] . ' </strong></a></p>' ?>
 
 						</div>
-					</div>
 
-					<!-- MODAL PROJECT 1 -->
-					<div class="modal fade" id="project_description1" tabindex="-1" role="dialog" aria-labelledby="project_description1" aria-hidden="true">
+						<div class="col-md-5">
+							<div class="middle-left">
+								<div class="tooltip2">
+									<?php echo '<h3><a href="#" style="color: #4D4D4D; font-weight:800; top: 10%;" data-toggle="modal" data-target="#project_description1' . $row['nameproject'] . '">' . $row['nameproject'] . '</a></h3>' ?>
+									<span class="tooltiptext2">Click to view more</span>
+								</div>
+								<?php echo '<p>by<a href="#"><strong style="color: #999999;"> ' . $row['username'] . ' </strong></a></p>' ?>
+
+							</div>
+						</div>
+
+						<!-- MODAL PROJECT 1 -->
+						<?php echo '<div class="modal fade" id="project_description1' . $row['nameproject'] . '" tabindex="-1" role="dialog" aria-labelledby="project_description1" aria-hidden="true">' ?>
 						<div class="modal-dialog modal-dialog-centered" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -150,15 +168,8 @@ $second_last = $total_no_of_pages - 1; // total pages minus 1
 									</button>
 								</div>
 								<div class="modal-body">
-
 									<h6><strong>The Story:</strong></h6>
 									<?php echo '<p>' . $row['desproject'] . '</p>' ?>
-
-									<!-- <h6><strong>Problem:</strong></h6>
-									<p>...</p>
-
-									<h6><strong>Solution:</strong></h6>
-									<p>...</p> -->
 
 								</div>
 								<div class="modal-footer">
@@ -174,7 +185,19 @@ $second_last = $total_no_of_pages - 1; // total pages minus 1
 						<div class="row">
 							<div class="col-md-12">
 								<div class="progress">
-									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+									<?php
+									$thisone = $row['idproject'];
+									$sql_a = "SELECT * FROM ((project INNER JOIN users ON project.userID = users.userID) INNER JOIN joinlist ON joinlist.ProjectID=project.idproject) WHERE project.idproject= $thisone;";
+
+									$result_a = mysqli_query($conn, $sql_a);
+									$resultCheck_a = mysqli_num_rows($result_a);
+									$amount = $row['amountvolunteer'];
+									$howmany = ($resultCheck_a / $amount) * 100;
+
+									$width = $howmany . "%";
+
+									?>
+									<div class="progress-bar progress-bar-striped" role="progressbar" style="width: <?php echo $width ?>" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
 							</div>
 
@@ -183,8 +206,9 @@ $second_last = $total_no_of_pages - 1; // total pages minus 1
 						<!-- DONATED AMOUNT, GOAL AMOUNT -->
 						<div class="row">
 							<div class="col-md-12">
-								<h4 class="heading">Current: </h4>
+								<h4 class="heading">Current: <?php echo $resultCheck_a ?></h4>
 								<p class="text-muted"> Looking for: <?php echo $row['amountvolunteer'] ?> volunteers </p>
+								<p class="text-muted"> Available until: <?php echo $row['edate'] ?> </p>
 							</div>
 						</div>
 
@@ -193,9 +217,11 @@ $second_last = $total_no_of_pages - 1; // total pages minus 1
 							<div class="col-md-4 col-4 text-center">
 								<div class="containerDonate">
 
-									<a href="#" data-toggle="modal" data-target="#volunteerproject1"><img class="img-fluid mb-3 mb-md-0 volunteerIcon btn-4" width="70" height="70" src="img\voluunteer bg trans.png" alt="DONATE"></a>
 
-									<div class="modal fade" id="volunteerproject1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<a href="#" data-toggle="modal" data-target="#volunteerproject1<?php echo  $row["nameproject"] ?>"><img class="img-fluid mb-3 mb-md-0 volunteerIcon btn-4" width="70" height="70" src="img\voluunteer bg trans.png" alt="DONATE"></a>
+
+									<div class="modal fade" id="volunteerproject1<?php echo  $row["nameproject"] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
 										<div class="modal-dialog modal-dialog-centered" role="document">
 											<div class="modal-content">
 												<!--Header-->
@@ -208,43 +234,33 @@ $second_last = $total_no_of_pages - 1; // total pages minus 1
 												<!--Body-->
 												<div class="modal-body">
 
-													<table class="table table-hover">
-														<thead>
-															<tr>
-																<th>#</th>
-																<th>Name</th>
-															</tr>
-														</thead>
-														<tbody>
-															<tr>
-																<th scope="row">1</th>
-																<td>Adam</td>
+													<?php $i = 1;
+													if ($resultCheck_a > 0) : ?>
+														<table class="table table-hover">
+															<thead>
+																<tr>
+																	<th>#</th>
+																	<th>Name</th>
+																</tr>
+															</thead>
+															<tbody>
+																<?php while ($row2 = mysqli_fetch_assoc($result_a)) : ?>
+																	<tr>
+																		<th scope="row"><?php echo $i; ?></th>
+																		<td><?php echo $row2['VolunteerName'] ?></td>
+																	</tr>
+																	<?php $i++; ?>
+																<?php endwhile; ?>
+															</tbody>
+														</table>
+													<?php endif; ?>
 
 
-															</tr>
-															<tr>
-																<th scope="row">2</th>
-																<td>Gabriel</td>
-
-
-															</tr>
-															<tr>
-																<th scope="row">3</th>
-																<td>Baogang</td>
-
-															</tr>
-															<tr>
-																<th scope="row">4</th>
-																<td>Elwin</td>
-
-															</tr>
-														</tbody>
-													</table>
 
 												</div>
 												<!--Footer-->
 												<div class="modal-footer">
-													<a href="ProjectRegisterationForm.html" class="btn btn-outline-warning">Join</a>
+													<a href="assignVolunteer.php?currID=<?php echo $row['idproject'] ?>" class="btn btn-outline-warning">Join</a>
 													<button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
 												</div>
 											</div>
@@ -260,7 +276,10 @@ $second_last = $total_no_of_pages - 1; // total pages minus 1
 								<div class="containerDonate">
 
 									<div class="dissapear">
-										<a href="meeting-report.html"><img class="img-fluid rounded mb-3 mb-md-0 share " width="70" height="70" src="img\report.png" alt="Reports"></a>
+										<?php $_SESSION['idproject'] = $row['idproject']; ?>
+										<?php
+										echo '<a href="meeting-report.php?project=' . $_SESSION['idproject'] . '"><img class="img-fluid rounded mb-3 mb-md-0 share " width="70" height="70" src="img\report.png" alt="Reports"></a>';
+										?>
 									</div>
 								</div>
 
@@ -270,53 +289,54 @@ $second_last = $total_no_of_pages - 1; // total pages minus 1
 							<!-- //////////////////////////////////////////////volunteerslist///////////////////////////////////////////////////// -->
 						</div>
 					</div>
-				</div>
+	</div>
 
-				<br>
-				<hr>
-				<br>
-			<?php endwhile; ?>
-		<?php endif; ?>
+	<br>
+	<hr>
+	<br>
+<?php endif; ?>
+<?php endwhile; ?>
+<?php endif; ?>
 
 
 
-		<!-- hereinsert -->
+<!-- hereinsert -->
 
-		<!-- Pagination -->
-		<ul class="pagination justify-content-end">
-			<!-- <li class="page-item disabled">
+<!-- Pagination -->
+<ul class="pagination justify-content-end">
+	<!-- <li class="page-item disabled">
 				<a class="page-link" href="#">Previous</a>
 			</li>
 			<li class="page-item">
 				<a class="page-link" href="#">Next</a>
 			</li> -->
-			<?php if ($page_no > 1) {
-				echo "<li class='page-item'><a class='page-link' href='homepage.php?&page_no=1&sortby=" . $sortby . "'>First Page</a></li>";
-			} ?>
-			<li <?php if ($page_no <= 1) {
-					echo 'class="page-item disabled"';
-				} else {
-					echo 'class="page-item"';
-				} ?>>
-				<a <?php echo " class='page-link'href='homepage.php?&page_no=" . $previous_page . "&sortby=" . $sortby . "'"; ?>>Previous</a>
-			</li>
+	<?php if ($page_no > 1) {
+		echo "<li class='page-item'><a class='page-link' href='homepage.php?&page_no=1&sortby=" . $sortby . "'>First Page</a></li>";
+	} ?>
+	<li <?php if ($page_no <= 1) {
+			echo 'class="page-item disabled"';
+		} else {
+			echo 'class="page-item"';
+		} ?>>
+		<a <?php echo " class='page-link'href='homepage.php?&page_no=" . $previous_page . "&sortby=" . $sortby . "'"; ?>>Previous</a>
+	</li>
 
-			<li <?php if ($page_no >= $total_no_of_pages) {
-					echo 'class="page-item disabled"';
-				} else {
-					echo 'class="page-item"';
-				} ?>>
-				<a <?php echo " class='page-link'href='homepage.php?page_no=" . $next_page . "&sortby=" . $sortby . "'"; ?>>Next</a>
-			</li>
-			<?php if ($page_no < $total_no_of_pages) {
-				echo "<li class='page-item'><a class='page-link' href='homepage.php?page_no=" . $total_no_of_pages . "&sortby=" . $sortby . "'>Last &rsaquo;&rsaquo;</a></li>";
-			} ?>
-		</ul>
+	<li <?php if ($page_no >= $total_no_of_pages) {
+			echo 'class="page-item disabled"';
+		} else {
+			echo 'class="page-item"';
+		} ?>>
+		<a <?php echo " class='page-link'href='homepage.php?page_no=" . $next_page . "&sortby=" . $sortby . "'"; ?>>Next</a>
+	</li>
+	<?php if ($page_no < $total_no_of_pages) {
+		echo "<li class='page-item'><a class='page-link' href='homepage.php?page_no=" . $total_no_of_pages . "&sortby=" . $sortby . "'>Last &rsaquo;&rsaquo;</a></li>";
+	} ?>
+</ul>
 
 
 
-	</div>
-	<!-- /.container -->
+</div>
+<!-- /.container -->
 </section>
 
 <?php include_once('includes/footer.php') ?>
@@ -374,7 +394,7 @@ $second_last = $total_no_of_pages - 1; // total pages minus 1
 
 <?php if (!empty($_SESSION['username'])) : ?>
 	<div class="scrollup2">
-		<a href="add-manageCharity.php">
+		<a href="manageCharity.php">
 			<button class="btn btn-circle btn-xl btn-1 volunteerIcon">
 				<i class="fa fa-tasks fa-l" g></i>
 			</button>

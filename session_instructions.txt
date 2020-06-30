@@ -1,0 +1,44 @@
+1 - Add this to your page at the very start page when you change the .html to .php for your page
+<?php
+session_start();
+?>
+
+Session variables
+$_SESSION['userID'] 
+$_SESSION['username']
+$_SESSION['email'] 
+$_SESSION['name']  
+$_SESSION['phone'] 
+$_SESSION['occ'] 
+$_SESSION['logged_in']  
+
+
+2- if you want to show an element based on if the user is logged or in not 
+    a- Check if the user logged in with  $_SESSION['logged_in'] == true
+    if the user logged in 
+        show the element you want to show in the navigation bar
+         e.g
+          <?php
+          //it will show the user profile if the user logged in 
+             if($_SESSION['logged_in'] == true){
+                echo '<a class="dropdown-item" href="#">User Profile</a>';
+          }
+          ?>
+    else
+         <?php
+            // if the user is not logged in it will show log in instaed of user profile
+             if($_SESSION['logged_in'] == true){
+                echo '<a class="dropdown-item" href="#">Log in </a>';
+            }
+          ?>
+
+
+3- if the user should not enter the page unless logged in you can redirect to the main page or log in page
+
+     <?php
+            // if the user is not logged in it will redirect him/her to 
+             if($_SESSION['logged_in'] == true){
+                header("Location: login.php"); or header("Location: homepage.php");
+                exit();
+            }
+          ?>

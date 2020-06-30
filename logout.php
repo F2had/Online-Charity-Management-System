@@ -80,15 +80,14 @@ session_start();
 
     <div>
 
-      <?
-           if(isset($_GET['deleted']) && $_GET['deleted']){
-            echo ' <h1 class="text-center" style="color: #000;">Your account has been deleted successfully</h1>';
-           }
-         else {
-          echo ' <h2 class="text-center" style="color: #000;">You have been logged out successfully</h2>';
-         }
+      <?php
+      if (isset($_GET['deleted']) && $_GET['deleted']) {
+        echo ' <h1 class="text-center" style="color: #000;">Your account has been deleted successfully</h1>';
+      } else {
+        echo ' <h2 class="text-center" style="color: #000;">You have been logged out successfully</h2>';
+      }
 
-         ?>
+      ?>
 
       <p class="text-center" style="color: #000;">You will be redircted to the Home Page in <span class="font-weight-bold" id="seconds"></span>s</p>
     </div>

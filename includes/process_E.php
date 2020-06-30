@@ -1,12 +1,14 @@
 <?php
 include_once "connect_database.php";
-
+// this
 $nameproject = '';
 $desproject = '';
 $amountvolunteer = '';
 $imgproject = '';
 $userID = '';
 $username = '';
+$sdate = "";
+$edate = "";
 
 $id = 0;
 
@@ -18,14 +20,30 @@ if (isset($_POST['submit'])) {
     $nameproject = $_POST['nameproject'];
     $desproject = $_POST['desproject'];
     $amountvolunteer = $_POST['amountvolunteer'];
+    $amountvolunteer2 = (float) $amountvolunteer;
+    $reconfirm = $amountvolunteer2 - floor($amountvolunteer2);
+    if ((!is_numeric($amountvolunteer)) || $amountvolunteer < 0 || $reconfirm != 0) {
+        redirect(" ../manageCharity.php?volunteer='invalid'");
+        exit();
+    }
+    $amountvolunteer = (int) $amountvolunteer;
+
     $userID = $_POST["userID"];
+    $sql = "SELECT userID FROM users WHERE userID = $userID";
+    $result2 = mysqli_query($conn, $sql);
+    $resultCheck2 = mysqli_num_rows($result2);
+    if ($resultCheck2 == 0) {
+        redirect(" ../manageCharity.php?user='invalid'");
+        exit();
+    }
     $username = $_POST["username"];
+    $sdate = $_POST["sdate"];
+    $edate = $_POST["edate"];
 
-    // echo "hi" . "<br>";
-    // echo $nameproject . "<br>";
-
-    // echo $userID . "<br>";
-    // echo $username . "<br>";
+    if ($sdate > $edate) {
+        redirect(" ../manageCharity.php?date='invalid'");
+        exit();
+    }
 
     $file = $_FILES['imgproject'];
 
@@ -49,7 +67,7 @@ if (isset($_POST['submit'])) {
                 $imgdestination = "../uploaded_img/" . $imgnewname;
 
                 if (empty($desproject) || empty($nameproject)) {
-                    header("Location: ../add-manageCharity.php?upload=empty");
+                    header("Location: ../manageCharity.php?upload=empty");
                     exit();
                 } else {
                     $sql = "SELECT * FROM `project`;";
@@ -63,8 +81,8 @@ if (isset($_POST['submit'])) {
                         $rowcount = mysqli_num_rows($result);
                         $set_img_order = $rowcount + 1;
 
-                        $sql = "INSERT INTO project (nameproject, desproject, amountvolunteer, imgproject, imguniqname, orderproject, userID)
-                            VALUES(?,?,?,?,?,?,?);";
+                        $sql = "INSERT INTO project (nameproject, desproject, amountvolunteer, imgproject, imguniqname, orderproject, sdate, edate, userID)
+                            VALUES(?,?,?,?,?,?,?,?,?);";
 
                         // echo "here entered";
 
@@ -73,13 +91,15 @@ if (isset($_POST['submit'])) {
                         } else {
                             mysqli_stmt_bind_param(
                                 $stmt,
-                                "sssssss",
+                                "sssssssss",
                                 $nameproject,
                                 $desproject,
                                 $amountvolunteer,
                                 $imgname,
                                 $imgnewname,
                                 $set_img_order,
+                                $sdate,
+                                $edate,
                                 $userID
                             );
                             // mysqli_stmt_execute($stmt)
@@ -91,33 +111,42 @@ if (isset($_POST['submit'])) {
                             };
 
                             move_uploaded_file($imgtempname, $imgdestination);
-                            redirect(" ../add-manageCharity.php?upload=success");
+                            redirect(" ../manageCharity.php?upload=success");
                         }
                     }
                 }
             } else {
-
                 echo '<script> alert ("image size is too big")</script>';
+                redirect(" ../manageCharity.php?upload=imgtoobig");
                 exit();
             }
         } else {
             echo "image error";
+            redirect(" ../manageCharity.php?upload=imgerror");
             exit();
         }
     } else {
-        echo "Please upload a proper file type";
+        echo '<script> alert ("Please upload a proper file type")</script>';
+        redirect(" ../manageCharity.php?upload=imgerror");
         exit();
     }
 }
 
 
 if (isset($_GET['manage'])) {
+    $statusmanage = $_GET['manage'];
+
     $update = true;
     $title = "Manage Charity Project";
+    $datetoday = date('Y-m-d');
 
     $idproject = $_GET['manage'];
     $id = $idproject;
-    $sql2 = "SELECT * FROM project INNER JOIN users ON project.userID = users.userID WHERE idproject=$idproject";
+    if ($_SESSION["userID"] == $admin) {
+        $sql2 = "SELECT * FROM project INNER JOIN users ON project.userID = users.userID WHERE idproject=$idproject";
+    } else {
+        $sql2 = "SELECT * FROM project INNER JOIN users ON project.userID = users.userID WHERE idproject=$idproject AND project.userID = $user AND project.edate > '$datetoday'";
+    }
     $result2 = mysqli_query($conn, $sql2);
 
     $resultCheck2 = mysqli_num_rows($result2);
@@ -131,22 +160,44 @@ if (isset($_GET['manage'])) {
         $imgproject = $row['imgproject'];
         $userID = $row['userID'];
         $username = $row['username'];
+        $sdate = $row["sdate"];
+        $edate = $row["edate"];
         // echo '<script> alert("' .  $username . '") </script>';
+    } else {
+        $update = false;
+        redirect("manageCharity.php?invalid=hacknotgood");
+        // redirect("manageCharity.php?delete=success");
     }
 }
-
 
 
 if (isset($_GET['delete'])) {
     // session_start();
     $idproject = $_GET['delete'];
-    $sql = "DELETE FROM project WHERE idproject=$idproject";
-    $result = mysqli_query($conn, $sql);
+    if ($idproject != "success") {
+        $sql2 = "SELECT imguniqname FROM project WHERE idproject=$idproject";
+        $result2 = mysqli_query($conn, $sql2);
+        $resultCheck2 = mysqli_num_rows($result2);
 
-    // $_SESSION['message'] = "Project has been deleted";
-    // $_SESSION['msg_type'] = "danger";
+        if ($resultCheck2 > 0) {
+            $row = mysqli_fetch_assoc($result2);
+            $imgpath = "../uploaded_img/" .
+                $row['imguniqname'];;
+            if (!unlink($imgpath)) {
+                echo "path not exist";
+            };
+        }
 
-    redirect("../add-manageCharity.php?delete=success");
+        $sql = "DELETE FROM project WHERE idproject=$idproject";
+        // $result = mysqli_query($conn, $sql);
+
+        if (mysqli_query($conn, $sql)) {
+            redirect("../manageCharity.php?delete=success");
+        } else {
+            echo "fail" . mysqli_error($conn) . "<br>";
+            echo $sql;
+        }
+    }
 }
 
 
@@ -155,8 +206,12 @@ if (isset($_POST['update'])) {
     $nameproject = $_POST['nameproject'];
     $desproject = $_POST['desproject'];
     $amountvolunteer = $_POST['amountvolunteer'];
-
-
+    $sdate = $_POST["sdate"];
+    $edate = $_POST["edate"];
+    if ($sdate > $edate) {
+        redirect(" ../manageCharity.php?date='invalid'");
+        exit();
+    }
     $file = $_FILES['imgproject'];
     // print_r($file);
     $imgname = $file["name"];
@@ -192,7 +247,7 @@ if (isset($_POST['update'])) {
                 $imgdestination = "../uploaded_img/" . $imgnewname;
 
                 if (empty($desproject) || empty($nameproject)) {
-                    header("Location: ../add-manageCharity.php?upload=empty");
+                    header("Location: ../manageCharity.php?upload=empty");
                     exit();
                 } else {
                     move_uploaded_file($imgtempname, $imgdestination);
@@ -202,7 +257,9 @@ if (isset($_POST['update'])) {
                     desproject = '$desproject', 
                     amountvolunteer = '$amountvolunteer', 
                     imgproject='$imgname', 
-                    imguniqname='$imgnewname'
+                    imguniqname='$imgnewname',
+                    sdate = '$sdate',
+                    edate = '$edate'
                     
                     WHERE idproject=$idproject";
 
@@ -214,22 +271,26 @@ if (isset($_POST['update'])) {
                     // } else {
                     //     echo "Error updating record: " . mysqli_error($conn);
                     // }
-                    redirect(" ../add-manageCharity.php?update=success");
-                    // header("Location: ../add-manageCharity.php?update=success");
+                    redirect(" ../manageCharity.php?update=success");
+                    // header("Location: ../manageCharity.php?update=success");
                 }
             } else {
                 echo "image size is too big";
+                redirect(" ../manageCharity.php?update=imgtoobig");
                 exit();
             }
         } else {
             echo "image error";
+            redirect(" ../manageCharity.php?update=imgerror");
             exit();
         }
     } else {
         $sql = "UPDATE project SET 
                     nameproject='$nameproject', 
                     desproject = '$desproject', 
-                    amountvolunteer = '$amountvolunteer'                
+                    amountvolunteer = '$amountvolunteer',
+                    sdate = '$sdate',
+                    edate = '$edate'                
                     WHERE idproject=$idproject";
 
         if (mysqli_query($conn, $sql)) {
@@ -239,11 +300,11 @@ if (isset($_POST['update'])) {
             echo $sql;
         };
 
-        redirect(" ../add-manageCharity.php?update=success");
+        redirect(" ../manageCharity.php?update=success");
     }
 }
 
-// header("Location: ../add-manageCharity.php");
+// header("Location: ../manageCharity.php");
 function redirect($url)
 {
     if (!headers_sent()) {
@@ -252,7 +313,7 @@ function redirect($url)
     } else {
         echo '<script type="text/javascript">';
         echo 'window.location.href="' . $url . '";';
-        echo 'alert("func2");';
+        // echo 'alert("func2");';
         echo '</script>';
         exit;
     }
